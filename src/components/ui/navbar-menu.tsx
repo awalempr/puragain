@@ -17,21 +17,32 @@ export const MenuItem = ({
   setActive,
   active,
   item,
+  href,
   children,
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
+  href?: string;
   children?: React.ReactNode;
 }) => {
   return (
     <div onMouseEnter={() => setActive(item)} className="relative py-2">
-      <motion.p
-        transition={{ duration: 0.3 }}
-        className="cursor-pointer text-inherit hover:opacity-[0.9] text-[13px] font-medium"
-      >
-        {item}
-      </motion.p>
+      {href ? (
+        <Link
+          href={href}
+          className="cursor-pointer text-inherit hover:opacity-[0.9] text-[13px] font-medium block"
+        >
+          {item}
+        </Link>
+      ) : (
+        <motion.p
+          transition={{ duration: 0.3 }}
+          className="cursor-pointer text-inherit hover:opacity-[0.9] text-[13px] font-medium"
+        >
+          {item}
+        </motion.p>
+      )}
       {active !== null && active === item && (
         <>
           {/* Invisible bridge so mouse doesn't lose hover crossing the gap */}
@@ -71,7 +82,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="relative flex justify-center items-center space-x-6 px-6 py-2.5 rounded-full bg-white/70 backdrop-blur-2xl border border-gray-200/60 shadow-[0_4px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.9)]"
+      className="relative flex justify-center items-center space-x-6 px-6 h-[44px] rounded-full bg-white/70 backdrop-blur-2xl border border-gray-200/60 shadow-[0_4px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.9)]"
     >
       {children}
     </nav>

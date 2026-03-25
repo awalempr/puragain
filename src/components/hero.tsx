@@ -30,7 +30,6 @@ export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const targetMouseRef = useRef({ x: 0, y: 0 });
-  const waterLevelRef = useRef(1.0); // 1.0 = bottom, 0.6 = settled position
   const fillStartRef = useRef(0);
 
   useEffect(() => {
@@ -43,14 +42,13 @@ export function Hero() {
     let time = 0;
 
     const SETTLED_LINE = 0.6;
-    const FILL_DURATION = 2200; // ms to fill
+    const FILL_DURATION = 2200;
     const mouseInfluence = 50;
     const influenceRadius = 400;
     const smoothing = 0.08;
 
     fillStartRef.current = performance.now();
 
-    // Trigger phases
     setTimeout(() => setPhase("settled"), FILL_DURATION + 200);
     setTimeout(() => {
       setPhase("content");
@@ -91,7 +89,6 @@ export function Hero() {
       const now = performance.now();
       const elapsed = now - fillStartRef.current;
 
-      // Smooth mouse follow
       mouseRef.current.x += (targetMouseRef.current.x - mouseRef.current.x) * smoothing;
       mouseRef.current.y += (targetMouseRef.current.y - mouseRef.current.y) * smoothing;
 
@@ -101,14 +98,10 @@ export function Hero() {
       const width = w();
       const height = h();
 
-      // ---- WATER LEVEL ANIMATION ----
-      // Eases from 1.05 (below screen) to SETTLED_LINE
       const fillProgress = Math.min(elapsed / FILL_DURATION, 1);
-      // Ease out cubic for smooth deceleration
       const eased = 1 - Math.pow(1 - fillProgress, 3);
       const targetLevel = 1.05 - (1.05 - SETTLED_LINE) * eased;
 
-      // After fill, add a small overshoot bounce
       let bounce = 0;
       if (fillProgress >= 1) {
         const bounceElapsed = elapsed - FILL_DURATION;
@@ -116,19 +109,13 @@ export function Hero() {
         bounce = Math.sin(bounceElapsed * 0.008) * 15 * bounceDamp;
       }
 
-      waterLevelRef.current = targetLevel;
-      const waterY = height * waterLevelRef.current + bounce;
-
-      // ---- Amplitude ramps up as water fills ----
+      const waterY = height * targetLevel + bounce;
       const waveIntensity = eased;
-      // Extra turbulence during fill, calms after
       const turbulence = fillProgress < 1 ? (1 - fillProgress) * 20 : 0;
 
-      // ---- WHITE SKY ----
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, width, height);
 
-      // ---- WAVE POINTS ----
       const wavePoints: number[] = [];
       for (let x = 0; x <= width; x += 3) {
         const dx = x - mouseRef.current.x;
@@ -136,7 +123,6 @@ export function Hero() {
         const distance = Math.sqrt(dx * dx + dy * dy);
         const influence = Math.max(0, 1 - distance / influenceRadius);
         const mouseEffect = influence * mouseInfluence * Math.sin(time * 0.0015 + x * 0.008) * waveIntensity;
-
         const y =
           waterY +
           Math.sin(x * 0.004 + time * 0.002) * 18 * waveIntensity +
@@ -144,11 +130,9 @@ export function Hero() {
           Math.sin(x * 0.002 + time * 0.001) * 25 * waveIntensity +
           Math.sin(x * 0.012 + time * 0.005) * turbulence +
           mouseEffect;
-
         wavePoints.push(y);
       }
 
-      // ---- WATER BODY ----
       const waterGradient = ctx.createLinearGradient(0, waterY - 30, 0, height);
       waterGradient.addColorStop(0, "rgba(26, 107, 181, 0.15)");
       waterGradient.addColorStop(0.15, "rgba(26, 107, 181, 0.3)");
@@ -159,21 +143,16 @@ export function Hero() {
 
       ctx.beginPath();
       ctx.moveTo(0, wavePoints[0]);
-      for (let i = 1; i < wavePoints.length; i++) {
-        ctx.lineTo(i * 3, wavePoints[i]);
-      }
+      for (let i = 1; i < wavePoints.length; i++) ctx.lineTo(i * 3, wavePoints[i]);
       ctx.lineTo(width, height);
       ctx.lineTo(0, height);
       ctx.closePath();
       ctx.fillStyle = waterGradient;
       ctx.fill();
 
-      // ---- WAVE SURFACE LINE ----
       ctx.beginPath();
       ctx.moveTo(0, wavePoints[0]);
-      for (let i = 1; i < wavePoints.length; i++) {
-        ctx.lineTo(i * 3, wavePoints[i]);
-      }
+      for (let i = 1; i < wavePoints.length; i++) ctx.lineTo(i * 3, wavePoints[i]);
       ctx.lineWidth = 2;
       ctx.strokeStyle = `rgba(26, 107, 181, ${0.5 * waveIntensity})`;
       ctx.shadowBlur = 20;
@@ -181,13 +160,11 @@ export function Hero() {
       ctx.stroke();
       ctx.shadowBlur = 0;
 
-      // ---- SECONDARY RIPPLE ----
       if (waveIntensity > 0.3) {
         ctx.beginPath();
         for (let x = 0; x <= width; x += 3) {
           const i = Math.floor(x / 3);
-          const offsetY = (wavePoints[i] ?? waterY) + 14 +
-            Math.sin(x * 0.005 + time * 0.0025) * 6 * waveIntensity;
+          const offsetY = (wavePoints[i] ?? waterY) + 14 + Math.sin(x * 0.005 + time * 0.0025) * 6 * waveIntensity;
           if (x === 0) ctx.moveTo(x, offsetY);
           else ctx.lineTo(x, offsetY);
         }
@@ -196,7 +173,6 @@ export function Hero() {
         ctx.stroke();
       }
 
-      // ---- CAUSTICS ----
       if (waveIntensity > 0.5) {
         ctx.globalAlpha = 0.035 * waveIntensity;
         for (let i = 0; i < 5; i++) {
@@ -228,11 +204,9 @@ export function Hero() {
   return (
     <>
       <section className="relative isolate flex min-h-screen w-full items-center justify-center bg-white">
-        <canvas ref={canvasRef} className="absolute inset-0 h-full w-full overflow-hidden" aria-hidden="true" />
+        <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
 
-
-        {/* Content — fades in after water fills */}
-        <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-32 pt-16 text-center" style={{ marginTop: "-6vh" }}>
+        <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-20 md:pb-32 pt-16 text-center" style={{ marginTop: "-6vh" }}>
           {phase === "content" && (
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="w-full">
               <motion.div
@@ -265,21 +239,20 @@ export function Hero() {
                   className="inline-flex items-center gap-2 rounded-full bg-brand-red px-8 py-4 text-[15px] font-semibold text-white shadow-lg shadow-red-500/20
                              hover:bg-[#b00e0e] active:scale-[0.97] transition-colors duration-200"
                 >
-                  Find My System
+                  What&apos;s In My Water?
                 </button>
                 <Link
-                  href="/products/reverse-osmosis"
+                  href="/#systems"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-gray-200 px-8 py-4 text-[15px] font-semibold text-navy
                              hover:border-brand-blue hover:text-brand-blue active:scale-[0.97] transition-colors duration-200"
                 >
-                  View Systems
+                  Pick My Filtration
                 </Link>
               </motion.div>
             </motion.div>
           )}
         </div>
 
-        {/* Scroll indicator — appears after content */}
         {phase === "content" && (
           <motion.div
             className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"

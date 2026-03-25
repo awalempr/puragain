@@ -26,7 +26,7 @@ export function CtaBanner({
   return (
     <section className={`${bg} py-20 px-6`}>
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white mb-4">
+        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
           {headline}
         </h2>
         {subtext && (

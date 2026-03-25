@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone, Menu as MenuIcon, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, MenuItem, ProductItem, HoveredLink } from "@/components/ui/navbar-menu";
+import { Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 import { QuizModal } from "@/components/quiz-modal";
 
 export default function Navbar() {
@@ -36,7 +36,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-16 max-w-[1300px] items-center px-4 sm:px-6">
           {/* Left — Logo in white pill */}
-          <Link href="/" className="relative shrink-0 mr-auto bg-white/90 backdrop-blur-xl rounded-full px-5 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
+          <Link href="/" className="relative shrink-0 mr-auto bg-white/90 backdrop-blur-xl rounded-full px-5 h-[44px] flex items-center shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/brand/logo.png"
@@ -48,8 +48,8 @@ export default function Navbar() {
           {/* Center — Glassmorphism pill nav (desktop) */}
           <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 text-gray-600">
             <Menu setActive={setActive}>
-              <MenuItem setActive={setActive} active={active} item="Water Filtration Systems">
-                <div className="text-sm grid grid-cols-3 gap-6 p-4">
+              <MenuItem setActive={setActive} active={active} item="Water Filtration Systems" href="/#systems">
+                <div className="text-sm grid grid-cols-3 gap-6 p-4 pb-2">
                   <ProductItem
                     title="Reverse Osmosis"
                     description="5-stage system · $26/mo"
@@ -60,7 +60,7 @@ export default function Navbar() {
                     title="Alkaline System"
                     description="6-stage with minerals · $42/mo"
                     href="/products/alkaline"
-                    src="/images/hero-lifestyle.jpeg"
+                    src="/images/products/alkaline-detail-2.jpeg"
                   />
                   <ProductItem
                     title="Whole House"
@@ -68,6 +68,9 @@ export default function Navbar() {
                     href="/products/whole-house"
                     src="/images/products/whole-house-lifestyle.jpeg"
                   />
+                  <p className="col-span-3 text-[10px] text-gray-400 text-center pt-3 border-t border-gray-100">
+                    *Monthly payment may vary based on credit approval. Zero down, free installation on all systems.
+                  </p>
                 </div>
               </MenuItem>
               <div className="relative py-2">
@@ -75,17 +78,11 @@ export default function Navbar() {
                   Reviews
                 </Link>
               </div>
-              <MenuItem setActive={setActive} active={active} item="Contact">
-                <div className="flex flex-col space-y-3 text-sm min-w-[180px]">
-                  <HoveredLink href="/contact">Send a Message</HoveredLink>
-                  <a href="tel:8554092837" className="text-neutral-700 hover:text-black">
-                    Sales: 855-409-2837
-                  </a>
-                  <a href="tel:8554090084" className="text-neutral-700 hover:text-black">
-                    Service: 855-409-0084
-                  </a>
-                </div>
-              </MenuItem>
+              <div className="relative py-2">
+                <Link href="/contact" className="cursor-pointer text-[13px] font-medium text-inherit hover:opacity-[0.9]">
+                  Contact
+                </Link>
+              </div>
               <div className="relative py-2">
                 <p className="cursor-pointer text-[13px] font-medium text-inherit hover:opacity-[0.9]">
                   <a href="/#faq">FAQ</a>
@@ -95,19 +92,19 @@ export default function Navbar() {
           </div>
 
           {/* Right — Phone + CTA in matching pill */}
-          <div className="hidden lg:flex items-center gap-3 ml-auto bg-white/90 backdrop-blur-xl rounded-full px-2 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
+          <div className="hidden lg:flex items-center gap-3 ml-auto bg-white/90 backdrop-blur-xl rounded-full px-2 h-[44px] shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
             <a
               href="tel:8554092837"
               className="flex items-center gap-1.5 text-[13px] text-gray-500 hover:text-gray-900 transition-colors px-3"
             >
               <Phone size={13} />
-              855-409-2837
+              855-40-WATER
             </a>
             <button
               onClick={() => setQuizOpen(true)}
               className="inline-flex items-center rounded-full bg-brand-red px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#b00e0e]"
             >
-              Free Water Test
+              What&apos;s In My Water?
             </button>
           </div>
 
@@ -138,7 +135,7 @@ export default function Navbar() {
               {[
                 { name: "5-Stage Reverse Osmosis", href: "/products/reverse-osmosis" },
                 { name: "6-Stage Alkaline System", href: "/products/alkaline" },
-                { name: "Whole House Filtersorb", href: "/products/whole-house" },
+                { name: "Whole House System", href: "/products/whole-house" },
               ].map((p) => (
                 <Link
                   key={p.href}
@@ -169,7 +166,7 @@ export default function Navbar() {
 
             <div className="mt-10 space-y-3">
               <a href="tel:8554092837" className="flex items-center gap-2 text-gray-500 text-sm">
-                <Phone size={14} /> Sales: 855-409-2837
+                <Phone size={14} /> Sales: 855-40-WATER
               </a>
               <a href="tel:8554090084" className="flex items-center gap-2 text-gray-500 text-sm">
                 <Phone size={14} /> Service: 855-409-0084
@@ -180,7 +177,7 @@ export default function Navbar() {
               onClick={() => { setMobileOpen(false); setTimeout(() => setQuizOpen(true), 300); }}
               className="mt-6 block w-full rounded-full bg-brand-red px-5 py-3.5 text-center text-[15px] font-semibold text-white hover:bg-[#b00e0e]"
             >
-              Free Water Test
+              What&apos;s In My Water?
             </button>
           </motion.div>
         )}
