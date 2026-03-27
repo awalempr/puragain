@@ -6,7 +6,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Reviews | Puragain Water",
-  description: "See what 5,000+ families are saying about Puragain Water filtration systems. 4.7 stars on Yelp with 430+ reviews.",
+  description: "See what 33K+ families are saying about Puragain Water filtration systems. 4.7 stars on Yelp with 430+ reviews.",
 };
 
 const reviews = [
@@ -25,7 +25,7 @@ const reviews = [
 const stats = [
   { value: "4.7", label: "Star Rating" },
   { value: "430+", label: "Yelp Reviews" },
-  { value: "5,000+", label: "Families Served" },
+  { value: "33K+", label: "Families Served" },
   { value: "30+", label: "Years Experience" },
 ];
 
@@ -38,7 +38,7 @@ export default function ReviewsPage() {
           <FadeIn className="text-center mb-16">
             <span className="text-[#3a8fd4] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 block">Customer Reviews</span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-              5,000+ families.<br />
+              33K+ families.<br />
               <span className="text-[#3a8fd4]">One promise.</span> Pure water.
             </h1>
             <p className="text-gray-500 text-[17px] max-w-xl mx-auto leading-relaxed">
@@ -171,7 +171,7 @@ export default function ReviewsPage() {
             {[
               { icon: <Shield className="w-6 h-6" />, title: "7-Year Warranty", desc: "Every system is backed by a comprehensive warranty covering all parts and labor." },
               { icon: <Clock className="w-6 h-6" />, title: "Lifetime Service", desc: "Annual testing, maintenance, filter replacements, and unlimited service calls. All included." },
-              { icon: <Award className="w-6 h-6" />, title: "30+ Years Experience", desc: "Family-owned with over three decades in the water industry. 5,000+ installations and counting." },
+              { icon: <Award className="w-6 h-6" />, title: "30+ Years Experience", desc: "Family-owned with over three decades in the water industry. 33K+ installations and counting." },
             ].map((item) => (
               <StaggerItem key={item.title}>
                 <div className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
@@ -200,7 +200,7 @@ export default function ReviewsPage() {
                 Ready to join them?
               </h2>
               <p className="text-white/60 text-[16px] mb-10 max-w-md mx-auto leading-relaxed">
-                Join 5,000+ families who trust Puragain Water every day.
+                Join 33K+ families who trust Puragain Water every day.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/contact" className="bg-brand-red text-white rounded-full px-8 py-4 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors shadow-lg shadow-black/15">

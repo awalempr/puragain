@@ -237,7 +237,7 @@ export default function ContactPage() {
 
           {/* Bottom note */}
           <p className="text-gray-400 text-xs text-center leading-relaxed">
-            5,000+ families served. Free water testing. Zero money down on all systems.
+            33K+ families served. Free water testing. Zero money down on all systems.
           </p>
         </div>
       </div>

@@ -116,8 +116,29 @@ const faqs = [
 ];
 
 export default function ReverseOsmosisPage() {
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "5-Stage Reverse Osmosis System",
+    "description": "Hospital-grade 5-stage reverse osmosis removes 99% of contaminants from your drinking water. Compact under-sink installation.",
+    "brand": { "@type": "Brand", "name": "Puragain Water" },
+    "offers": {
+      "@type": "Offer",
+      "price": "26.00",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": "https://puragainwaterfiltration.com/products/reverse-osmosis",
+    },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       {/* ─── HERO ─── */}
       <section className="relative bg-white pt-24 pb-20 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">

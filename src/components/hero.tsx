@@ -42,7 +42,7 @@ export function Hero() {
     let time = 0;
 
     const SETTLED_LINE = 0.6;
-    const FILL_DURATION = 2200;
+    const FILL_DURATION = 1200;
     const mouseInfluence = 50;
     const influenceRadius = 400;
     const smoothing = 0.08;
@@ -113,7 +113,12 @@ export function Hero() {
       const waveIntensity = eased;
       const turbulence = fillProgress < 1 ? (1 - fillProgress) * 20 : 0;
 
-      ctx.fillStyle = "#ffffff";
+      // Fill sky white, but bottom matches water color to prevent white line
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, height);
+      skyGrad.addColorStop(0, "#ffffff");
+      skyGrad.addColorStop(0.55, "#ffffff");
+      skyGrad.addColorStop(1, "#2f5e8f");
+      ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, width, height);
 
       const wavePoints: number[] = [];
@@ -203,17 +208,17 @@ export function Hero() {
 
   return (
     <>
-      <section className="relative isolate flex min-h-screen w-full items-center justify-center bg-white">
+      <section className="relative flex min-h-screen w-full items-start justify-center" style={{ background: "linear-gradient(to bottom, #ffffff 0%, #ffffff 55%, #2f5e8f 100%)" }}>
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-20 md:pb-32 pt-16 text-center" style={{ marginTop: "-6vh" }}>
+        <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-20 md:pb-32 pt-[192px] md:pt-[224px] text-center">
           {phase === "content" && (
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="w-full">
               <motion.div
                 variants={itemVariants}
-                className="mb-8 inline-flex items-center gap-2 rounded-full border border-gray-200/60 bg-white/80 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.15em] text-gray-500 backdrop-blur-sm"
+                className="mb-6 md:mb-8 inline-flex items-center gap-1.5 md:gap-2 rounded-full border border-gray-200/60 bg-white/80 px-3 md:px-5 py-2 md:py-2.5 text-[10px] md:text-xs font-medium uppercase tracking-[0.1em] md:tracking-[0.15em] text-gray-500 backdrop-blur-sm whitespace-nowrap"
               >
-                Family owned · 30+ years · 5,000+ families served
+                Family owned · 30+ yrs · 33K+ families
               </motion.div>
 
               <motion.h1
@@ -227,7 +232,7 @@ export function Hero() {
 
               <motion.p
                 variants={itemVariants}
-                className="mx-auto mb-10 max-w-xl text-lg text-gray-600 md:text-xl font-medium"
+                className="mx-auto mb-8 md:mb-10 max-w-xl text-[15px] md:text-lg lg:text-xl text-gray-600 font-medium"
                 style={{ lineHeight: 1.6 }}
               >
                 We install home filtration systems that remove 99% of contaminants. Providing you clean, safe and better tasting water with lifetime service included.
@@ -246,7 +251,7 @@ export function Hero() {
                   className="inline-flex items-center gap-2 rounded-full border-2 border-gray-200 px-8 py-4 text-[15px] font-semibold text-navy
                              hover:border-brand-blue hover:text-brand-blue active:scale-[0.97] transition-colors duration-200"
                 >
-                  Pick My Filtration
+                  Pick My Protection
                 </Link>
               </motion.div>
             </motion.div>
@@ -265,6 +270,7 @@ export function Hero() {
             </div>
           </motion.div>
         )}
+
       </section>
 
       <QuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />

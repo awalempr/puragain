@@ -24,7 +24,7 @@ export default function HomePage() {
 
 
       {/* ═══ HERO → PROBLEM gradient transition ═══ */}
-      <div className="-mt-px h-[140px] md:h-[280px]" style={{ background: "linear-gradient(to bottom, #2f5e8f, #ffffff)" }} />
+      <div className="-mt-4 h-[144px] md:h-[284px] relative z-[5]" style={{ background: "linear-gradient(to bottom, #2f5e8f, #ffffff)" }} />
 
       {/* ═══ PROBLEM ═══ */}
       <section className="px-6 pt-12 pb-24 lg:pt-16 lg:pb-32 bg-white">
@@ -536,7 +536,7 @@ export default function HomePage() {
                 Stop guessing.<br />Start drinking clean.
               </h2>
               <p className="text-white/60 text-[16px] mb-10 max-w-md mx-auto leading-relaxed">
-                Join 5,000+ families who trust Puragain Water every day.
+                Join 33K+ families who trust Puragain Water every day.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/contact" className="bg-brand-red text-white rounded-full px-8 py-4 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors shadow-lg shadow-black/15">

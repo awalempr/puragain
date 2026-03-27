@@ -36,9 +36,9 @@ export function CookieConsent() {
           className="fixed bottom-6 left-6 right-6 z-[100] flex justify-center"
         >
           <div
-            className="w-full max-w-[900px] rounded-full px-8 py-3.5 flex items-center gap-6"
+            className="w-full max-w-[900px] rounded-2xl md:rounded-full px-5 md:px-8 py-4 md:py-3.5 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6"
             style={{
-              background: "rgba(255,255,255,0.92)",
+              background: "rgba(255,255,255,0.95)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(0,0,0,0.06)",
@@ -46,7 +46,7 @@ export function CookieConsent() {
             }}
           >
             <div className="flex-1 min-w-0">
-              <p className="text-gray-600 text-[13px] truncate">
+              <p className="text-gray-600 text-[13px] leading-relaxed">
                 <span className="font-semibold text-gray-900">We use cookies</span> to improve your experience, analyze traffic, and personalize ads.
               </p>
             </div>

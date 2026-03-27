@@ -107,8 +107,29 @@ const faqs = [
 ];
 
 export default function WholeHousePage() {
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Whole House Water Filtration System",
+    "description": "Clean water from every tap, shower, and appliance. Salt-free whole house filtration and conditioning system.",
+    "brand": { "@type": "Brand", "name": "Puragain Water" },
+    "offers": {
+      "@type": "Offer",
+      "price": "74.00",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": "https://puragainwaterfiltration.com/products/whole-house",
+    },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       {/* ─── HERO ─── */}
       <section className="relative bg-white pt-24 pb-20 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">

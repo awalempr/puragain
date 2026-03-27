@@ -122,8 +122,29 @@ const faqs = [
 ];
 
 export default function AlkalinePage() {
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "6-Stage Alkaline Reverse Osmosis System",
+    "description": "Pure water plus essential minerals. 6-stage alkaline RO system removes 99% of contaminants then adds calcium, magnesium, and potassium. Raises pH to 9.5.",
+    "brand": { "@type": "Brand", "name": "Puragain Water" },
+    "offers": {
+      "@type": "Offer",
+      "price": "42.00",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": "https://puragainwaterfiltration.com/products/alkaline",
+    },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       {/* ─── HERO ─── */}
       <section className="relative bg-white pt-24 pb-20 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
