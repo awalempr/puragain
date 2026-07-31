@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { CtaBanner } from "@/components/cta-banner";
 
 export const metadata: Metadata = {
-  title: "5-Stage Reverse Osmosis System | Puragain Water",
+  title: "5-Stage Reverse Osmosis System",
   description:
     "Hospital-grade 5-stage reverse osmosis removes 99% of contaminants from your drinking water. $26/month, zero down, free installation, and lifetime service included.",
 };

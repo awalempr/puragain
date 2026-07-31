@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Puragain Water",
+  title: "Terms & Conditions",
   description: "Puragain Water terms and conditions of service. Read our terms regarding system purchases, installations, and lifetime service plans.",
 };
 

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { CtaBanner } from "@/components/cta-banner";
 
 export const metadata: Metadata = {
-  title: "Whole House Water Filtration System | Puragain Water",
+  title: "Whole House Water Filtration System",
   description:
     "Clean water from every tap, shower, and appliance. Salt-free whole house filtration for $74/month with lifetime service, zero down, and free professional installation.",
 };

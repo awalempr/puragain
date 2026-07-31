@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { CtaBanner } from "@/components/cta-banner";
 
 export const metadata: Metadata = {
-  title: "6-Stage Alkaline Reverse Osmosis System | Puragain Water",
+  title: "6-Stage Alkaline Reverse Osmosis System",
   description:
     "Pure water plus essential minerals. Our 6-stage alkaline RO system removes 99% of contaminants then adds calcium, magnesium, and potassium back. $42/month with lifetime service.",
 };

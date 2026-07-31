@@ -5,7 +5,7 @@ import { Star, ArrowRight, Phone, Shield, Clock, Award } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 
 export const metadata: Metadata = {
-  title: "Reviews | Puragain Water",
+  title: "Reviews",
   description: "See what 33K+ families are saying about Puragain Water filtration systems. 4.7 stars on Yelp with 430+ reviews.",
 };
 

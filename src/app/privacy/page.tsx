@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Puragain Water",
+  title: "Privacy Policy",
   description: "Puragain Water privacy policy. How we collect, use, and protect your personal information.",
 };
 
