@@ -31,9 +31,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Puragain Water | Pure Water. Pure Life.",
-    description:
-      "Home water filtration systems that remove 99% of contaminants. Free water test, professional install, lifetime service.",
+    // title/description intentionally omitted so each page derives its own
+    // og:title / og:description from its metadata; image + site info inherited.
     url: "https://puragain.com",
     siteName: "Puragain Water",
     locale: "en_US",
@@ -49,9 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Puragain Water | Pure Water. Pure Life.",
-    description:
-      "Home water filtration that removes 99% of contaminants. 33K+ families served.",
+    // title/description derive per-page from each page's metadata.
     images: ["https://puragain.com/images/og-image.png"],
   },
   robots: {
