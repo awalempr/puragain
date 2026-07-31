@@ -212,8 +212,9 @@ export function Hero() {
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-20 md:pb-32 pt-[192px] md:pt-[224px] text-center">
-          {phase === "content" && (
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="w-full">
+          {/* Always rendered so the H1 is in the static HTML for crawlers;
+              the water-fill reveal is driven by animate state, not mounting. */}
+          <motion.div variants={containerVariants} initial="hidden" animate={phase === "content" ? "visible" : "hidden"} className="w-full">
               <motion.div
                 variants={itemVariants}
                 className="mb-6 md:mb-8 inline-flex items-center gap-1.5 md:gap-2 rounded-full border border-gray-200/60 bg-white/80 px-3 md:px-5 py-2 md:py-2.5 text-[10px] md:text-xs font-medium uppercase tracking-[0.1em] md:tracking-[0.15em] text-gray-500 backdrop-blur-sm whitespace-nowrap"
@@ -255,7 +256,6 @@ export function Hero() {
                 </Link>
               </motion.div>
             </motion.div>
-          )}
         </div>
 
         {phase === "content" && (

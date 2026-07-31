@@ -36,7 +36,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-16 max-w-[1300px] items-center px-4 sm:px-6">
           {/* Left — Logo in white pill */}
-          <Link href="/" className="relative shrink-0 mr-auto bg-white/90 backdrop-blur-xl rounded-full px-5 h-[44px] flex items-center shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
+          <Link href="/" aria-label="Puragain Water — home" className="relative shrink-0 mr-auto bg-white/90 backdrop-blur-xl rounded-full px-5 h-[44px] flex items-center shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/brand/logo.png"

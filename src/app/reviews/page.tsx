@@ -149,7 +149,7 @@ export default function ReviewsPage() {
             <a
               href="https://www.yelp.com/biz/puragain-water-escondido-3"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               className="text-[#3a8fd4] text-sm font-semibold inline-flex items-center gap-1.5 hover:gap-3 transition-transform"
             >
               Read all 430+ reviews on Yelp <ArrowRight className="w-4 h-4" />

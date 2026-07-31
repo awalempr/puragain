@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ExitIntent } from "@/components/exit-intent";
 import { CookieConsent } from "@/components/cookie-consent";
+import { Analytics } from "@/components/analytics";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -135,6 +136,7 @@ export default function RootLayout({
         <Footer />
         <ExitIntent />
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );

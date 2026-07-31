@@ -133,11 +133,30 @@ export default function ReverseOsmosisPage() {
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://puragain.com" },
+      { "@type": "ListItem", position: 2, name: "Reverse Osmosis", item: "https://puragain.com/products/reverse-osmosis" },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema, breadcrumbSchema]) }}
       />
       {/* ─── HERO ─── */}
       <section className="relative bg-white pt-24 pb-20 px-6 overflow-hidden">

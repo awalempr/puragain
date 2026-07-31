@@ -17,9 +17,34 @@ import {
   Award,
 } from "lucide-react";
 
+const homeFaqs = [
+  { q: "What exactly does your system remove?", a: "Our reverse osmosis systems remove up to 99% of contaminants including chlorine, lead, PFAS, fluoride, arsenic, bacteria, pesticides, microplastics, herbicides, radium, pharmaceuticals, and more." },
+  { q: "How much does it cost?", a: "Systems start at just $26/month with zero money down and free professional installation. Every system includes a 7-year warranty and a lifetime servicing plan at no extra cost." },
+  { q: "What's included in the lifetime servicing plan?", a: "Annual water testing, annual maintenance visits with filter checks and system tune-ups, unlimited service calls at no cost, and 24/7 live support. All included for the life of your system." },
+  { q: "How long does installation take?", a: "Most installations are completed in 1-2 hours by our certified technicians. No plumber needed. We handle everything." },
+  { q: "Do I need to own my home?", a: "While homeowners are our most common customers, renters can also qualify with landlord approval. Our under-sink systems are compact and non-invasive." },
+  { q: "Will it affect my water pressure?", a: "No. Our reverse osmosis systems use a dedicated faucet for drinking water, so your existing water pressure is completely unaffected. Whole house systems maintain full flow." },
+  { q: "How often do filters need replacing?", a: "Filters are typically replaced once a year and it's included in your lifetime servicing plan. Our technician handles it during your annual maintenance visit." },
+  { q: "Is the water testing really free?", a: "Yes. A certified technician visits your home, tests your water on-site, and shows you the results. No cost, no obligation, no pressure." },
+];
+
+const homeFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homeFaqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }}
+      />
       <Hero />
 
 
@@ -463,7 +488,7 @@ export default function HomePage() {
               <a
                 href="https://www.yelp.com/biz/puragain-water-escondido-3"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="text-[#3a8fd4] text-sm font-semibold inline-flex items-center gap-1.5 hover:gap-3 transition-transform"
               >
                 Read all 430+ reviews <ArrowRight className="w-4 h-4" />
@@ -494,16 +519,7 @@ export default function HomePage() {
 
           <FadeIn delay={0.1}>
             <div className="space-y-3">
-              {[
-                { q: "What exactly does your system remove?", a: "Our reverse osmosis systems remove up to 99% of contaminants including chlorine, lead, PFAS, fluoride, arsenic, bacteria, pesticides, microplastics, herbicides, radium, pharmaceuticals, and more." },
-                { q: "How much does it cost?", a: "Systems start at just $26/month with zero money down and free professional installation. Every system includes a 7-year warranty and a lifetime servicing plan at no extra cost." },
-                { q: "What's included in the lifetime servicing plan?", a: "Annual water testing, annual maintenance visits with filter checks and system tune-ups, unlimited service calls at no cost, and 24/7 live support. All included for the life of your system." },
-                { q: "How long does installation take?", a: "Most installations are completed in 1-2 hours by our certified technicians. No plumber needed. We handle everything." },
-                { q: "Do I need to own my home?", a: "While homeowners are our most common customers, renters can also qualify with landlord approval. Our under-sink systems are compact and non-invasive." },
-                { q: "Will it affect my water pressure?", a: "No. Our reverse osmosis systems use a dedicated faucet for drinking water, so your existing water pressure is completely unaffected. Whole house systems maintain full flow." },
-                { q: "How often do filters need replacing?", a: "Filters are typically replaced once a year and it's included in your lifetime servicing plan. Our technician handles it during your annual maintenance visit." },
-                { q: "Is the water testing really free?", a: "Yes. A certified technician visits your home, tests your water on-site, and shows you the results. No cost, no obligation, no pressure." },
-              ].map((faq) => (
+              {homeFaqs.map((faq) => (
                 <details key={faq.q} className="group rounded-2xl bg-gray-50 border border-gray-200 overflow-hidden">
                   <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-[15px] font-semibold text-gray-900 hover:text-[#3a8fd4] transition-colors list-none [&::-webkit-details-marker]:hidden">
                     {faq.q}
