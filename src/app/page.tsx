@@ -399,7 +399,7 @@ export default function HomePage() {
 
               {/* Data rows */}
               {[
-                { label: "Monthly cost", delivery: "$40+/mo", puragain: "$26/mo", highlight: true },
+                { label: "Monthly cost", delivery: "$40+/mo", puragain: "$26/mo*", highlight: true },
                 { label: "Cost per gallon", delivery: "$1.40/gal", puragain: "$0.01/gal", highlight: true },
                 { label: "Gallons per month", delivery: "25 gallons", puragain: "1,500 gallons", highlight: true },
                 { label: "Point of use", delivery: "Water dispenser", puragain: "Your faucet", highlight: false },
@@ -429,6 +429,10 @@ export default function HomePage() {
                 </React.Fragment>
               ))}
             </div>
+          </FadeIn>
+
+          <FadeIn>
+            <p className="text-white/40 text-xs mt-4 text-center">*Monthly payment shown is subject to credit approval. Zero money down and free installation on all systems.</p>
           </FadeIn>
 
           <FadeIn delay={0.2}>

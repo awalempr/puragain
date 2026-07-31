@@ -52,19 +52,19 @@ export default function Navbar() {
                 <div className="text-sm grid grid-cols-3 gap-6 p-4 pb-2">
                   <ProductItem
                     title="Reverse Osmosis"
-                    description="5-stage system · $26/mo"
+                    description="5-stage system · $26/mo*"
                     href="/products/reverse-osmosis"
                     src="/images/products/ro-lifestyle.jpeg"
                   />
                   <ProductItem
                     title="Alkaline System"
-                    description="6-stage with minerals · $42/mo"
+                    description="6-stage with minerals · $42/mo*"
                     href="/products/alkaline"
                     src="/images/products/alkaline-detail-2.jpeg"
                   />
                   <ProductItem
                     title="Whole House"
-                    description="Complete home · $74/mo"
+                    description="Complete home · $74/mo*"
                     href="/products/whole-house"
                     src="/images/products/whole-house-lifestyle.jpeg"
                   />

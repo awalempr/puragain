@@ -401,6 +401,10 @@ export function QuizModal({
                         24/7 Live Support Available
                       </p>
                     </div>
+
+                    <p className="text-gray-400 text-[11px] text-center mt-4">
+                      *Monthly payment subject to credit approval. Zero money down, free installation on all systems.
+                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
