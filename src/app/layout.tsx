@@ -20,7 +20,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://puragainwaterfiltration.com"),
+  metadataBase: new URL("https://puragain.com"),
   title: {
     default: "Puragain Water | Pure Water. Pure Life.",
     template: "%s | Puragain Water",
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     title: "Puragain Water | Pure Water. Pure Life.",
     description:
       "Home water filtration systems that remove 99% of contaminants. Free water test, professional install, lifetime service.",
-    url: "https://puragainwaterfiltration.com",
+    url: "https://puragain.com",
     siteName: "Puragain Water",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://puragainwaterfiltration.com/images/og-image.png",
+        url: "https://puragain.com/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Puragain Water - Your Family Deserves Water You Can Trust",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Puragain Water | Pure Water. Pure Life.",
     description:
       "Home water filtration that removes 99% of contaminants. 33K+ families served.",
-    images: ["https://puragainwaterfiltration.com/images/og-image.png"],
+    images: ["https://puragain.com/images/og-image.png"],
   },
   robots: {
     index: true,
@@ -73,10 +73,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://puragainwaterfiltration.com/#organization",
+      "@id": "https://puragain.com/#organization",
       name: "Puragain Water",
-      url: "https://puragainwaterfiltration.com",
-      logo: "https://puragainwaterfiltration.com/images/brand/logo.png",
+      url: "https://puragain.com",
+      logo: "https://puragain.com/images/brand/logo.png",
       telephone: "+18554092837",
       description:
         "Family-owned water filtration company with 30+ years experience. We install home water filtration systems that remove 99% of contaminants.",
@@ -89,9 +89,9 @@ const jsonLd = {
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://puragainwaterfiltration.com/#localbusiness",
+      "@id": "https://puragain.com/#localbusiness",
       name: "Puragain Water",
-      url: "https://puragainwaterfiltration.com",
+      url: "https://puragain.com",
       telephone: "+18554092837",
       address: {
         "@type": "PostalAddress",
@@ -109,11 +109,11 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://puragainwaterfiltration.com/#website",
-      url: "https://puragainwaterfiltration.com",
+      "@id": "https://puragain.com/#website",
+      url: "https://puragain.com",
       name: "Puragain Water",
       publisher: {
-        "@id": "https://puragainwaterfiltration.com/#organization",
+        "@id": "https://puragain.com/#organization",
       },
     },
   ],

@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://puragainwaterfiltration.com",
+  siteUrl: "https://puragain.com",
   generateRobotsTxt: false, // We already have a manual robots.txt
   changefreq: "weekly",
   priority: 0.7,

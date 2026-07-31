@@ -134,7 +134,7 @@ export default function AlkalinePage() {
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
       "availability": "https://schema.org/InStock",
-      "url": "https://puragainwaterfiltration.com/products/alkaline",
+      "url": "https://puragain.com/products/alkaline",
     },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
   };

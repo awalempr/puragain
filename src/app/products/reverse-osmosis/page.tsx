@@ -128,7 +128,7 @@ export default function ReverseOsmosisPage() {
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
       "availability": "https://schema.org/InStock",
-      "url": "https://puragainwaterfiltration.com/products/reverse-osmosis",
+      "url": "https://puragain.com/products/reverse-osmosis",
     },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
   };

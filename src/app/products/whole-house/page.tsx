@@ -119,7 +119,7 @@ export default function WholeHousePage() {
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
       "availability": "https://schema.org/InStock",
-      "url": "https://puragainwaterfiltration.com/products/whole-house",
+      "url": "https://puragain.com/products/whole-house",
     },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
   };
