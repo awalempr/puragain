@@ -173,7 +173,10 @@ export async function POST(request: Request) {
     fbclid: trim(data.fbclid),
     adgroup: trim(data.utm_content),
     Referrer_URL: trim(data.referrer),
-    Description: descriptionLines.join("\n") || undefined,
+    // This Leads module has no standard Description field; use its real fields.
+    Interested_in: data.system ? (systemLabels[data.system] || data.system) : undefined,
+    Question: trim(data.message),
+    Comments: descriptionLines.join("\n") || undefined,
   };
 
   try {
