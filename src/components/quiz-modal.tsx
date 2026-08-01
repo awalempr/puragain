@@ -135,8 +135,18 @@ export function QuizModal({
     }
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Fire the lead to the backend; keep the UX flowing even if it fails.
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...contactInfo, answers, source: "quiz" }),
+      });
+    } catch {
+      // swallow — results still show; the server logs any failure
+    }
     setContactSubmitted(true);
   };
 

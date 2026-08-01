@@ -13,6 +13,7 @@ interface ContactFormData {
   system: string;
   message: string;
   smsOptIn: boolean;
+  company_website?: string;
 }
 
 const reviews = [
@@ -24,6 +25,7 @@ const reviews = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
 
   const nextReview = useCallback(() => {
@@ -51,9 +53,19 @@ export default function ContactPage() {
     },
   });
 
-  const onSubmit = (_data: ContactFormData) => {
-    // TODO: Send to Zoho CRM or backend endpoint
-    setSubmitted(true);
+  const onSubmit = async (data: ContactFormData) => {
+    setSubmitError(false);
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, source: "contact" }),
+      });
+      if (!res.ok) throw new Error("failed");
+      setSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    }
   };
 
   const inputClass =
@@ -141,9 +153,25 @@ export default function ContactPage() {
                 </label>
               </div>
 
+              {/* honeypot — hidden from users, catches bots */}
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-px w-px opacity-0"
+                {...register("company_website")}
+              />
+
               <button type="submit" className="bg-brand-red text-white w-full py-3.5 rounded-full font-semibold hover:bg-[#b00e0e] transition-colors">
                 Send Message
               </button>
+              {submitError && (
+                <p className="text-brand-red text-sm text-center">
+                  Something went wrong. Please try again or call us at{" "}
+                  <a href="tel:8554092837" className="font-semibold underline">855-40-WATER</a>.
+                </p>
+              )}
             </form>
           )}
         </div>
