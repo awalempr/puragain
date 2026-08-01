@@ -70,6 +70,16 @@ interface LeadPayload {
   source?: string; // "contact" | "quiz"
   answers?: string[]; // quiz answers
   company_website?: string; // honeypot — must stay empty
+  // first-touch source attribution
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_term?: string;
+  utm_content?: string;
+  gclid?: string;
+  fbclid?: string;
+  referrer?: string;
+  landing_page?: string;
 }
 
 export async function POST(request: Request) {
@@ -132,9 +142,23 @@ export async function POST(request: Request) {
     descriptionLines.push("Quiz answers:");
     data.answers.forEach((a, i) => a && descriptionLines.push(`  ${i + 1}. ${a}`));
   }
+  // Attribution detail without a dedicated CRM field goes to Description too.
+  if (data.utm_medium) descriptionLines.push(`UTM medium: ${data.utm_medium}`);
+  if (data.utm_term) descriptionLines.push(`UTM term: ${data.utm_term}`);
+  if (data.landing_page) descriptionLines.push(`Landing page: ${data.landing_page}`);
+
+  // Derive a human-readable Source tag when there's no explicit utm_source.
+  const sourceTag =
+    data.utm_source ||
+    (data.gclid ? "google-ads" : undefined) ||
+    (data.fbclid ? "facebook-ads" : undefined) ||
+    (data.referrer ? "referral" : "website-direct");
+
+  const trim = (v?: string) => (v ? v.slice(0, 255) : undefined);
 
   // Mapped to PurAgain's actual Leads module: "Website Lead" is an existing
-  // Lead_Source picklist value; Form_Name distinguishes which form it came from.
+  // Lead_Source picklist value; Form_Name distinguishes which form it came from;
+  // the source-tracking fields let website leads be attributed by channel.
   const lead: Record<string, unknown> = {
     First_Name: firstName || undefined,
     Last_Name: lastName || firstName || "Website Lead",
@@ -143,6 +167,12 @@ export async function POST(request: Request) {
     Company: "Website Lead",
     Lead_Source: "Website Lead",
     Form_Name: data.source === "quiz" ? "Website Quiz" : "Website Contact Form",
+    Source: sourceTag,
+    Campaign: trim(data.utm_campaign),
+    gclid_field: trim(data.gclid),
+    fbclid: trim(data.fbclid),
+    adgroup: trim(data.utm_content),
+    Referrer_URL: trim(data.referrer),
     Description: descriptionLines.join("\n") || undefined,
   };
 

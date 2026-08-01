@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft, ArrowRight, Phone } from "lucide-react";
 import Link from "next/link";
+import { getTracking } from "@/lib/tracking";
 
 const questions = [
   {
@@ -142,7 +143,7 @@ export function QuizModal({
       await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...contactInfo, answers, source: "quiz" }),
+        body: JSON.stringify({ ...contactInfo, answers, ...getTracking(), source: "quiz" }),
       });
     } catch {
       // swallow — results still show; the server logs any failure

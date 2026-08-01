@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
+import { getTracking } from "@/lib/tracking";
 import { Phone, Wrench, Clock, Star, Shield, Zap, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -59,7 +60,7 @@ export default function ContactPage() {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, source: "contact" }),
+        body: JSON.stringify({ ...data, ...getTracking(), source: "contact" }),
       });
       if (!res.ok) throw new Error("failed");
       setSubmitted(true);

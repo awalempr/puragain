@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ExitIntent } from "@/components/exit-intent";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@/components/analytics";
+import { TrackingInit } from "@/components/tracking-init";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,11 +24,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://puragain.com"),
   title: {
-    default: "Puragain Water | Pure Water. Pure Life.",
+    default: "Puragain Water | California Water Filtration Systems",
     template: "%s | Puragain Water",
   },
   description:
-    "Home water filtration systems that remove 99% of contaminants. Free water test, professional install, lifetime service. Call 855-40-WATER.",
+    "California water filtration systems that remove 99% of contaminants. Serving San Diego, Los Angeles, and the Inland Empire with free water testing, professional installation, and lifetime service. Call 855-40-WATER.",
   alternates: {
     canonical: "/",
   },
@@ -80,7 +81,7 @@ const jsonLd = {
         "Family-owned water filtration company with 30+ years experience. We install home water filtration systems that remove 99% of contaminants.",
       foundingDate: "1996",
       numberOfEmployees: { "@type": "QuantitativeValue", value: "50+" },
-      areaServed: { "@type": "Country", name: "United States" },
+      areaServed: { "@type": "State", name: "California" },
       sameAs: [
         "https://www.yelp.com/biz/puragain-water-escondido-3",
       ],
@@ -97,6 +98,22 @@ const jsonLd = {
         addressRegion: "CA",
         addressCountry: "US",
       },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 33.1192,
+        longitude: -117.0864,
+      },
+      areaServed: [
+        { "@type": "State", name: "California" },
+        { "@type": "AdministrativeArea", name: "San Diego County" },
+        { "@type": "AdministrativeArea", name: "Los Angeles County" },
+        { "@type": "AdministrativeArea", name: "Riverside County" },
+        { "@type": "AdministrativeArea", name: "San Bernardino County" },
+        { "@type": "City", name: "San Diego" },
+        { "@type": "City", name: "Los Angeles" },
+        { "@type": "City", name: "Escondido" },
+        { "@type": "City", name: "Riverside" },
+      ],
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "4.7",
@@ -137,6 +154,7 @@ export default function RootLayout({
         <ExitIntent />
         <CookieConsent />
         <Analytics />
+        <TrackingInit />
       </body>
     </html>
   );

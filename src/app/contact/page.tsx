@@ -4,7 +4,7 @@ import ContactClient from "./contact-client";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Talk to Puragain Water about home water filtration. Free water test, professional install, lifetime service. Call 855-40-WATER or send us a message.",
+    "Talk to Puragain Water about home water filtration in Southern California. Free water test, professional install, lifetime service. Call 855-40-WATER or send us a message.",
   alternates: { canonical: "/contact" },
 };
 
