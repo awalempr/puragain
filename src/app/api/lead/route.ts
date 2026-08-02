@@ -20,6 +20,20 @@ function isRateLimited(ip: string): boolean {
 const ACCOUNTS_HOST = process.env.ZOHO_ACCOUNTS_HOST || "https://accounts.zoho.com";
 const API_HOST = process.env.ZOHO_API_HOST || "https://www.zohoapis.com";
 
+// Website leads are assigned round-robin to the California team so they never
+// fall into the old (now broken) distribution. IDs can be overridden via env.
+const LEAD_OWNERS = (process.env.ZOHO_LEAD_OWNER_IDS ||
+  "1973355000192043001,1973355000066081001") // David Emm, Carlos Canjura
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+function pickOwner(seed: string): string {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return LEAD_OWNERS[h % LEAD_OWNERS.length];
+}
+
 // Cache the short-lived access token in memory to avoid minting one per request.
 let cachedToken: { value: string; expiresAt: number } | null = null;
 
@@ -165,6 +179,7 @@ export async function POST(request: Request) {
     Email: email || undefined,
     Phone: phone || undefined,
     Company: "Website Lead",
+    Owner: LEAD_OWNERS.length ? { id: pickOwner(email || phone || `${Date.now()}`) } : undefined,
     Lead_Source: "Website Lead",
     Form_Name: data.source === "quiz" ? "Website Quiz" : "Website Contact Form",
     Source: sourceTag,
