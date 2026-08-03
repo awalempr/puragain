@@ -37,7 +37,7 @@ export function middleware(request: NextRequest) {
     </head><body><div>
     <h1>Puragain Water</h1>
     <p>We currently only serve customers in the United States.</p>
-    <p>For inquiries, please call <a href="tel:8554092837">855-40-WATER</a>.</p>
+    <p>For inquiries, email <a href="mailto:support@puragain.com">support@puragain.com</a>.</p>
     </div></body></html>`,
     {
       status: 451,

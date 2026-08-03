@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Puragain Water",
   },
   description:
-    "California water filtration systems that remove 99% of contaminants. Serving San Diego, Los Angeles, and the Inland Empire with free water testing, professional installation, and lifetime service. Call 855-40-WATER.",
+    "California water filtration systems that remove 99% of contaminants. Serving San Diego, Los Angeles, and the Inland Empire with free water testing, professional installation, and lifetime service. Book a free water test today.",
   alternates: {
     canonical: "/",
   },
@@ -76,7 +76,6 @@ const jsonLd = {
       name: "Puragain Water",
       url: "https://puragain.com",
       logo: "https://puragain.com/images/brand/logo.png",
-      telephone: "+18554092837",
       description:
         "Family-owned water filtration company with 30+ years experience. We install home water filtration systems that remove 99% of contaminants.",
       foundingDate: "1996",
@@ -91,7 +90,6 @@ const jsonLd = {
       "@id": "https://puragain.com/#localbusiness",
       name: "Puragain Water",
       url: "https://puragain.com",
-      telephone: "+18554092837",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Escondido",

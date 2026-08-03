@@ -89,7 +89,7 @@ export default function PrivacyPage() {
               <li>Opt out of the sale or sharing of your personal information</li>
               <li>Opt out of marketing communications at any time</li>
             </ul>
-            <p className="mt-3">To exercise any of these rights, contact us at 855-40-WATER or through our contact page.</p>
+            <p className="mt-3">To exercise any of these rights, contact us at support@puragain.com or through our contact page.</p>
           </div>
 
           <div>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
 
           <div>
             <h2 className="font-heading text-xl font-bold text-gray-900 mb-3">10. California Privacy Rights (CCPA)</h2>
-            <p>California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information is collected, the right to delete, and the right to opt out of the sale of personal information. To exercise these rights, contact us at 855-40-WATER.</p>
+            <p>California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information is collected, the right to delete, and the right to opt out of the sale of personal information. To exercise these rights, contact us at support@puragain.com.</p>
           </div>
 
           <div>
@@ -127,8 +127,8 @@ export default function PrivacyPage() {
             <h2 className="font-heading text-xl font-bold text-gray-900 mb-3">12. Contact Us</h2>
             <p>If you have questions about this privacy policy or our data practices, please contact us:</p>
             <ul className="list-none space-y-1.5 mt-3">
-              <li><strong>Phone:</strong> <a href="tel:8554092837" className="text-[#3a8fd4] hover:underline">855-40-WATER</a></li>
               <li><strong>Email:</strong> <a href="mailto:support@puragain.com" className="text-[#3a8fd4] hover:underline">support@puragain.com</a></li>
+              <li><strong>Web:</strong> <a href="/contact" className="text-[#3a8fd4] hover:underline">puragain.com/contact</a></li>
               <li><strong>Company:</strong> Puragain Water, Escondido, CA</li>
             </ul>
           </div>

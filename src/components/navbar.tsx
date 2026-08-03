@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Menu as MenuIcon, X } from "lucide-react";
+import { Menu as MenuIcon, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 import { QuizModal } from "@/components/quiz-modal";
@@ -91,15 +91,14 @@ export default function Navbar() {
             </Menu>
           </div>
 
-          {/* Right — Phone + CTA in matching pill */}
+          {/* Right — CTA pill */}
           <div className="hidden lg:flex items-center gap-3 ml-auto bg-white/90 backdrop-blur-xl rounded-full px-2 h-[44px] shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
-            <a
-              href="tel:8554092837"
+            <Link
+              href="/contact"
               className="flex items-center gap-1.5 text-[13px] text-gray-500 hover:text-gray-900 transition-colors px-3"
             >
-              <Phone size={13} />
-              855-40-WATER
-            </a>
+              Contact
+            </Link>
             <button
               onClick={() => setQuizOpen(true)}
               className="inline-flex items-center rounded-full bg-brand-red px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#b00e0e]"
@@ -162,15 +161,6 @@ export default function Navbar() {
                   {l.name}
                 </Link>
               ))}
-            </div>
-
-            <div className="mt-10 space-y-3">
-              <a href="tel:8554092837" className="flex items-center gap-2 text-gray-500 text-sm">
-                <Phone size={14} /> Sales: 855-40-WATER
-              </a>
-              <a href="tel:8554090084" className="flex items-center gap-2 text-gray-500 text-sm">
-                <Phone size={14} /> Service: 855-409-0084
-              </a>
             </div>
 
             <button

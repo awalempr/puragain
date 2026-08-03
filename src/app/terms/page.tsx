@@ -59,7 +59,7 @@ export default function TermsPage() {
               <li>Warranty covers defects in materials and workmanship under normal use</li>
               <li>Warranty does not cover damage caused by misuse, unauthorized modifications, neglect, or acts of nature</li>
               <li>Warranty is non-transferable and applies to the original purchaser at the original installation address</li>
-              <li>To make a warranty claim, contact our service department at 855-409-0084</li>
+              <li>To make a warranty claim, contact our service department at support@puragain.com or through our contact page</li>
             </ul>
           </div>
 
@@ -87,7 +87,7 @@ export default function TermsPage() {
               <li>Customers may cancel within 3 business days of signing a purchase agreement in accordance with the Federal Trade Commission&apos;s Cooling-Off Rule</li>
               <li>After the cooling-off period, cancellations are subject to the terms of your individual financing agreement</li>
               <li>Installed systems that are removed after the cancellation period may be subject to removal fees</li>
-              <li>Contact us at 855-40-WATER for cancellation requests</li>
+              <li>Contact us at support@puragain.com or through our contact page for cancellation requests</li>
             </ul>
           </div>
 
@@ -130,8 +130,8 @@ export default function TermsPage() {
             <h2 className="font-heading text-xl font-bold text-gray-900 mb-3">15. Contact</h2>
             <p>For questions about these terms, contact us:</p>
             <ul className="list-none space-y-1.5 mt-3">
-              <li><strong>Phone:</strong> <a href="tel:8554092837" className="text-[#3a8fd4] hover:underline">855-40-WATER</a></li>
-              <li><strong>Service:</strong> <a href="tel:8554090084" className="text-[#3a8fd4] hover:underline">855-409-0084</a></li>
+              <li><strong>Email:</strong> <a href="mailto:support@puragain.com" className="text-[#3a8fd4] hover:underline">support@puragain.com</a></li>
+              <li><strong>Web:</strong> <a href="/contact" className="text-[#3a8fd4] hover:underline">puragain.com/contact</a></li>
               <li><strong>Company:</strong> Puragain Water, Escondido, CA</li>
             </ul>
           </div>

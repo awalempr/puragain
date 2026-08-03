@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowLeft, ArrowRight, Phone } from "lucide-react";
+import { X, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getTracking } from "@/lib/tracking";
 
@@ -403,10 +403,10 @@ export function QuizModal({
                         Not sure? Our water experts are standing by.
                       </p>
                       <a
-                        href="tel:8554092837"
+                        href="/contact"
                         className="inline-flex items-center gap-2 bg-brand-red text-white rounded-full px-6 py-2.5 text-sm font-semibold hover:bg-[#b00e0e] transition-colors"
                       >
-                        <Phone className="w-4 h-4" /> Call 855-40-WATER
+                        Contact Us
                       </a>
                       <p className="text-white/50 text-xs mt-2">
                         24/7 Live Support Available

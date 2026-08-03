@@ -9,7 +9,6 @@ import { ReviewCarousel } from "@/components/review-carousel";
 import {
   Star,
   ArrowRight,
-  Phone,
   Shield,
   Zap,
   ChevronDown,
@@ -562,9 +561,9 @@ export default function HomePage() {
                 <Link href="/contact" className="bg-brand-red text-white rounded-full px-8 py-4 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors shadow-lg shadow-black/15">
                   Get Started Today
                 </Link>
-                <a href="tel:8554092837" className="flex items-center gap-2 text-white/60 text-sm font-medium hover:text-white transition-colors">
-                  <Phone className="w-4 h-4" /> 855-40-WATER
-                </a>
+                <Link href="/reviews" className="flex items-center gap-2 text-white/60 text-sm font-medium hover:text-white transition-colors">
+                  See Our Reviews
+                </Link>
               </div>
             </div>
           </div>

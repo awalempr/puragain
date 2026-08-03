@@ -75,18 +75,10 @@ export function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="tel:8554092837"
+                  href="mailto:support@puragain.com"
                   className="text-sm text-gray-400 hover:text-gray-900 transition-colors"
                 >
-                  Sales: 855-40-WATER
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:8554090084"
-                  className="text-sm text-gray-400 hover:text-gray-900 transition-colors"
-                >
-                  Service: 855-409-0084
+                  support@puragain.com
                 </a>
               </li>
               <li className="text-sm text-gray-400">24/7 Live Support</li>

@@ -198,10 +198,10 @@ export default function ReverseOsmosisPage() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="tel:8554092837"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-full border border-navy/20 px-8 py-3.5 text-[15px] font-semibold text-navy transition-colors duration-200 hover:border-navy/40 hover:bg-navy/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/30 active:scale-[0.98]"
                 >
-                  Call 855-40-WATER
+                  Book a Free Water Test
                 </Link>
               </div>
             </div>

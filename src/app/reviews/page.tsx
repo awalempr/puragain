@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Star, ArrowRight, Phone, Shield, Clock, Award } from "lucide-react";
+import { Star, ArrowRight, Shield, Clock, Award } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 
 export const metadata: Metadata = {
@@ -206,9 +206,6 @@ export default function ReviewsPage() {
                 <Link href="/contact" className="bg-brand-red text-white rounded-full px-8 py-4 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors shadow-lg shadow-black/15">
                   Get Started Today
                 </Link>
-                <a href="tel:8554092837" className="flex items-center gap-2 text-white/60 text-sm font-medium hover:text-white transition-colors">
-                  <Phone className="w-4 h-4" /> 855-40-WATER
-                </a>
               </div>
             </div>
           </div>

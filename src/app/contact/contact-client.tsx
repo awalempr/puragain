@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
-import { Phone, Wrench, Clock, Star, Shield, Zap, Award } from "lucide-react";
+import { Mail, Clock, Star, Shield, Zap, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ContactFormData {
@@ -98,8 +98,8 @@ export default function ContactPage() {
               </div>
               <h3 className="font-heading text-2xl font-bold text-gray-900 mb-3">Message sent!</h3>
               <p className="text-gray-500 leading-relaxed">
-                We&apos;ll get back to you within 24 hours. In the meantime, call us at{" "}
-                <a href="tel:8554092837" className="text-[#3a8fd4] font-semibold hover:underline">855-40-WATER</a>.
+                We&apos;ll get back to you within 24 hours. In the meantime, email us at{" "}
+                <a href="mailto:support@puragain.com" className="text-[#3a8fd4] font-semibold hover:underline">support@puragain.com</a>.
               </p>
             </div>
           ) : (
@@ -169,8 +169,8 @@ export default function ContactPage() {
               </button>
               {submitError && (
                 <p className="text-brand-red text-sm text-center">
-                  Something went wrong. Please try again or call us at{" "}
-                  <a href="tel:8554092837" className="font-semibold underline">855-40-WATER</a>.
+                  Something went wrong. Please try again or email us at{" "}
+                  <a href="mailto:support@puragain.com" className="font-semibold underline">support@puragain.com</a>.
                 </p>
               )}
             </form>
@@ -179,19 +179,13 @@ export default function ContactPage() {
 
         {/* Right: Trust panel */}
         <div className="space-y-6 lg:pt-[88px]">
-          {/* Phone numbers — prominent */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <a href="tel:8554092837" className="rounded-2xl p-6 text-center border border-[#3a8fd4]/15 hover:border-[#3a8fd4]/30 transition-colors group"
+          {/* Email — prominent */}
+          <div className="grid grid-cols-1 gap-3">
+            <a href="mailto:support@puragain.com" className="rounded-2xl p-6 text-center border border-[#3a8fd4]/15 hover:border-[#3a8fd4]/30 transition-colors group"
               style={{ background: "linear-gradient(135deg, rgba(58,143,212,0.08) 0%, rgba(58,143,212,0.04) 100%)" }}>
-              <Phone className="w-6 h-6 text-[#3a8fd4] mx-auto mb-3" />
-              <p className="text-[11px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Sales & Inquiries</p>
-              <p className="text-gray-900 text-xl font-bold group-hover:text-[#3a8fd4] transition-colors">855-40-WATER</p>
-            </a>
-            <a href="tel:8554090084" className="rounded-2xl p-6 text-center border border-[#3a8fd4]/15 hover:border-[#3a8fd4]/30 transition-colors group"
-              style={{ background: "linear-gradient(135deg, rgba(58,143,212,0.08) 0%, rgba(58,143,212,0.04) 100%)" }}>
-              <Wrench className="w-6 h-6 text-[#3a8fd4] mx-auto mb-3" />
-              <p className="text-[11px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Service & Maintenance</p>
-              <p className="text-gray-900 text-xl font-bold group-hover:text-[#3a8fd4] transition-colors">855-409-0084</p>
+              <Mail className="w-6 h-6 text-[#3a8fd4] mx-auto mb-3" />
+              <p className="text-[11px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Sales, Service &amp; Support</p>
+              <p className="text-gray-900 text-xl font-bold group-hover:text-[#3a8fd4] transition-colors">support@puragain.com</p>
             </a>
           </div>
           <div className="rounded-xl px-5 py-3 bg-gray-50 border border-gray-100 flex items-center justify-center gap-2">
