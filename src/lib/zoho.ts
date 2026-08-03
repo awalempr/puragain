@@ -80,11 +80,10 @@ export async function addLeadNote(leadId: string, title: string, content: string
 }
 
 export async function addLeadTags(leadId: string, tags: string[]): Promise<boolean> {
-  const names = tags.map(encodeURIComponent).join(",");
-  const res = await zoho(
-    `/crm/v6/Leads/${leadId}/actions/add_tags?tag_names=${names}`,
-    { method: "POST" }
-  );
+  const res = await zoho(`/crm/v6/Leads/actions/add_tags?ids=${leadId}`, {
+    method: "POST",
+    body: JSON.stringify({ tags: tags.map((name) => ({ name })) }),
+  });
   return !!res && res.status === 200;
 }
 
