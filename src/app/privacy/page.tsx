@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         >
           Privacy Policy
         </h1>
-        <p className="text-gray-400 text-sm mb-12">Last updated: March 24, 2026</p>
+        <p className="text-gray-400 text-sm mb-12">Last updated: August 2, 2026</p>
 
         <div className="prose-custom space-y-8 text-gray-600 text-[15px] leading-relaxed">
           <div>
@@ -64,6 +64,14 @@ export default function PrivacyPage() {
               <li>Legal authorities when required by law or to protect our rights</li>
               <li>Business partners in connection with a merger, acquisition, or sale of assets</li>
             </ul>
+            <p className="mt-3">
+              <strong>Mobile &amp; SMS opt-in data:</strong> Text messaging (SMS) opt-in and consent, and the phone
+              numbers you provide for text messaging, are <strong>not shared, sold, or rented to any third parties or
+              affiliates for their marketing or promotional purposes</strong>. The advertising-partner sharing described
+              above does not include your SMS opt-in data or consent. See our{" "}
+              <a href="/sms-terms" className="text-[#3a8fd4] hover:underline">SMS Terms &amp; Conditions</a> for details
+              on our text messaging program.
+            </p>
           </div>
 
           <div>
@@ -120,7 +128,7 @@ export default function PrivacyPage() {
             <p>If you have questions about this privacy policy or our data practices, please contact us:</p>
             <ul className="list-none space-y-1.5 mt-3">
               <li><strong>Phone:</strong> <a href="tel:8554092837" className="text-[#3a8fd4] hover:underline">855-40-WATER</a></li>
-              <li><strong>Email:</strong> privacy@puragainwater.com</li>
+              <li><strong>Email:</strong> <a href="mailto:support@puragain.com" className="text-[#3a8fd4] hover:underline">support@puragain.com</a></li>
               <li><strong>Company:</strong> Puragain Water, Escondido, CA</li>
             </ul>
           </div>

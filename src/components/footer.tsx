@@ -107,7 +107,8 @@ export function Footer() {
           <p className="text-xs text-gray-400">
             &copy; 2026 Puragain Water &middot;{" "}
             <Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link> &middot;{" "}
-            <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms &amp; Conditions</Link>
+            <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms &amp; Conditions</Link> &middot;{" "}
+            <Link href="/sms-terms" className="hover:text-gray-900 transition-colors">SMS Terms</Link>
           </p>
           <div className="flex gap-4">
             <span className="w-8 h-8 rounded-full bg-gray-100 block" />

@@ -103,7 +103,7 @@ export default function TermsPage() {
 
           <div>
             <h2 className="font-heading text-xl font-bold text-gray-900 mb-3">10. SMS Communications</h2>
-            <p>By opting in to SMS communications, you consent to receive text messages from Puragain Water regarding your inquiry, appointment scheduling, and service updates. Message and data rates may apply. You may opt out at any time by replying STOP. Message frequency varies.</p>
+            <p>By opting in to SMS communications, you consent to receive text messages from Puragain Water regarding your inquiry, appointment scheduling, and service updates. Message and data rates may apply. Message frequency varies. Reply <strong>STOP</strong> to opt out at any time or <strong>HELP</strong> for assistance. Your mobile opt-in data is never shared with third parties for marketing. Full details are in our <a href="/sms-terms" className="text-[#3a8fd4] hover:underline">SMS Terms &amp; Conditions</a>.</p>
           </div>
 
           <div>
