@@ -64,6 +64,11 @@ export function Footer() {
               <li className="text-sm text-gray-400">Annual Water Testing</li>
               <li className="text-sm text-gray-400">Annual Maintenance</li>
               <li className="text-sm text-gray-400">Unlimited Service Calls</li>
+              <li>
+                <Link href="/service-areas" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">
+                  Service Areas
+                </Link>
+              </li>
             </ul>
           </div>
 
