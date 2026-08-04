@@ -65,6 +65,27 @@ export const CITIES: City[] = [
   { slug: "san-juan-capistrano", name: "San Juan Capistrano", county: "Orange County", region: "south-oc" },
   { slug: "dana-point", name: "Dana Point", county: "Orange County", region: "south-oc" },
   { slug: "mission-viejo", name: "Mission Viejo", county: "Orange County", region: "south-oc" },
+  { slug: "laguna-niguel", name: "Laguna Niguel", county: "Orange County", region: "south-oc" },
+
+  // Additional North County San Diego communities
+  { slug: "rancho-santa-fe", name: "Rancho Santa Fe", county: "San Diego County", region: "north-coastal" },
+  { slug: "valley-center", name: "Valley Center", county: "San Diego County", region: "north-coastal" },
+  { slug: "bonsall", name: "Bonsall", county: "San Diego County", region: "north-coastal" },
+  { slug: "cardiff", name: "Cardiff by the Sea", county: "San Diego County", region: "north-coastal" },
+  { slug: "4s-ranch", name: "4S Ranch", county: "San Diego County", region: "north-coastal" },
+  { slug: "rancho-penasquitos", name: "Rancho Peñasquitos", county: "San Diego County", region: "north-coastal" },
+  // Additional San Diego neighborhoods
+  { slug: "carmel-valley", name: "Carmel Valley", county: "San Diego County", region: "san-diego" },
+  { slug: "scripps-ranch", name: "Scripps Ranch", county: "San Diego County", region: "san-diego" },
+  { slug: "mira-mesa", name: "Mira Mesa", county: "San Diego County", region: "san-diego" },
+  { slug: "bonita", name: "Bonita", county: "San Diego County", region: "san-diego" },
+  { slug: "lemon-grove", name: "Lemon Grove", county: "San Diego County", region: "san-diego" },
+  { slug: "alpine", name: "Alpine", county: "San Diego County", region: "san-diego" },
+  // Additional Inland Empire communities
+  { slug: "canyon-lake", name: "Canyon Lake", county: "Riverside County", region: "inland-empire" },
+  { slug: "sun-city", name: "Sun City", county: "Riverside County", region: "inland-empire" },
+  { slug: "winchester", name: "Winchester", county: "Riverside County", region: "inland-empire" },
+  { slug: "french-valley", name: "French Valley", county: "Riverside County", region: "inland-empire" },
 ];
 
 export const CITY_MAP: Record<string, City> = Object.fromEntries(CITIES.map((c) => [c.slug, c]));

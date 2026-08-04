@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/motion";
 import { CityLeadForm } from "@/components/city-lead-form";
-import { Shield, Droplets, Award, Clock, ArrowRight, MapPin, Check } from "lucide-react";
+import { Shield, Droplets, Award, Clock, ArrowRight, MapPin, Check, ChevronDown } from "lucide-react";
 import { CITIES, CITY_MAP, REGIONS, nearbyCities } from "@/lib/service-areas";
 
 export function generateStaticParams() {
@@ -46,6 +46,29 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   const region = REGIONS[c.region];
   const nearby = nearbyCities(c);
 
+  const faqs = [
+    {
+      q: `Do you offer free water testing in ${c.name}?`,
+      a: `Yes. A certified Puragain Water technician comes to your ${c.name} home, tests your water on the spot, and shows you exactly what's in it — at no cost and no obligation.`,
+    },
+    {
+      q: `Is the tap water in ${c.name} hard?`,
+      a: `${c.name}, in ${c.county}, ${region.water} A Puragain Water system removes hardness minerals, chlorine, and up to 99% of contaminants.`,
+    },
+    {
+      q: `How much does a water filtration system cost in ${c.name}?`,
+      a: `Systems start at $26/month for reverse osmosis, with zero money down (subject to credit approval), free professional installation, and a lifetime service plan included.`,
+    },
+    {
+      q: `What types of systems do you install in ${c.name}?`,
+      a: `We install under-sink 5-stage reverse osmosis, 6-stage alkaline, and whole-house salt-free conditioning systems throughout ${c.name} and nearby communities.`,
+    },
+    {
+      q: `How long does installation take?`,
+      a: `Most installations take 1 to 4 hours and are handled by our certified technicians, who schedule around you and clean up when finished.`,
+    },
+  ];
+
   const schema = [
     {
       "@context": "https://schema.org",
@@ -82,6 +105,15 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         { "@type": "ListItem", position: 2, name: "Service Areas", item: "https://puragain.com/service-areas" },
         { "@type": "ListItem", position: 3, name: c.name, item: `https://puragain.com/water-filtration/${c.slug}` },
       ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
   ];
 
@@ -221,6 +253,30 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               </Link>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-offwhite py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <FadeIn direction="up">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-navy text-center mb-10" style={{ letterSpacing: "-0.02em" }}>
+              {c.name} water filtration FAQs
+            </h2>
+          </FadeIn>
+          <div className="space-y-3">
+            {faqs.map((f, i) => (
+              <FadeIn key={i} direction="up" delay={i * 0.05}>
+                <details className="group rounded-2xl bg-white border border-gray-100 p-5">
+                  <summary className="flex items-center justify-between cursor-pointer list-none font-heading font-bold text-navy">
+                    <span className="pr-4">{f.q}</span>
+                    <ChevronDown className="w-5 h-5 shrink-0 text-[#3a8fd4] transition-transform group-open:rotate-180" />
+                  </summary>
+                  <p className="mt-3 text-gray-600 leading-relaxed">{f.a}</p>
+                </details>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
