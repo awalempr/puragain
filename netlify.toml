@@ -4,3 +4,2825 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# --- 301 redirects: legacy puragainwater.com URLs -> new site (auto-generated) ---
+
+[[redirects]]
+  from = "/alkaline-water-systems-irvine/"
+  to = "/water-filtration/irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-long-beach/"
+  to = "/water-filtration/long-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-mission-viejo/"
+  to = "/water-filtration/mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-santa-ana/"
+  to = "/water-filtration/santa-ana"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-santa-clarita/"
+  to = "/water-filtration/santa-clarita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/alpine/"
+  to = "/water-filtration/alpine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/bonita/"
+  to = "/water-filtration/bonita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/bonsall/"
+  to = "/water-filtration/bonsall"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/carlsbad/"
+  to = "/water-filtration/carlsbad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/coronado/"
+  to = "/water-filtration/coronado"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/encinitas/"
+  to = "/water-filtration/encinitas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/escondido/"
+  to = "/water-filtration/escondido"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/fallbrook/"
+  to = "/water-filtration/fallbrook"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/lakeside/"
+  to = "/water-filtration/lakeside"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/oceanside/"
+  to = "/water-filtration/oceanside"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/poway/"
+  to = "/water-filtration/poway"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/ramona/"
+  to = "/water-filtration/ramona"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/santee/"
+  to = "/water-filtration/santee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/vista/"
+  to = "/water-filtration/vista"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/anaheim/"
+  to = "/water-filtration/anaheim"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bonsall/"
+  to = "/water-filtration/bonsall"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/carlsbad/"
+  to = "/water-filtration/carlsbad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/coronado/"
+  to = "/water-filtration/coronado"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/encinitas/"
+  to = "/water-filtration/encinitas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/escondido/"
+  to = "/water-filtration/escondido"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fallbrook/"
+  to = "/water-filtration/fallbrook"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-anaheim/"
+  to = "/water-filtration/anaheim"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-irvine/"
+  to = "/water-filtration/irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-long-beach/"
+  to = "/water-filtration/long-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-mission-viejo/"
+  to = "/water-filtration/mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-santa-ana/"
+  to = "/water-filtration/santa-ana"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-santa-clarita/"
+  to = "/water-filtration/santa-clarita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/irvine/"
+  to = "/water-filtration/irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lakeside/"
+  to = "/water-filtration/lakeside"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/long-beach/"
+  to = "/water-filtration/long-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/oceanside/"
+  to = "/water-filtration/oceanside"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/poway/"
+  to = "/water-filtration/poway"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ramona/"
+  to = "/water-filtration/ramona"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-irvine/"
+  to = "/water-filtration/irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-long-beach/"
+  to = "/water-filtration/long-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-mission-viejo/"
+  to = "/water-filtration/mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-santa-ana/"
+  to = "/water-filtration/santa-ana"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-santa-clarita/"
+  to = "/water-filtration/santa-clarita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/santa-clarita/"
+  to = "/water-filtration/santa-clarita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/santee/"
+  to = "/water-filtration/santee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vista/"
+  to = "/water-filtration/vista"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-alpine/"
+  to = "/water-filtration/alpine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-bonita/"
+  to = "/water-filtration/bonita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-bonsall/"
+  to = "/water-filtration/bonsall"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-carlsbad/"
+  to = "/water-filtration/carlsbad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-chula-vista/"
+  to = "/water-filtration/chula-vista"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-coronado/"
+  to = "/water-filtration/coronado"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-el-cajon/"
+  to = "/water-filtration/el-cajon"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-encinitas/"
+  to = "/water-filtration/encinitas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-escondido/"
+  to = "/water-filtration/escondido"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-fallbrook/"
+  to = "/water-filtration/fallbrook"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-la-mesa/"
+  to = "/water-filtration/la-mesa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-lemon-grove/"
+  to = "/water-filtration/lemon-grove"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-national-city/"
+  to = "/water-filtration/national-city"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-oceanside/"
+  to = "/water-filtration/oceanside"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-poway/"
+  to = "/water-filtration/poway"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-ramona/"
+  to = "/water-filtration/ramona"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-diego/comparison-chart/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-diego/comparison-new/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-diego/final_5acd4dda603663001478b484/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-diego/water-faucet/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-diego/water-spill-2/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-diego/water-spill-crop/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-santee/"
+  to = "/water-filtration/santee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-valley-center/"
+  to = "/water-filtration/valley-center"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-vista/"
+  to = "/water-filtration/vista"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-fallbrook/"
+  to = "/water-filtration/fallbrook"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-anaheim/"
+  to = "/water-filtration/anaheim"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-irvine/"
+  to = "/water-filtration/irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-long-beach/"
+  to = "/water-filtration/long-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-mission-viejo-2/"
+  to = "/water-filtration/mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-mission-viejo/"
+  to = "/water-filtration/mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-santa-ana/"
+  to = "/water-filtration/santa-ana"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-santa-clarita/"
+  to = "/water-filtration/santa-clarita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/bonsall-2/"
+  to = "/water-filtration/bonsall"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/water-softeners-water-filtration-alpine/"
+  to = "/water-filtration/alpine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/water-softeners-water-filtration-anaheim/"
+  to = "/water-filtration/anaheim"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-anaheim/"
+  to = "/water-filtration/anaheim"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-irvine/"
+  to = "/water-filtration/irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-long-beach/"
+  to = "/water-filtration/long-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-mission-viejo/"
+  to = "/water-filtration/mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-san-diego-2/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-san-diego-water-softener-installation-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-san-diego-water-softener-installation-san-diego/showroom/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-santa-ana/"
+  to = "/water-filtration/santa-ana"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-santa-clarita/"
+  to = "/water-filtration/santa-clarita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/alpine/"
+  to = "/water-filtration/alpine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/bonita/"
+  to = "/water-filtration/bonita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/bonsall/"
+  to = "/water-filtration/bonsall"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/carlsbad/"
+  to = "/water-filtration/carlsbad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/coronado/"
+  to = "/water-filtration/coronado"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/encinitas/"
+  to = "/water-filtration/encinitas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/escondido/"
+  to = "/water-filtration/escondido"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/fallbrook/"
+  to = "/water-filtration/fallbrook"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/hemet/"
+  to = "/water-filtration/hemet"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lakeside/"
+  to = "/water-filtration/lakeside"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/murrieta/"
+  to = "/water-filtration/murrieta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/oceanside/"
+  to = "/water-filtration/oceanside"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/poway/"
+  to = "/water-filtration/poway"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/ramona/"
+  to = "/water-filtration/ramona"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/santee/"
+  to = "/water-filtration/santee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/vista/"
+  to = "/water-filtration/vista"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/wildomar/"
+  to = "/water-filtration/wildomar"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-anaheim/"
+  to = "/water-filtration/anaheim"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-irvine/"
+  to = "/water-filtration/irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-long-beach/"
+  to = "/water-filtration/long-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-los-angeles/"
+  to = "/water-filtration/los-angeles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-menifee/"
+  to = "/water-filtration/menifee"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-mission-viejo/"
+  to = "/water-filtration/mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-san-diego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-san-marcos/"
+  to = "/water-filtration/san-marcos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-santa-ana/"
+  to = "/water-filtration/santa-ana"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-santa-clarita/"
+  to = "/water-filtration/santa-clarita"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-temecula/"
+  to = "/water-filtration/temecula"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-houston/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-las-vegas/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-phoenix/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-houston/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-las-vegas/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-phoenix/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/las-vegas/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/phoenix-services/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-houston/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-las-vegas/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-phoenix/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-houston/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-las-vegas/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-phoenix/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-houston/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-las-vegas/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-phoenix/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-home-water-filtration-dallas-tx/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-houston/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-las-vegas/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-phoenix/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems-lake-forrest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-burbank/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-downey/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-el-monte/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-glendale/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-lake-forrest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-lancaster/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-norwalk/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-palmdale/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-pasadena/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-pomona/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-torrance/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home-water-filtration-west-covina/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system-lake-forrest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-agua-caliente-springs/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-barrett/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-blossom-valley/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-borrego-springs/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-bostonia/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-boulevard/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-camp-pendleton/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-campo/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-crest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-cuyamaca/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-delmar/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-deluz/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-descanso/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-elfin-forest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-granite-hills/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-imperial-beach/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-jamul/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-julian/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-la-jolla/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-rainbow/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-vs-in-home-water-filtration/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-delivery-warner-springs/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-city/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-city/filters/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-city/man-2/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-orange/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-riverside/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-san-bernardino/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services-lake-forrest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/annual_testing/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/annual/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/blue-2/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/maintenance/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/service-calls/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/service-calls2/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-services/servicing_icon/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration-ventura/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-lake-forrest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-system-the-complete-homeowners-guide-softener-vs-water-conditioner/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener-system/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-home-water-filtration-faq/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-home-water-filtration-west-palm-beach-fl/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system-lake-forrest/"
+  to = "/service-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-reverse-osmosis-system/"
+  to = "/products/reverse-osmosis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-ro-system/"
+  to = "/products/reverse-osmosis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reverse-osmosis-system/"
+  to = "/products/reverse-osmosis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reverse-osmosis-system/comparison-new-2/"
+  to = "/products/reverse-osmosis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reverse-osmosis-system/ro_system/"
+  to = "/products/reverse-osmosis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ro-system/"
+  to = "/products/reverse-osmosis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-2/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-promotion/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-promotion/45now/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-promotion/free-alkaline/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-promotion/now/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-promotion/whole-houesalkaline/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water-systems/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/30-month/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/7_years_warranty/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/arrow-at-vector-free/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/arrow-down/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/borregosprings/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/boulevard/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/campo/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/camppendleton/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/cardiffbythesea/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/chulavista/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/delmar/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/descanso/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/dulzura/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/elcajon/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/guatay/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/imperialbeach/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/jacumba/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/jamul/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/julian/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/lajolla/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/lamesa/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/lemongrove/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/mountlaguna/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/nationalcity/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/pala/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/palomarmountain/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/paumavalley/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/pinevalley/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/potrero/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/ranchita/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/ranchosantafe/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/red-arrow-curved/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/sandiego/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/sanluisrey/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/sanmarcos/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/santaysabel/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/sanysidro/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/solanabeach/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/springvalley/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/tecate/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/valleycenter/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline-water/warnersprings/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alkaline/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/category/alkaline/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/alkaline-3/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/alkaline1/"
+  to = "/products/alkaline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/filtration-water-softener-system/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/interactive-whole-home-system/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/plans-2/san-diego-water-softeners-water-filtration/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pricing/whole-house-system/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/puragain-water-filtersorb-whole-house-water-conditioner/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/salt-free-water-softener-system/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/borregosprings/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/boulevard/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/campo/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/camppendleton/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/cardiffbythesea/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/chulavista/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/delmar/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/descanso/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/dulzura/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/elcajon/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/guatay/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/imperialbeach/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/jacumba/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/jamul/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/julian/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lagunabeach/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lagunaniguel/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lajolla/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lakeelsinore/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lakeforrest/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lamesa/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/lemongrove/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/missionviejo/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/mountlaguna/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/nationalcity/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/pala/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/palomarmountain/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/paumavalley/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/pinevalley/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/potrero/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/ranchita/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/ranchosantafe/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/sanclemente/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/sandiego/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/sanluisrey/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/sanmarcos/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/santaysabel/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/sanysidro/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/scrippsranch/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/solanabeach/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/springvalley/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/tecate/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/valleycenter/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-softener/warnersprings/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-home-water-filtration/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/angelina-m/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/bg/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/candizzle-l/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/coffee/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/environment/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/esh-n/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/filtersorb-2/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/filtersorb-system/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/gustavo-v/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/install-bg/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/jacob/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/jason/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/kimberly-s/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/lather/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/minerals/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/n-c/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/nac_system/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/ralph-o/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/rhonda-o/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/sabrina-o/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/scale-2/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/scale/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/shreyans/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/sys5/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/system-2/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/whole-house-45/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/whole-house-filtration-and-conditioning/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-system/yelp/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/5-star-review-3/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/5-star-review/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/5-stars/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/leave-us-a-review/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/puragain-water-reviews/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/review-feedback/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/submit-review/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial_category/testimonials/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/8929/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/8929/kimberly-s-_-rancho-santa-fe/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/home-testimonial-02/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/home-testimonial-02/test2-2/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/home-testimonial-02/test2-3/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/tes4/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/tes4/eley-d-_-carlsbad-ca/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/tes5/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/tes5/emily-f-_-san-marcos-ca/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/tes6/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial/tes6/120s/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testimonial1/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yelp-5-star-business/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/01-kitchen/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/01-laundry/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/01-shower/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/10-benefits-of-home-filtered-water/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/10-year-filter-replacement-program/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/10-year-filter-replacement-program/filters-2/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/10-year-filter-replacement-program/filters-bg/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/10-year-filter-replacement-program/filters1/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/10-year-filter-replacement-program/filters2/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/4-health-benefits-of-whole-house-water-filter-systems/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/5-mistakes-when-choosing-a-water-filtration-system/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/5-stage-ro-system-2/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/5-stage/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/alkaline-install/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/alkaline-water-alpine/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/alkaline-water-bonita/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/glass-water/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/yelp-business-2/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/yelp-business-3/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/yelp-business/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/6-stage-alkaline-system/yelp2-2/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/are-water-softeners-and-water-filters-the-same/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/best-salts-for-water-softeners/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/best-water-filtration-system-for-home/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/can-water-softeners-improve-your-familys-health/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cropped-android-chrome-384x384-1-1-png/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cropped-android-chrome-384x384-1-png/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/do-full-water-filtration-systems-waste-water/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/do-not-sell-my-personal-information/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/do-you-need-both-a-water-filtration-system-and-a-water-softener/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dos-and-donts-for-using-salts-in-your-water-softener/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hidden-dangers-of-drinking-tap-water/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/house-water-filtration-vs-drinking-water-filtration-what-is-the-difference/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/house-water-filtration-vs-drinking-water-filtration-whats-the-difference/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-do-alkaline-water-filtration-systems-work/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-does-the-alkaline-water-filtration-process-work/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-to-care-for-your-reverse-osmosis-filter/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-to-choose-between-a-water-softener-and-water-conditioner/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-to-properly-install-a-water-filter-under-the-sink/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/is-my-tap-water-safe-2/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/is-my-tap-water-safe-to-drink/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/is-my-tap-water-safe/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/is-my-tap-water-safe/ewg-home/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/keeping-ahead-of-covid-19/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reverse-osmosis-what-it-is-and-isnt/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reverse-osmosis-what-you-should-know/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/san-diego-city-council-approves-turning-sewage-into-drinking-water/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/san-diego-water-quality/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/thanks-for-your-referral/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/top-well-water-filtration-systems-for-the-home/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/understanding-the-key-differences-between-water-filtration-methods/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/video-cold-freeze-preparation/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/videoblocks-slow-motion-shot-of-a-cute-boy-playing-at-the-kitchen-sink_snx_jqyzm__d/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filters-101-which-filter-removes-the-most-contaminants/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-hardness-san-diego-how-to-remove-hard-water/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-hardness-san-diego-how-to-remove-hard-water/water-hardness/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/what-are-the-two-most-common-water-home-filtration-systems/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/what-happens-when-your-water-filtration-system-stops-working/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/what-is-the-ideal-water-hardness-for-drinking/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/what-problems-does-whole-home-water-filtration-solve/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/what-to-look-for-in-a-whole-house-reverse-osmosis-system/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/where-should-a-water-softener-be-installed/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filters-are-they-worth-it/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-house-water-filtration-solutions-in-dallas-texas-why-the-puragain-filtersorb-system-is-the-best-choice/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/your-guide-to-the-different-kinds-of-water-filters-for-your-home/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/booking-confirmed/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact-us/slider002-2/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/schedule-appointment/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/schedule-appointment/appointment-ls/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/schedule-appointment/dsc00976/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about-us/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy-policy/"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms-and-conditions/"
+  to = "/terms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms-of-service/"
+  to = "/terms"
+  status = 301
+  force = true

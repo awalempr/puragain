@@ -119,7 +119,7 @@ export default function WholeHousePage() {
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
       "availability": "https://schema.org/InStock",
-      "url": "https://puragain.com/products/whole-house",
+      "url": "https://puragainwater.com/products/whole-house",
     },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
   };
@@ -138,8 +138,8 @@ export default function WholeHousePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://puragain.com" },
-      { "@type": "ListItem", position: 2, name: "Whole House System", item: "https://puragain.com/products/whole-house" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://puragainwater.com" },
+      { "@type": "ListItem", position: 2, name: "Whole House System", item: "https://puragainwater.com/products/whole-house" },
     ],
   };
 

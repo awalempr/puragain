@@ -134,7 +134,7 @@ export default function AlkalinePage() {
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
       "availability": "https://schema.org/InStock",
-      "url": "https://puragain.com/products/alkaline",
+      "url": "https://puragainwater.com/products/alkaline",
     },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
   };
@@ -153,8 +153,8 @@ export default function AlkalinePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://puragain.com" },
-      { "@type": "ListItem", position: 2, name: "Alkaline System", item: "https://puragain.com/products/alkaline" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://puragainwater.com" },
+      { "@type": "ListItem", position: 2, name: "Alkaline System", item: "https://puragainwater.com/products/alkaline" },
     ],
   };
 

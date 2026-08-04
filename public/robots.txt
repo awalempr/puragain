@@ -1,4 +1,4 @@
-# Puragain Water — https://puragain.com
+# Puragain Water — https://puragainwater.com
 User-agent: *
 Allow: /
 
@@ -39,4 +39,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://puragain.com/sitemap.xml
+Sitemap: https://puragainwater.com/sitemap.xml

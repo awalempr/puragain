@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
     openGraph: {
       title: `Water Filtration in ${c.name}, CA | Puragain Water`,
       description: `Free in-home water test + professional install in ${c.name}. Remove hard water, chlorine, and 99% of contaminants.`,
-      url: `https://puragain.com/water-filtration/${c.slug}`,
+      url: `https://puragainwater.com/water-filtration/${c.slug}`,
     },
   };
 }
@@ -73,10 +73,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "@id": `https://puragain.com/water-filtration/${c.slug}#business`,
+      "@id": `https://puragainwater.com/water-filtration/${c.slug}#business`,
       name: "Puragain Water",
-      url: `https://puragain.com/water-filtration/${c.slug}`,
-      image: "https://puragain.com/images/brand/logo.png",
+      url: `https://puragainwater.com/water-filtration/${c.slug}`,
+      image: "https://puragainwater.com/images/brand/logo.png",
       description: `Home water filtration and reverse osmosis installation serving ${c.name}, ${c.county}.`,
       address: {
         "@type": "PostalAddress",
@@ -101,9 +101,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://puragain.com" },
-        { "@type": "ListItem", position: 2, name: "Service Areas", item: "https://puragain.com/service-areas" },
-        { "@type": "ListItem", position: 3, name: c.name, item: `https://puragain.com/water-filtration/${c.slug}` },
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://puragainwater.com" },
+        { "@type": "ListItem", position: 2, name: "Service Areas", item: "https://puragainwater.com/service-areas" },
+        { "@type": "ListItem", position: 3, name: c.name, item: `https://puragainwater.com/water-filtration/${c.slug}` },
       ],
     },
     {
@@ -291,7 +291,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </FadeIn>
           <div className="flex flex-wrap gap-2">
             {[
-              c.region === "inland-empire"
+              c.region === "inland-empire" || c.region === "los-angeles" || c.region === "orange-county"
                 ? { label: "Why is SoCal water so hard?", href: "/guides/hard-water-southern-california" }
                 : c.region === "south-oc"
                 ? { label: "Chlorine vs. chloramine", href: "/guides/chlorine-vs-chloramine" }

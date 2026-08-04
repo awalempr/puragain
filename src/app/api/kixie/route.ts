@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 // Kixie webhook receiver.
 // Configure Kixie event webhooks (SMS, Disposition, Call Outcome, Voicemail...) to
-// POST here at:  https://puragain.com/api/kixie?token=<KIXIE_WEBHOOK_TOKEN>
+// POST here at:  https://puragainwater.com/api/kixie?token=<KIXIE_WEBHOOK_TOKEN>
 //
 // It logs every call/SMS event onto the matching Zoho lead and flags opt-outs and
 // hot replies so routing/suppression happens automatically. Payload shapes vary by

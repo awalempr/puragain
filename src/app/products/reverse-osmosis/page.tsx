@@ -128,7 +128,7 @@ export default function ReverseOsmosisPage() {
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
       "availability": "https://schema.org/InStock",
-      "url": "https://puragain.com/products/reverse-osmosis",
+      "url": "https://puragainwater.com/products/reverse-osmosis",
     },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "430" },
   };
@@ -147,8 +147,8 @@ export default function ReverseOsmosisPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://puragain.com" },
-      { "@type": "ListItem", position: 2, name: "Reverse Osmosis", item: "https://puragain.com/products/reverse-osmosis" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://puragainwater.com" },
+      { "@type": "ListItem", position: 2, name: "Reverse Osmosis", item: "https://puragainwater.com/products/reverse-osmosis" },
     ],
   };
 

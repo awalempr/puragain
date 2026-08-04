@@ -22,7 +22,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://puragain.com"),
+  metadataBase: new URL("https://puragainwater.com"),
   title: {
     default: "Puragain Water | California Water Filtration Systems",
     template: "%s | Puragain Water",
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
   openGraph: {
     // title/description intentionally omitted so each page derives its own
     // og:title / og:description from its metadata; image + site info inherited.
-    url: "https://puragain.com",
+    url: "https://puragainwater.com",
     siteName: "Puragain Water",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://puragain.com/images/og-image.png",
+        url: "https://puragainwater.com/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Puragain Water - Your Family Deserves Water You Can Trust",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     // title/description derive per-page from each page's metadata.
-    images: ["https://puragain.com/images/og-image.png"],
+    images: ["https://puragainwater.com/images/og-image.png"],
   },
   robots: {
     index: true,
@@ -72,10 +72,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://puragain.com/#organization",
+      "@id": "https://puragainwater.com/#organization",
       name: "Puragain Water",
-      url: "https://puragain.com",
-      logo: "https://puragain.com/images/brand/logo.png",
+      url: "https://puragainwater.com",
+      logo: "https://puragainwater.com/images/brand/logo.png",
       description:
         "Family-owned water filtration company with 30+ years experience. We install home water filtration systems that remove 99% of contaminants.",
       foundingDate: "1996",
@@ -87,9 +87,9 @@ const jsonLd = {
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://puragain.com/#localbusiness",
+      "@id": "https://puragainwater.com/#localbusiness",
       name: "Puragain Water",
-      url: "https://puragain.com",
+      url: "https://puragainwater.com",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Escondido",
@@ -122,11 +122,11 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://puragain.com/#website",
-      url: "https://puragain.com",
+      "@id": "https://puragainwater.com/#website",
+      url: "https://puragainwater.com",
       name: "Puragain Water",
       publisher: {
-        "@id": "https://puragain.com/#organization",
+        "@id": "https://puragainwater.com/#organization",
       },
     },
   ],

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: g.metaTitle,
     description: g.description,
     alternates: { canonical: `/guides/${g.slug}` },
-    openGraph: { title: g.metaTitle, description: g.description, url: `https://puragain.com/guides/${g.slug}`, type: "article" },
+    openGraph: { title: g.metaTitle, description: g.description, url: `https://puragainwater.com/guides/${g.slug}`, type: "article" },
   };
 }
 
@@ -33,8 +33,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       headline: g.title,
       description: g.description,
       author: { "@type": "Organization", name: "Puragain Water" },
-      publisher: { "@type": "Organization", name: "Puragain Water", logo: { "@type": "ImageObject", url: "https://puragain.com/images/brand/logo.png" } },
-      mainEntityOfPage: `https://puragain.com/guides/${g.slug}`,
+      publisher: { "@type": "Organization", name: "Puragain Water", logo: { "@type": "ImageObject", url: "https://puragainwater.com/images/brand/logo.png" } },
+      mainEntityOfPage: `https://puragainwater.com/guides/${g.slug}`,
     },
     {
       "@context": "https://schema.org",
@@ -45,9 +45,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://puragain.com" },
-        { "@type": "ListItem", position: 2, name: "Guides", item: "https://puragain.com/guides" },
-        { "@type": "ListItem", position: 3, name: g.title, item: `https://puragain.com/guides/${g.slug}` },
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://puragainwater.com" },
+        { "@type": "ListItem", position: 2, name: "Guides", item: "https://puragainwater.com/guides" },
+        { "@type": "ListItem", position: 3, name: g.title, item: `https://puragainwater.com/guides/${g.slug}` },
       ],
     },
   ];

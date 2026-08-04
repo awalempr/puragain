@@ -1,7 +1,13 @@
 // Service-area cities within ~50 miles of the Escondido HQ (1249 Simpson Way, Escondido, CA 92029).
 // Drives the /water-filtration/[city] local-SEO pages.
 
-export type RegionKey = "north-coastal" | "san-diego" | "inland-empire" | "south-oc";
+export type RegionKey =
+  | "north-coastal"
+  | "san-diego"
+  | "inland-empire"
+  | "south-oc"
+  | "orange-county"
+  | "los-angeles";
 
 export const REGIONS: Record<RegionKey, { label: string; water: string }> = {
   "north-coastal": {
@@ -23,6 +29,16 @@ export const REGIONS: Record<RegionKey, { label: string; water: string }> = {
     label: "South Orange County",
     water:
       "runs hard and chlorinated along the coast, leaving spotty dishes, scale on fixtures, and a chemical taste that a proper filtration system removes for good.",
+  },
+  "orange-county": {
+    label: "Orange County",
+    water:
+      "blends imported Colorado River and State Water Project supply with local groundwater, so most homes get hard, chlorinated water that scales up fixtures and appliances and spots every dish. A proper system strips out the hardness and the chemical taste for good.",
+  },
+  "los-angeles": {
+    label: "Los Angeles County",
+    water:
+      "runs on imported Colorado River and State Water Project supply that arrives hard and heavily chloraminated — you see it as scale on glassware and fixtures, dry skin and hair, and a chlorine edge at the tap. The northern valleys around Santa Clarita see some of the hardest water in the county.",
   },
 };
 
@@ -86,6 +102,15 @@ export const CITIES: City[] = [
   { slug: "sun-city", name: "Sun City", county: "Riverside County", region: "inland-empire" },
   { slug: "winchester", name: "Winchester", county: "Riverside County", region: "inland-empire" },
   { slug: "french-valley", name: "French Valley", county: "Riverside County", region: "inland-empire" },
+
+  // Orange County (central/north) — inherited from the legacy national footprint
+  { slug: "irvine", name: "Irvine", county: "Orange County", region: "orange-county" },
+  { slug: "santa-ana", name: "Santa Ana", county: "Orange County", region: "orange-county" },
+  { slug: "anaheim", name: "Anaheim", county: "Orange County", region: "orange-county" },
+  // Los Angeles County — inherited from the legacy national footprint
+  { slug: "los-angeles", name: "Los Angeles", county: "Los Angeles County", region: "los-angeles" },
+  { slug: "long-beach", name: "Long Beach", county: "Los Angeles County", region: "los-angeles" },
+  { slug: "santa-clarita", name: "Santa Clarita", county: "Los Angeles County", region: "los-angeles" },
 ];
 
 export const CITY_MAP: Record<string, City> = Object.fromEntries(CITIES.map((c) => [c.slug, c]));

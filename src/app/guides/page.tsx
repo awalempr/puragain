@@ -24,11 +24,11 @@ export default function GuidesHub() {
     "@type": "CollectionPage",
     name: "The Southern California Home Water Guide",
     description: metadata.description,
-    url: "https://puragain.com/guides",
+    url: "https://puragainwater.com/guides",
     hasPart: GUIDES.map((g) => ({
       "@type": "Article",
       headline: g.title,
-      url: `https://puragain.com/guides/${g.slug}`,
+      url: `https://puragainwater.com/guides/${g.slug}`,
     })),
   };
 
