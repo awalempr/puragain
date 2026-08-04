@@ -69,6 +69,11 @@ export function Footer() {
                   Service Areas
                 </Link>
               </li>
+              <li>
+                <Link href="/guides" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">
+                  Water Guides
+                </Link>
+              </li>
             </ul>
           </div>
 

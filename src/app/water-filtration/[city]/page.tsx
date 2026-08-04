@@ -280,6 +280,34 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         </div>
       </section>
 
+      {/* GUIDES */}
+      <section className="bg-white py-16 px-6">
+        <div className="max-w-3xl mx-auto">
+          <FadeIn direction="up">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-navy mb-2" style={{ letterSpacing: "-0.02em" }}>
+              Learn about your water
+            </h2>
+            <p className="text-gray-600 mb-6">Straight answers before you decide anything.</p>
+          </FadeIn>
+          <div className="flex flex-wrap gap-2">
+            {[
+              c.region === "inland-empire"
+                ? { label: "Why is SoCal water so hard?", href: "/guides/hard-water-southern-california" }
+                : c.region === "south-oc"
+                ? { label: "Chlorine vs. chloramine", href: "/guides/chlorine-vs-chloramine" }
+                : { label: "Is San Diego tap water safe?", href: "/guides/is-san-diego-tap-water-safe" },
+              { label: "RO vs. water softener", href: "/guides/reverse-osmosis-vs-water-softener" },
+              { label: "What does a system cost?", href: "/guides/water-filtration-cost" },
+              { label: "All water guides", href: "/guides" },
+            ].map((g) => (
+              <Link key={g.href} href={g.href} className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-4 py-2 text-sm text-gray-600 hover:border-[#3a8fd4]/40 hover:text-[#3a8fd4] transition-colors">
+                {g.label} <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="bg-brand-blue py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
