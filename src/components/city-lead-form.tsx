@@ -32,6 +32,7 @@ export function CityLeadForm({ city }: { city: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          city,
           system: "not-sure",
           message: `Free in-home water test request from the ${city}, CA page.`,
           source: "city",

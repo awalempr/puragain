@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { CITIES, REGIONS, type RegionKey } from "@/lib/service-areas";
 import { Mail, Clock, Star, Shield, Zap, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,6 +13,7 @@ interface ContactFormData {
   lastName: string;
   email: string;
   phone: string;
+  city: string;
   system: string;
   message: string;
   smsOptIn: boolean;
@@ -49,6 +51,7 @@ export default function ContactPage() {
       lastName: "",
       email: "",
       phone: "",
+      city: "",
       system: "",
       message: "",
       smsOptIn: false,
@@ -131,6 +134,21 @@ export default function ContactPage() {
               <div>
                 <label htmlFor="phone" className={labelClass}>Phone</label>
                 <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567" {...register("phone")} />
+              </div>
+
+              <div>
+                <label htmlFor="city" className={labelClass}>City</label>
+                <select id="city" className={inputClass} defaultValue="" {...register("city")}>
+                  <option value="" disabled>Select your city</option>
+                  {(Object.keys(REGIONS) as RegionKey[]).map((rk) => (
+                    <optgroup key={rk} label={REGIONS[rk].label}>
+                      {CITIES.filter((c) => c.region === rk).map((c) => (
+                        <option key={c.slug} value={c.slug}>{c.name}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                  <option value="other">My city isn&rsquo;t listed</option>
+                </select>
               </div>
 
               <div>

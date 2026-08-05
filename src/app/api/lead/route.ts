@@ -1,4 +1,15 @@
 import { NextResponse } from "next/server";
+import { CITY_MAP, CITIES, REGIONS } from "@/lib/service-areas";
+
+// Resolve a submitted city (accepts our slug OR the display name) to the
+// structured service-area record, so leads carry clean City/State/County for
+// routing and reporting.
+function resolveCity(input?: string) {
+  if (!input) return null;
+  const key = input.toLowerCase().trim();
+  if (CITY_MAP[key]) return CITY_MAP[key];
+  return CITIES.find((c) => c.name.toLowerCase() === key) || null;
+}
 
 // Simple in-memory rate limiter (same pattern as the reviews route)
 const rateLimit = new Map<string, { count: number; resetTime: number }>();
@@ -126,6 +137,7 @@ interface LeadPayload {
   system?: string;
   message?: string;
   address?: string;
+  city?: string; // service-area city (slug or name), for location tagging/routing
   smsOptIn?: boolean;
   source?: string; // "contact" | "quiz"
   answers?: string[]; // quiz answers
@@ -205,8 +217,13 @@ export async function POST(request: Request) {
     "not-sure": "Not sure yet",
   };
 
+  const cityObj = resolveCity(data.city);
+
   const descriptionLines: string[] = [];
   if (recaptcha.note) descriptionLines.push(recaptcha.note);
+  if (cityObj) descriptionLines.push(`Service area: ${cityObj.name}, ${cityObj.county} (${REGIONS[cityObj.region].label})`);
+  else if (data.city === "other") descriptionLines.push("⚠️ City not in service-area list (out of area?)");
+  else if (data.city) descriptionLines.push(`City (unmatched): ${data.city}`);
   if (data.system) descriptionLines.push(`System of interest: ${systemLabels[data.system] || data.system}`);
   if (data.address) descriptionLines.push(`Install address: ${data.address}`);
   if (typeof data.smsOptIn === "boolean") descriptionLines.push(`SMS opt-in: ${data.smsOptIn ? "Yes" : "No"}`);
@@ -237,6 +254,9 @@ export async function POST(request: Request) {
     Last_Name: lastName || firstName || "Website Lead",
     Email: email || undefined,
     Phone: phone || undefined,
+    City: cityObj?.name || (data.city && data.city !== "other" ? data.city : undefined),
+    State: cityObj ? "CA" : undefined,
+    County: cityObj?.county || undefined,
     Company: "Website Lead",
     Owner: LEAD_OWNERS.length ? { id: pickOwner(email || phone || `${Date.now()}`) } : undefined,
     Lead_Source: "Website Lead",
