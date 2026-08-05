@@ -98,23 +98,17 @@ export default function Navbar() {
           </div>
 
           {/* Right — CTA pill */}
-          <div className="hidden lg:flex items-center gap-3 ml-auto bg-white/90 backdrop-blur-xl rounded-full px-2 h-[44px] shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
+          <div className="hidden lg:flex items-center gap-2 ml-auto bg-white/90 backdrop-blur-xl rounded-full pl-4 pr-2 h-[44px] shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
             <a
               href={PHONE_HREF}
-              className="flex items-center gap-1.5 text-[13px] font-semibold text-navy hover:text-brand-red transition-colors px-3"
+              className="flex items-center gap-1.5 text-[13px] font-semibold text-navy hover:text-brand-red transition-colors whitespace-nowrap"
             >
               <Phone className="w-3.5 h-3.5 text-brand-red" />
               {PHONE_DISPLAY}
             </a>
-            <Link
-              href="/contact"
-              className="flex items-center gap-1.5 text-[13px] text-gray-500 hover:text-gray-900 transition-colors px-3"
-            >
-              Contact
-            </Link>
             <button
               onClick={() => setQuizOpen(true)}
-              className="inline-flex items-center rounded-full bg-brand-red px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#b00e0e]"
+              className="inline-flex items-center rounded-full bg-brand-red px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#b00e0e] whitespace-nowrap"
             >
               What&apos;s In My Water?
             </button>
