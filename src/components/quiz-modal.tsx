@@ -7,7 +7,15 @@ import Link from "next/link";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 
+// The homeownership gate is question 1. Selecting "rent" ends the quiz — we only
+// serve homeowners (permanent installation), so renters are filtered before capture.
+const RENT_OPTION = "I rent my home";
+
 const questions = [
+  {
+    question: "Do you rent or own your home?",
+    options: ["I own my home", RENT_OPTION],
+  },
   {
     question: "What's your biggest water concern?",
     options: [
@@ -47,15 +55,6 @@ const questions = [
   {
     question: "How many people are in your household?",
     options: ["Just me (1 person)", "2-3 people", "4-5 people", "6 or more"],
-  },
-  {
-    question: "Do you own your home?",
-    options: [
-      "Yes, I own my home",
-      "I rent but my landlord allows modifications",
-      "I rent and need a lower-commitment solution",
-      "Not sure",
-    ],
   },
   {
     question: "What's your monthly budget preference?",
@@ -111,6 +110,7 @@ export function QuizModal({
     address: "",
   });
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [disqualified, setDisqualified] = useState(false);
 
   const totalSteps = questions.length;
   const isContactStep = step >= totalSteps && !contactSubmitted;
@@ -118,6 +118,11 @@ export function QuizModal({
 
   const handleSelect = useCallback(
     (option: string) => {
+      // Homeownership gate (question 1): renters are not served — end here, no capture.
+      if (step === 0 && option === RENT_OPTION) {
+        setDisqualified(true);
+        return;
+      }
       const newAnswers = [...answers];
       newAnswers[step] = option;
       setAnswers(newAnswers);
@@ -172,6 +177,7 @@ export function QuizModal({
       setAnswers([]);
       setContactInfo({ firstName: "", lastName: "", email: "", phone: "", address: "" });
       setContactSubmitted(false);
+      setDisqualified(false);
     }, 300);
   };
 
@@ -246,7 +252,32 @@ export function QuizModal({
             {/* Content */}
             <div className="px-6 py-8">
               <AnimatePresence mode="wait" custom={direction}>
-                {!isContactStep && !isResults ? (
+                {disqualified ? (
+                  /* Renter — not served, no capture */
+                  <motion.div
+                    key="disqualified"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-center py-6"
+                  >
+                    <h2 className="font-heading text-2xl font-bold text-navy mb-3" style={{ letterSpacing: "-0.02em" }}>
+                      Thanks for your interest!
+                    </h2>
+                    <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto mb-6">
+                      Our systems install permanently into your home&rsquo;s plumbing, so they&rsquo;re
+                      designed for homeowners. Unfortunately we&rsquo;re not able to serve renters at
+                      this time. If you own another property &mdash; or your situation changes &mdash;
+                      we&rsquo;d love to help.
+                    </p>
+                    <button
+                      onClick={handleClose}
+                      className="inline-flex items-center gap-2 bg-brand-red text-white rounded-full px-6 py-2.5 text-sm font-semibold hover:bg-[#b00e0e] transition-colors"
+                    >
+                      Close
+                    </button>
+                  </motion.div>
+                ) : !isContactStep && !isResults ? (
                   /* Quiz questions */
                   <motion.div
                     key={step}

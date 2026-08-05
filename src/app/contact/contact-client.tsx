@@ -9,6 +9,7 @@ import { Mail, Clock, Star, Shield, Zap, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ContactFormData {
+  homeownership: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -30,6 +31,7 @@ const reviews = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [renterBlocked, setRenterBlocked] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
 
   const nextReview = useCallback(() => {
@@ -47,6 +49,7 @@ export default function ContactPage() {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     defaultValues: {
+      homeownership: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -59,6 +62,11 @@ export default function ContactPage() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
+    // We only serve homeowners — filter renters out before any capture.
+    if (data.homeownership === "rent") {
+      setRenterBlocked(true);
+      return;
+    }
     setSubmitError(false);
     try {
       const recaptchaToken = await getRecaptchaToken("contact");
@@ -107,8 +115,27 @@ export default function ContactPage() {
                 <a href="mailto:support@puragain.com" className="text-[#3a8fd4] font-semibold hover:underline">support@puragain.com</a>.
               </p>
             </div>
+          ) : renterBlocked ? (
+            <div className="bg-gray-50 rounded-2xl p-12 text-center border border-gray-100">
+              <h3 className="font-heading text-2xl font-bold text-gray-900 mb-3">Thanks for your interest!</h3>
+              <p className="text-gray-500 leading-relaxed max-w-sm mx-auto">
+                Our systems install permanently into your home&apos;s plumbing, so they&apos;re designed
+                for homeowners. Unfortunately we&apos;re not able to serve renters at this time. If you
+                own another property &mdash; or your situation changes &mdash; we&apos;d love to help.
+              </p>
+            </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <div>
+                <label htmlFor="homeownership" className={labelClass}>Do you rent or own your home?</label>
+                <select id="homeownership" className={inputClass} defaultValue="" {...register("homeownership", { required: "Please let us know" })}>
+                  <option value="" disabled>Select one</option>
+                  <option value="own">I own my home</option>
+                  <option value="rent">I rent my home</option>
+                </select>
+                {errors.homeownership && <p className="text-brand-red text-xs mt-1">{errors.homeownership.message}</p>}
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className={labelClass}>First Name</label>
