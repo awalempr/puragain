@@ -5,6 +5,35 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# --- Domain consolidation: 301 every other domain to the canonical puragainwater.com ---
+# Netlify serves added domains as mirrors by default; these force the redirect so
+# the brand consolidates on one canonical host (and avoids duplicate-content SEO).
+# These MUST come before the path redirects so alias traffic lands on the canonical
+# host first, then the path rules apply there.
+[[redirects]]
+  from = "https://puragain.com/*"
+  to = "https://puragainwater.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.puragain.com/*"
+  to = "https://puragainwater.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://puragainwaterfiltration.com/*"
+  to = "https://puragainwater.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.puragainwaterfiltration.com/*"
+  to = "https://puragainwater.com/:splat"
+  status = 301
+  force = true
+
 # --- 301 redirects: legacy puragainwater.com URLs -> new site (auto-generated) ---
 
 [[redirects]]
