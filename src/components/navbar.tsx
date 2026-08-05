@@ -101,7 +101,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-2 ml-auto bg-white/90 backdrop-blur-xl rounded-full pl-4 pr-2 h-[44px] shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
             <a
               href={PHONE_HREF}
-              className="flex items-center gap-1.5 text-[13px] font-semibold text-navy hover:text-brand-red transition-colors whitespace-nowrap"
+              className="hidden xl:flex items-center gap-1.5 text-[13px] font-semibold text-navy hover:text-brand-red transition-colors whitespace-nowrap"
             >
               <Phone className="w-3.5 h-3.5 text-brand-red" />
               {PHONE_DISPLAY}
