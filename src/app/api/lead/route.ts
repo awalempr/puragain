@@ -77,6 +77,12 @@ async function checkRecaptcha(
   }
 }
 
+// Lead_Source value used for referral submissions. PurAgain's Leads module has
+// a (dormant) Referral source; if this exact picklist value doesn't exist the
+// create is retried with the known-good "Website Lead" (see createZohoLead), so
+// a referral is never lost to a bad picklist value. Overridable via env.
+const REFERRAL_LEAD_SOURCE = process.env.ZOHO_REFERRAL_LEAD_SOURCE || "Referral";
+
 // Website leads are assigned round-robin to the California team so they never
 // fall into the old (now broken) distribution. IDs can be overridden via env.
 const LEAD_OWNERS = (process.env.ZOHO_LEAD_OWNER_IDS ||
@@ -139,8 +145,16 @@ interface LeadPayload {
   address?: string;
   city?: string; // service-area city (slug or name), for location tagging/routing
   smsOptIn?: boolean;
-  source?: string; // "contact" | "quiz" | "get-quote" | "city"
+  source?: string; // "contact" | "quiz" | "get-quote" | "city" | "refer"
   answers?: string[]; // quiz answers
+  // Referral program ("refer"): the first-class name/email/phone above belong to
+  // the REFERRED friend (the new lead reps will call); these describe the
+  // existing customer who sent them, so ops can pay the referral reward.
+  referrerName?: string;
+  referrerEmail?: string;
+  referrerPhone?: string;
+  referrerConsent?: boolean; // referrer attests they have the friend's permission
+  ownHome?: string; // "own" | "rent" | "unsure" — referred friend must be a homeowner to qualify
   company_website?: string; // honeypot — must stay empty
   recaptchaToken?: string; // invisible reCAPTCHA v3 token
   // first-touch source attribution
@@ -192,6 +206,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Email or phone is required" }, { status: 400 });
   }
 
+  // A referral must identify the referring customer (so the reward can be paid),
+  // and that customer needs a way to be reached.
+  const isReferral = data.source === "refer";
+  const referrerName = (data.referrerName || "").trim();
+  const referrerEmail = (data.referrerEmail || "").trim();
+  const referrerPhone = (data.referrerPhone || "").trim();
+  if (isReferral) {
+    if (!referrerName) {
+      return NextResponse.json({ error: "Your name is required" }, { status: 400 });
+    }
+    if (!referrerEmail && !referrerPhone) {
+      return NextResponse.json({ error: "Your email or phone is required" }, { status: 400 });
+    }
+  }
+
   // Collapse duplicate submissions of the same person within a short window.
   if (isDuplicateLead(`${email}|${phone}`.toLowerCase())) {
     return NextResponse.json({ ok: true }); // duplicate — pretend success, create nothing
@@ -220,6 +249,25 @@ export async function POST(request: Request) {
   const cityObj = resolveCity(data.city);
 
   const descriptionLines: string[] = [];
+  // Referral attribution goes first so reps/ops see it at a glance. Kept in the
+  // known-good Comments field so nothing depends on a custom "Referred By" field
+  // existing yet (map to that field later once its API name is confirmed).
+  if (isReferral) {
+    descriptionLines.push("🎁 REFERRAL — PurAgain Rewards");
+    descriptionLines.push(`Referred by: ${referrerName}`);
+    if (referrerPhone) descriptionLines.push(`Referrer phone: ${referrerPhone}`);
+    if (referrerEmail) descriptionLines.push(`Referrer email: ${referrerEmail}`);
+    descriptionLines.push(
+      `Referrer consent to share friend's info: ${data.referrerConsent ? "Yes" : "Not confirmed"}`
+    );
+    const ownLabel =
+      data.ownHome === "own" ? "Yes — homeowner" : data.ownHome === "rent" ? "No — renter" : "Not confirmed";
+    descriptionLines.push(`Friend owns home: ${ownLabel}`);
+    descriptionLines.push(
+      "Reward: $25 to referrer when this friend books the free water test · $200 to referrer + $100 to this friend on verified install (new customer, one reward per household)."
+    );
+    descriptionLines.push("——");
+  }
   if (recaptcha.note) descriptionLines.push(recaptcha.note);
   if (cityObj) descriptionLines.push(`Service area: ${cityObj.name}, ${cityObj.county} (${REGIONS[cityObj.region].label})`);
   else if (data.city === "other") descriptionLines.push("⚠️ City not in service-area list (out of area?)");
@@ -257,16 +305,17 @@ export async function POST(request: Request) {
     City: cityObj?.name || (data.city && data.city !== "other" ? data.city : undefined),
     State: cityObj ? "CA" : undefined,
     County: cityObj?.county || undefined,
-    Company: "Website Lead",
+    Company: isReferral ? "Referral" : "Website Lead",
     Owner: LEAD_OWNERS.length ? { id: pickOwner(email || phone || `${Date.now()}`) } : undefined,
-    Lead_Source: "Website Lead",
-    Form_Name:
-      data.source === "quiz"
+    Lead_Source: isReferral ? REFERRAL_LEAD_SOURCE : "Website Lead",
+    Form_Name: isReferral
+      ? "Referral Program"
+      : data.source === "quiz"
         ? "Website Quiz"
         : data.source === "get-quote"
           ? "Get Quote Landing Page"
           : "Website Contact Form",
-    Source: sourceTag,
+    Source: isReferral ? "referral" : sourceTag,
     Campaign: trim(data.utm_campaign),
     gclid_field: trim(data.gclid),
     fbclid: trim(data.fbclid),
@@ -276,25 +325,63 @@ export async function POST(request: Request) {
     Interested_in: data.system ? (systemLabels[data.system] || data.system) : undefined,
     Question: trim(data.message),
     Comments: descriptionLines.join("\n") || undefined,
+    // Real custom field on the Leads module. If its picklist values differ, the
+    // create falls back by dropping it (see createWithFallback) — the same
+    // homeowner answer is preserved in Comments regardless.
+    Do_you_own_your_home:
+      data.ownHome === "own" ? "Yes" : data.ownHome === "rent" ? "No" : undefined,
   };
 
-  try {
+  // POST the record. Returns the parsed per-record result (or null on transport
+  // error) so the caller can inspect Zoho's field-level error codes.
+  async function createLead(record: Record<string, unknown>) {
     const res = await fetch(`${API_HOST}/crm/v6/Leads`, {
       method: "POST",
       headers: {
         Authorization: `Zoho-oauthtoken ${accessToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data: [lead], trigger: ["workflow"] }),
+      body: JSON.stringify({ data: [record], trigger: ["workflow"] }),
     });
-
     const json = await res.json().catch(() => null);
-    const record = json?.data?.[0];
-    if (res.ok && record?.status === "success") {
+    return { ok: res.ok, json, record: json?.data?.[0] };
+  }
+
+  // Create the lead, healing field-level rejections so a bad custom-field value
+  // never costs us a lead. If Zoho rejects a specific field: Lead_Source is
+  // swapped for the known-good "Website Lead" (it's likely required); any other
+  // rejected field is dropped and the create retried. Everything dropped is
+  // still preserved in the Comments text, so no information is lost.
+  async function createWithFallback(record: Record<string, unknown>) {
+    const attempt = { ...record };
+    let result = await createLead(attempt);
+    for (let i = 0; i < 3; i++) {
+      if (result.ok && result.record?.status === "success") return result;
+      const rec = result.record as Record<string, unknown> | undefined;
+      if (!rec || rec.status !== "error") return result;
+      const code = String(rec.code || "");
+      const apiName = (rec.details as { api_name?: string } | undefined)?.api_name;
+      const fieldError = code === "INVALID_DATA" || code === "MANDATORY_NOT_FOUND";
+      if (!fieldError || !apiName || !(apiName in attempt)) return result;
+      if (apiName === "Lead_Source" && attempt.Lead_Source !== "Website Lead") {
+        console.warn(`Zoho rejected Lead_Source="${attempt.Lead_Source}" — retrying as "Website Lead".`);
+        attempt.Lead_Source = "Website Lead";
+      } else {
+        console.warn(`Zoho rejected field "${apiName}" — dropping it and retrying (value kept in Comments).`);
+        delete attempt[apiName];
+      }
+      result = await createLead(attempt);
+    }
+    return result;
+  }
+
+  try {
+    const result = await createWithFallback(lead);
+    if (result.ok && result.record?.status === "success") {
       return NextResponse.json({ ok: true });
     }
 
-    console.error("Zoho lead create failed:", JSON.stringify(json));
+    console.error("Zoho lead create failed:", JSON.stringify(result.json));
     return NextResponse.json({ error: "Could not save lead" }, { status: 502 });
   } catch (err) {
     console.error("Zoho lead create error:", err);

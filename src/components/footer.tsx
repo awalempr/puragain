@@ -74,6 +74,11 @@ export function Footer() {
                   Water Guides
                 </Link>
               </li>
+              <li>
+                <Link href="/refer" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">
+                  Refer &amp; Earn $200
+                </Link>
+              </li>
             </ul>
           </div>
 

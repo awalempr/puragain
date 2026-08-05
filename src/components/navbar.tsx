@@ -79,6 +79,11 @@ export default function Navbar() {
                 </Link>
               </div>
               <div className="relative py-2">
+                <Link href="/refer" className="cursor-pointer text-[13px] font-medium text-inherit hover:opacity-[0.9]">
+                  Refer &amp; Earn
+                </Link>
+              </div>
+              <div className="relative py-2">
                 <Link href="/contact" className="cursor-pointer text-[13px] font-medium text-inherit hover:opacity-[0.9]">
                   Contact
                 </Link>
@@ -149,6 +154,7 @@ export default function Navbar() {
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 mt-8">Company</p>
               {[
                 { name: "Reviews", href: "/reviews" },
+                { name: "Refer & Earn $200", href: "/refer" },
                 { name: "Contact", href: "/contact" },
                 { name: "FAQ", href: "/#faq" },
               ].map((l) => (
