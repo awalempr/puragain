@@ -103,14 +103,13 @@ const jsonLd = {
       },
       areaServed: [
         { "@type": "State", name: "California" },
-        { "@type": "AdministrativeArea", name: "San Diego County" },
+        { "@type": "AdministrativeArea", name: "Santa Barbara County" },
+        { "@type": "AdministrativeArea", name: "Ventura County" },
         { "@type": "AdministrativeArea", name: "Los Angeles County" },
+        { "@type": "AdministrativeArea", name: "Orange County" },
         { "@type": "AdministrativeArea", name: "Riverside County" },
         { "@type": "AdministrativeArea", name: "San Bernardino County" },
-        { "@type": "City", name: "San Diego" },
-        { "@type": "City", name: "Los Angeles" },
-        { "@type": "City", name: "Escondido" },
-        { "@type": "City", name: "Riverside" },
+        { "@type": "AdministrativeArea", name: "San Diego County" },
       ],
       aggregateRating: {
         "@type": "AggregateRating",

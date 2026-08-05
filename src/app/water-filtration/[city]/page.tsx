@@ -291,11 +291,11 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </FadeIn>
           <div className="flex flex-wrap gap-2">
             {[
-              c.region === "inland-empire" || c.region === "los-angeles" || c.region === "orange-county"
-                ? { label: "Why is SoCal water so hard?", href: "/guides/hard-water-southern-california" }
+              c.region === "north-coastal" || c.region === "san-diego"
+                ? { label: "Is San Diego tap water safe?", href: "/guides/is-san-diego-tap-water-safe" }
                 : c.region === "south-oc"
                 ? { label: "Chlorine vs. chloramine", href: "/guides/chlorine-vs-chloramine" }
-                : { label: "Is San Diego tap water safe?", href: "/guides/is-san-diego-tap-water-safe" },
+                : { label: "Why is SoCal water so hard?", href: "/guides/hard-water-southern-california" },
               { label: "RO vs. water softener", href: "/guides/reverse-osmosis-vs-water-softener" },
               { label: "What does a system cost?", href: "/guides/water-filtration-cost" },
               { label: "All water guides", href: "/guides" },
