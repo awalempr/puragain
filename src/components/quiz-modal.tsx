@@ -138,9 +138,12 @@ export function QuizModal({
   };
 
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return; // guard against double-submit
+    setSubmitting(true);
     // Fire the lead to the backend; keep the UX flowing even if it fails.
     try {
       const recaptchaToken = await getRecaptchaToken("quiz");
@@ -362,9 +365,10 @@ export function QuizModal({
 
                       <button
                         type="submit"
-                        className="w-full bg-brand-red text-white rounded-xl py-3.5 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors mt-2"
+                        disabled={submitting}
+                        className="w-full bg-brand-red text-white rounded-xl py-3.5 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        See My Results
+                        {submitting ? "Submitting..." : "See My Results"}
                       </button>
                     </form>
                   </motion.div>

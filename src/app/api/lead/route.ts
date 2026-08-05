@@ -16,6 +16,19 @@ function isRateLimited(ip: string): boolean {
   return entry.count > RATE_LIMIT_MAX;
 }
 
+// Content-based dedup: collapse accidental double-submits (rapid clicks, retries)
+// that would otherwise create identical leads. Best-effort per warm instance —
+// the client also disables the submit button; this is the belt-and-suspenders.
+const recentLeads = new Map<string, number>();
+const DEDUP_WINDOW = 30 * 1000; // 30s
+function isDuplicateLead(key: string): boolean {
+  const now = Date.now();
+  for (const [k, t] of recentLeads) if (now - t > DEDUP_WINDOW) recentLeads.delete(k);
+  const last = recentLeads.get(key);
+  recentLeads.set(key, now);
+  return last !== undefined && now - last < DEDUP_WINDOW;
+}
+
 // Data-center-configurable hosts (US defaults). Override via env for EU/IN/AU/etc.
 const ACCOUNTS_HOST = process.env.ZOHO_ACCOUNTS_HOST || "https://accounts.zoho.com";
 const API_HOST = process.env.ZOHO_API_HOST || "https://www.zohoapis.com";
@@ -165,6 +178,11 @@ export async function POST(request: Request) {
   }
   if (!email && !phone) {
     return NextResponse.json({ error: "Email or phone is required" }, { status: 400 });
+  }
+
+  // Collapse duplicate submissions of the same person within a short window.
+  if (isDuplicateLead(`${email}|${phone}`.toLowerCase())) {
+    return NextResponse.json({ ok: true }); // duplicate — pretend success, create nothing
   }
 
   const accessToken = await getAccessToken();

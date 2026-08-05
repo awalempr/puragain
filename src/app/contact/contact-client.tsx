@@ -42,7 +42,7 @@ export default function ContactPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     defaultValues: {
       firstName: "",
@@ -166,8 +166,8 @@ export default function ContactPage() {
                 {...register("company_website")}
               />
 
-              <button type="submit" className="bg-brand-red text-white w-full py-3.5 rounded-full font-semibold hover:bg-[#b00e0e] transition-colors">
-                Send Message
+              <button type="submit" disabled={isSubmitting} className="bg-brand-red text-white w-full py-3.5 rounded-full font-semibold hover:bg-[#b00e0e] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
               {submitError && (
                 <p className="text-brand-red text-sm text-center">
