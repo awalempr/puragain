@@ -6,6 +6,7 @@ import { X, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { CallCta } from "@/components/call-cta";
 
 // The homeownership gate is question 1. Selecting "rent" ends the quiz - we only
 // serve homeowners (permanent installation), so renters are filtered before capture.
@@ -318,9 +319,10 @@ export function QuizModal({
                     <h2 className="font-heading text-2xl font-bold text-navy mb-2" style={{ letterSpacing: "-0.02em" }}>
                       Almost there.
                     </h2>
-                    <p className="text-gray-500 text-sm mb-6">
+                    <p className="text-gray-500 text-sm mb-4">
                       Enter your details so we can match you with the right system.
                     </p>
+                    <div className="mb-5"><CallCta /></div>
 
                     <form onSubmit={handleContactSubmit} className="space-y-4">
                       {/* honeypot - hidden from users, catches bots */}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/components/call-cta";
 
 export function Footer() {
   return (
@@ -88,6 +89,14 @@ export function Footer() {
               Contact
             </h4>
             <ul className="space-y-2.5">
+              <li>
+                <a
+                  href={PHONE_HREF}
+                  className="text-sm font-semibold text-gray-900 hover:text-brand-red transition-colors"
+                >
+                  {PHONE_DISPLAY}
+                </a>
+              </li>
               <li>
                 <a
                   href="mailto:support@puragain.com"

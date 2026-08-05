@@ -20,6 +20,7 @@ import {
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 import { CITIES } from "@/lib/service-areas";
+import { CallCta } from "@/components/call-cta";
 
 interface QuoteFormData {
   firstName: string;
@@ -303,6 +304,8 @@ export default function GetQuoteClient() {
                         Takes about a minute. We&apos;ll do the rest.
                       </p>
                     </div>
+
+                    <div className="mb-5"><CallCta /></div>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

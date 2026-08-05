@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 import { CITIES, REGIONS, type RegionKey } from "@/lib/service-areas";
+import { CallCta } from "@/components/call-cta";
 import { Mail, Clock, Star, Shield, Zap, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -98,9 +99,10 @@ export default function ContactPage() {
           >
             Let&apos;s talk water.
           </h1>
-          <p className="text-gray-500 text-[15px] mb-8 leading-relaxed">
+          <p className="text-gray-500 text-[15px] mb-4 leading-relaxed">
             Whether you have questions or you&apos;re ready to get started, we&apos;re here.
           </p>
+          <div className="mb-7"><CallCta /></div>
 
           {submitted ? (
             <div className="bg-gray-50 rounded-2xl p-12 text-center border border-gray-100">

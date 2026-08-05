@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { CallCta } from "@/components/call-cta";
 import { CheckCircle2 } from "lucide-react";
 
 interface FormData {
@@ -86,9 +87,10 @@ export function CityLeadForm({ city }: { city: string }) {
   return (
     <div className="bg-white rounded-3xl border border-gray-100 shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-7">
       <h3 className="font-heading text-2xl font-bold text-navy mb-1">Get your free water test</h3>
-      <p className="text-sm text-gray-500 mb-5">
+      <p className="text-sm text-gray-500 mb-3">
         Free, in-home, no obligation &middot; serving {city}
       </p>
+      <div className="mb-4"><CallCta /></div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
         <select className={input} defaultValue="" {...register("homeownership", { required: true })}>
           <option value="" disabled>Do you rent or own your home?</option>

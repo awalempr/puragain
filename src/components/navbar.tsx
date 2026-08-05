@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu as MenuIcon, X } from "lucide-react";
+import { Menu as MenuIcon, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 import { QuizModal } from "@/components/quiz-modal";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/components/call-cta";
 
 export default function Navbar() {
   const [active, setActive] = useState<string | null>(null);
@@ -98,6 +99,13 @@ export default function Navbar() {
 
           {/* Right — CTA pill */}
           <div className="hidden lg:flex items-center gap-3 ml-auto bg-white/90 backdrop-blur-xl rounded-full px-2 h-[44px] shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-white/50">
+            <a
+              href={PHONE_HREF}
+              className="flex items-center gap-1.5 text-[13px] font-semibold text-navy hover:text-brand-red transition-colors px-3"
+            >
+              <Phone className="w-3.5 h-3.5 text-brand-red" />
+              {PHONE_DISPLAY}
+            </a>
             <Link
               href="/contact"
               className="flex items-center gap-1.5 text-[13px] text-gray-500 hover:text-gray-900 transition-colors px-3"
@@ -169,9 +177,15 @@ export default function Navbar() {
               ))}
             </div>
 
+            <a
+              href={PHONE_HREF}
+              className="mt-6 flex items-center justify-center gap-2 w-full rounded-full border-2 border-brand-red px-5 py-3.5 text-center text-[15px] font-semibold text-brand-red hover:bg-red-50"
+            >
+              <Phone className="w-4 h-4" /> Call {PHONE_DISPLAY}
+            </a>
             <button
               onClick={() => { setMobileOpen(false); setTimeout(() => setQuizOpen(true), 300); }}
-              className="mt-6 block w-full rounded-full bg-brand-red px-5 py-3.5 text-center text-[15px] font-semibold text-white hover:bg-[#b00e0e]"
+              className="mt-3 block w-full rounded-full bg-brand-red px-5 py-3.5 text-center text-[15px] font-semibold text-white hover:bg-[#b00e0e]"
             >
               What&apos;s In My Water?
             </button>
