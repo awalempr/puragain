@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
+import { getRecaptchaToken } from "@/lib/recaptcha";
 import { CheckCircle2 } from "lucide-react";
 
 interface FormData {
@@ -25,6 +26,7 @@ export function CityLeadForm({ city }: { city: string }) {
   const onSubmit = async (data: FormData) => {
     setError(false);
     try {
+      const recaptchaToken = await getRecaptchaToken("city_lead");
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,6 +36,7 @@ export function CityLeadForm({ city }: { city: string }) {
           message: `Free in-home water test request from the ${city}, CA page.`,
           source: "city",
           ...getTracking(),
+          recaptchaToken,
         }),
       });
       if (!res.ok) throw new Error("failed");

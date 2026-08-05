@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getTracking } from "@/lib/tracking";
+import { getRecaptchaToken } from "@/lib/recaptcha";
 
 const questions = [
   {
@@ -136,14 +137,24 @@ export function QuizModal({
     }
   };
 
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Fire the lead to the backend; keep the UX flowing even if it fails.
     try {
+      const recaptchaToken = await getRecaptchaToken("quiz");
       await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...contactInfo, answers, ...getTracking(), source: "quiz" }),
+        body: JSON.stringify({
+          ...contactInfo,
+          answers,
+          ...getTracking(),
+          source: "quiz",
+          company_website: honeypotRef.current?.value || "",
+          recaptchaToken,
+        }),
       });
     } catch {
       // swallow — results still show; the server logs any failure
@@ -278,6 +289,16 @@ export function QuizModal({
                     </p>
 
                     <form onSubmit={handleContactSubmit} className="space-y-4">
+                      {/* honeypot — hidden from users, catches bots */}
+                      <input
+                        type="text"
+                        ref={honeypotRef}
+                        name="company_website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                        className="absolute left-[-9999px] h-px w-px opacity-0"
+                      />
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="text-xs font-medium text-gray-500 mb-1.5 block">First Name</label>

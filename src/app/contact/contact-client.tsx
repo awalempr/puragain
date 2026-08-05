@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
+import { getRecaptchaToken } from "@/lib/recaptcha";
 import { Mail, Clock, Star, Shield, Zap, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -57,10 +58,11 @@ export default function ContactPage() {
   const onSubmit = async (data: ContactFormData) => {
     setSubmitError(false);
     try {
+      const recaptchaToken = await getRecaptchaToken("contact");
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, ...getTracking(), source: "contact" }),
+        body: JSON.stringify({ ...data, ...getTracking(), source: "contact", recaptchaToken }),
       });
       if (!res.ok) throw new Error("failed");
       setSubmitted(true);

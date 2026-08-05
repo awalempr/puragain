@@ -20,6 +20,39 @@ function isRateLimited(ip: string): boolean {
 const ACCOUNTS_HOST = process.env.ZOHO_ACCOUNTS_HOST || "https://accounts.zoho.com";
 const API_HOST = process.env.ZOHO_API_HOST || "https://www.zohoapis.com";
 
+// reCAPTCHA v3. Minimum score below which we treat a submission as a bot.
+const RECAPTCHA_MIN_SCORE = Number(process.env.RECAPTCHA_MIN_SCORE || "0.5");
+
+// Verify an invisible reCAPTCHA v3 token. Bias is toward NEVER dropping a real
+// lead: if reCAPTCHA isn't configured, or Google errors, or the token is simply
+// missing (client JS failed), we allow the lead and just note it. We only reject
+// on a positively bad signal — an invalid token or a score below the threshold.
+async function checkRecaptcha(
+  token: string | undefined,
+  ip: string
+): Promise<{ allow: boolean; note?: string }> {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) return { allow: true }; // not configured yet — don't block anyone
+  if (!token) return { allow: true, note: "⚠️ reCAPTCHA: no token (client JS may have failed)" };
+  try {
+    const params = new URLSearchParams({ secret, response: token });
+    if (ip && ip !== "unknown") params.set("remoteip", ip);
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: params.toString(),
+    });
+    const json = await res.json().catch(() => null);
+    if (!json) return { allow: true, note: "⚠️ reCAPTCHA: verify unavailable (allowed)" };
+    if (json.success !== true) return { allow: false }; // forged/invalid token → bot
+    const score = typeof json.score === "number" ? json.score : 1;
+    if (score < RECAPTCHA_MIN_SCORE) return { allow: false }; // low score → bot
+    return { allow: true, note: `reCAPTCHA score: ${score.toFixed(2)}` };
+  } catch {
+    return { allow: true, note: "⚠️ reCAPTCHA: verify error (allowed)" };
+  }
+}
+
 // Website leads are assigned round-robin to the California team so they never
 // fall into the old (now broken) distribution. IDs can be overridden via env.
 const LEAD_OWNERS = (process.env.ZOHO_LEAD_OWNER_IDS ||
@@ -84,6 +117,7 @@ interface LeadPayload {
   source?: string; // "contact" | "quiz"
   answers?: string[]; // quiz answers
   company_website?: string; // honeypot — must stay empty
+  recaptchaToken?: string; // invisible reCAPTCHA v3 token
   // first-touch source attribution
   utm_source?: string;
   utm_medium?: string;
@@ -113,6 +147,12 @@ export async function POST(request: Request) {
   // Honeypot: bots fill hidden fields. Pretend success, create nothing.
   if (data.company_website) {
     return NextResponse.json({ ok: true });
+  }
+
+  // Invisible reCAPTCHA v3. Drops clear bots; flags borderline/unverified.
+  const recaptcha = await checkRecaptcha(data.recaptchaToken, ip);
+  if (!recaptcha.allow) {
+    return NextResponse.json({ ok: true }); // looks like a bot — pretend success, create nothing
   }
 
   // Minimal validation: need a name and a way to reach them.
@@ -148,6 +188,7 @@ export async function POST(request: Request) {
   };
 
   const descriptionLines: string[] = [];
+  if (recaptcha.note) descriptionLines.push(recaptcha.note);
   if (data.system) descriptionLines.push(`System of interest: ${systemLabels[data.system] || data.system}`);
   if (data.address) descriptionLines.push(`Install address: ${data.address}`);
   if (typeof data.smsOptIn === "boolean") descriptionLines.push(`SMS opt-in: ${data.smsOptIn ? "Yes" : "No"}`);
