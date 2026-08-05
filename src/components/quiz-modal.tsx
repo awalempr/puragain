@@ -7,7 +7,7 @@ import Link from "next/link";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 
-// The homeownership gate is question 1. Selecting "rent" ends the quiz — we only
+// The homeownership gate is question 1. Selecting "rent" ends the quiz - we only
 // serve homeowners (permanent installation), so renters are filtered before capture.
 const RENT_OPTION = "I rent my home";
 
@@ -118,7 +118,7 @@ export function QuizModal({
 
   const handleSelect = useCallback(
     (option: string) => {
-      // Homeownership gate (question 1): renters are not served — end here, no capture.
+      // Homeownership gate (question 1): renters are not served - end here, no capture.
       if (step === 0 && option === RENT_OPTION) {
         setDisqualified(true);
         return;
@@ -165,7 +165,7 @@ export function QuizModal({
         }),
       });
     } catch {
-      // swallow — results still show; the server logs any failure
+      // swallow - results still show; the server logs any failure
     }
     setContactSubmitted(true);
   };
@@ -253,7 +253,7 @@ export function QuizModal({
             <div className="px-6 py-8">
               <AnimatePresence mode="wait" custom={direction}>
                 {disqualified ? (
-                  /* Renter — not served, no capture */
+                  /* Renter - not served, no capture */
                   <motion.div
                     key="disqualified"
                     initial={{ opacity: 0, y: 12 }}
@@ -267,8 +267,8 @@ export function QuizModal({
                     <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto mb-6">
                       Our systems install permanently into your home&rsquo;s plumbing, so they&rsquo;re
                       designed for homeowners. Unfortunately we&rsquo;re not able to serve renters at
-                      this time. If you own another property &mdash; or your situation changes &mdash;
-                      we&rsquo;d love to help.
+                      this time. If you own another property, or your situation changes, we&rsquo;d
+                      love to help.
                     </p>
                     <button
                       onClick={handleClose}
@@ -323,7 +323,7 @@ export function QuizModal({
                     </p>
 
                     <form onSubmit={handleContactSubmit} className="space-y-4">
-                      {/* honeypot — hidden from users, catches bots */}
+                      {/* honeypot - hidden from users, catches bots */}
                       <input
                         type="text"
                         ref={honeypotRef}

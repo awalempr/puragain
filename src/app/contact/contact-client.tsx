@@ -62,7 +62,7 @@ export default function ContactPage() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // We only serve homeowners — filter renters out before any capture.
+    // We only serve homeowners - filter renters out before any capture.
     if (data.homeownership === "rent") {
       setRenterBlocked(true);
       return;
@@ -121,7 +121,7 @@ export default function ContactPage() {
               <p className="text-gray-500 leading-relaxed max-w-sm mx-auto">
                 Our systems install permanently into your home&apos;s plumbing, so they&apos;re designed
                 for homeowners. Unfortunately we&apos;re not able to serve renters at this time. If you
-                own another property &mdash; or your situation changes &mdash; we&apos;d love to help.
+                own another property, or your situation changes, we&apos;d love to help.
               </p>
             </div>
           ) : (
@@ -201,7 +201,7 @@ export default function ContactPage() {
                 </label>
               </div>
 
-              {/* honeypot — hidden from users, catches bots */}
+              {/* honeypot - hidden from users, catches bots */}
               <input
                 type="text"
                 tabIndex={-1}
@@ -226,7 +226,7 @@ export default function ContactPage() {
 
         {/* Right: Trust panel */}
         <div className="space-y-6 lg:pt-[88px]">
-          {/* Email — prominent */}
+          {/* Email - prominent */}
           <div className="grid grid-cols-1 gap-3">
             <a href="mailto:support@puragain.com" className="rounded-2xl p-6 text-center border border-[#3a8fd4]/15 hover:border-[#3a8fd4]/30 transition-colors group"
               style={{ background: "linear-gradient(135deg, rgba(58,143,212,0.08) 0%, rgba(58,143,212,0.04) 100%)" }}>

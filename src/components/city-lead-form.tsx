@@ -7,6 +7,7 @@ import { getRecaptchaToken } from "@/lib/recaptcha";
 import { CheckCircle2 } from "lucide-react";
 
 interface FormData {
+  homeownership: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -17,13 +18,19 @@ interface FormData {
 export function CityLeadForm({ city }: { city: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [renterBlocked, setRenterBlocked] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormData>({ defaultValues: { firstName: "", lastName: "", email: "", phone: "" } });
+  } = useForm<FormData>({ defaultValues: { homeownership: "", firstName: "", lastName: "", email: "", phone: "" } });
 
   const onSubmit = async (data: FormData) => {
+    // We only serve homeowners, so renters are filtered before any capture.
+    if (data.homeownership === "rent") {
+      setRenterBlocked(true);
+      return;
+    }
     setError(false);
     try {
       const recaptchaToken = await getRecaptchaToken("city_lead");
@@ -63,6 +70,19 @@ export function CityLeadForm({ city }: { city: string }) {
     );
   }
 
+  if (renterBlocked) {
+    return (
+      <div className="bg-white rounded-3xl border border-gray-100 shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-8 text-center">
+        <h3 className="font-heading text-2xl font-bold text-navy mb-2">Thanks for your interest!</h3>
+        <p className="text-gray-500 leading-relaxed">
+          Our systems install permanently into your home&apos;s plumbing, so they&apos;re designed for
+          homeowners. We&apos;re not able to serve renters at this time. If you own another property, or
+          your situation changes, we&apos;d love to help.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white rounded-3xl border border-gray-100 shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-7">
       <h3 className="font-heading text-2xl font-bold text-navy mb-1">Get your free water test</h3>
@@ -70,6 +90,11 @@ export function CityLeadForm({ city }: { city: string }) {
         Free, in-home, no obligation &middot; serving {city}
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+        <select className={input} defaultValue="" {...register("homeownership", { required: true })}>
+          <option value="" disabled>Do you rent or own your home?</option>
+          <option value="own">I own my home</option>
+          <option value="rent">I rent my home</option>
+        </select>
         <div className="grid grid-cols-2 gap-3">
           <input className={input} placeholder="First name" aria-label="First name"
             {...register("firstName", { required: true })} />
@@ -92,7 +117,7 @@ export function CityLeadForm({ city }: { city: string }) {
         </button>
         {error && (
           <p className="text-brand-red text-sm text-center">
-            Something went wrong &mdash; please try again or email support@puragain.com.
+            Something went wrong. Please try again or email support@puragain.com.
           </p>
         )}
         <p className="text-[11px] text-gray-400 text-center leading-relaxed">
