@@ -126,16 +126,6 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              <div>
-                <label htmlFor="homeownership" className={labelClass}>Do you rent or own your home?</label>
-                <select id="homeownership" className={inputClass} defaultValue="" {...register("homeownership", { required: "Please let us know" })}>
-                  <option value="" disabled>Select one</option>
-                  <option value="own">I own my home</option>
-                  <option value="rent">I rent my home</option>
-                </select>
-                {errors.homeownership && <p className="text-brand-red text-xs mt-1">{errors.homeownership.message}</p>}
-              </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className={labelClass}>First Name</label>
@@ -161,6 +151,16 @@ export default function ContactPage() {
               <div>
                 <label htmlFor="phone" className={labelClass}>Phone</label>
                 <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567" {...register("phone")} />
+              </div>
+
+              <div>
+                <label htmlFor="homeownership" className={labelClass}>Do you rent or own your home?</label>
+                <select id="homeownership" className={inputClass} defaultValue="" {...register("homeownership", { required: "Please let us know" })}>
+                  <option value="" disabled>Select one</option>
+                  <option value="own">I own my home</option>
+                  <option value="rent">I rent my home</option>
+                </select>
+                {errors.homeownership && <p className="text-brand-red text-xs mt-1">{errors.homeownership.message}</p>}
               </div>
 
               <div>
