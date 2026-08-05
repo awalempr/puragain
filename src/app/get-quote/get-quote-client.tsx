@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -13,12 +13,13 @@ import {
   CircleDollarSign,
   CheckCircle2,
   Lock,
+  MapPin,
   PhoneCall,
   ArrowRight,
 } from "lucide-react";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
-import { CITIES, REGIONS, type RegionKey } from "@/lib/service-areas";
+import { CITIES } from "@/lib/service-areas";
 
 interface QuoteFormData {
   firstName: string;
@@ -82,6 +83,8 @@ export default function GetQuoteClient() {
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<QuoteFormData>({
     defaultValues: {
@@ -95,6 +98,58 @@ export default function GetQuoteClient() {
       smsOptIn: false,
     },
   });
+
+  // City combobox: typable + filterable, but free text still submits fine
+  // (the /api/lead resolver accepts a typed city name and captures off-list
+  // entries as-is).
+  const cityReg = register("city");
+  const cityValue = watch("city") || "";
+  const [cityOpen, setCityOpen] = useState(false);
+  const [cityActive, setCityActive] = useState(-1);
+  const cityMatches = useMemo(() => {
+    const q = cityValue.trim().toLowerCase();
+    if (!q) return CITIES.slice(0, 8);
+    // rank name-prefix > name-substring > county-substring so typing "san"
+    // surfaces San Diego / San Marcos before other cities in San Diego County.
+    return CITIES.map((c) => {
+      const name = c.name.toLowerCase();
+      const score = name.startsWith(q)
+        ? 0
+        : name.includes(q)
+          ? 1
+          : c.county.toLowerCase().includes(q)
+            ? 2
+            : -1;
+      return { c, score };
+    })
+      .filter((x) => x.score >= 0)
+      .sort((a, b) => a.score - b.score)
+      .slice(0, 8)
+      .map((x) => x.c);
+  }, [cityValue]);
+
+  const selectCity = (name: string) => {
+    setValue("city", name, { shouldValidate: true, shouldDirty: true });
+    setCityOpen(false);
+    setCityActive(-1);
+  };
+
+  const onCityKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (!cityOpen) setCityOpen(true);
+      setCityActive((i) => Math.min(i + 1, cityMatches.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setCityActive((i) => Math.max(i - 1, 0));
+    } else if (e.key === "Enter" && cityOpen && cityActive >= 0 && cityMatches[cityActive]) {
+      e.preventDefault(); // pick the highlighted city instead of submitting
+      selectCity(cityMatches[cityActive].name);
+    } else if (e.key === "Escape") {
+      setCityOpen(false);
+      setCityActive(-1);
+    }
+  };
 
   const onSubmit = async (data: QuoteFormData) => {
     setSubmitError(false);
@@ -284,19 +339,69 @@ export default function GetQuoteClient() {
                       </div>
 
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div>
+                        <div className="relative">
                           <label htmlFor="city" className={labelClass}>City</label>
-                          <select id="city" className={inputClass} defaultValue="" {...register("city")}>
-                            <option value="" disabled>Select your city</option>
-                            {(Object.keys(REGIONS) as RegionKey[]).map((rk) => (
-                              <optgroup key={rk} label={REGIONS[rk].label}>
-                                {CITIES.filter((c) => c.region === rk).map((c) => (
-                                  <option key={c.slug} value={c.slug}>{c.name}</option>
-                                ))}
-                              </optgroup>
-                            ))}
-                            <option value="other">My city isn&rsquo;t listed</option>
-                          </select>
+                          <div className="relative">
+                            <MapPin className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                            <input
+                              id="city"
+                              type="text"
+                              autoComplete="off"
+                              role="combobox"
+                              aria-expanded={cityOpen}
+                              aria-controls="city-listbox"
+                              aria-autocomplete="list"
+                              aria-activedescendant={cityActive >= 0 ? `city-opt-${cityActive}` : undefined}
+                              placeholder="Start typing your city…"
+                              className={`${inputClass} pl-10`}
+                              {...cityReg}
+                              onChange={(e) => {
+                                cityReg.onChange(e);
+                                setCityOpen(true);
+                                setCityActive(-1);
+                              }}
+                              onFocus={() => setCityOpen(true)}
+                              onBlur={(e) => {
+                                cityReg.onBlur(e);
+                                // delay so a click on an option registers first
+                                window.setTimeout(() => setCityOpen(false), 120);
+                              }}
+                              onKeyDown={onCityKeyDown}
+                            />
+                          </div>
+                          {cityOpen && (
+                            <ul
+                              id="city-listbox"
+                              role="listbox"
+                              className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 bg-white py-1 shadow-[0_16px_40px_-16px_rgba(6,9,15,0.35)]"
+                            >
+                              {cityMatches.length > 0 ? (
+                                cityMatches.map((c, i) => (
+                                  <li
+                                    key={c.slug}
+                                    id={`city-opt-${i}`}
+                                    role="option"
+                                    aria-selected={i === cityActive}
+                                    onMouseDown={(e) => {
+                                      e.preventDefault(); // keep focus; selection handles close
+                                      selectCity(c.name);
+                                    }}
+                                    onMouseEnter={() => setCityActive(i)}
+                                    className={`flex cursor-pointer items-center justify-between px-4 py-2.5 text-sm transition-colors ${
+                                      i === cityActive ? "bg-brand-blue/10 text-navy" : "text-gray-700"
+                                    }`}
+                                  >
+                                    <span className="font-medium">{c.name}</span>
+                                    <span className="text-xs text-gray-400">{c.county}</span>
+                                  </li>
+                                ))
+                              ) : (
+                                <li className="px-4 py-2.5 text-sm text-gray-400">
+                                  Not on our list. We&apos;ll still use &ldquo;{cityValue.trim()}&rdquo;.
+                                </li>
+                              )}
+                            </ul>
+                          )}
                         </div>
                         <div>
                           <label htmlFor="system" className={labelClass}>System</label>
