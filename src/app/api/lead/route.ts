@@ -139,7 +139,7 @@ interface LeadPayload {
   address?: string;
   city?: string; // service-area city (slug or name), for location tagging/routing
   smsOptIn?: boolean;
-  source?: string; // "contact" | "quiz"
+  source?: string; // "contact" | "quiz" | "get-quote" | "city"
   answers?: string[]; // quiz answers
   company_website?: string; // honeypot — must stay empty
   recaptchaToken?: string; // invisible reCAPTCHA v3 token
@@ -260,7 +260,12 @@ export async function POST(request: Request) {
     Company: "Website Lead",
     Owner: LEAD_OWNERS.length ? { id: pickOwner(email || phone || `${Date.now()}`) } : undefined,
     Lead_Source: "Website Lead",
-    Form_Name: data.source === "quiz" ? "Website Quiz" : "Website Contact Form",
+    Form_Name:
+      data.source === "quiz"
+        ? "Website Quiz"
+        : data.source === "get-quote"
+          ? "Get Quote Landing Page"
+          : "Website Contact Form",
     Source: sourceTag,
     Campaign: trim(data.utm_campaign),
     gclid_field: trim(data.gclid),
