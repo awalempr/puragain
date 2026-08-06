@@ -68,6 +68,7 @@ export default async function CountyPage({ params }: { params: Promise<{ county:
       name: "Puragain Water",
       url: `https://puragainwater.com/water-filtration/county/${c.slug}`,
       image: "https://puragainwater.com/images/brand/logo.png",
+      telephone: "+1-760-254-0089",
       description: `Home water filtration and reverse osmosis installation serving ${c.name}.`,
       address: { "@type": "PostalAddress", addressRegion: "CA", addressCountry: "US" },
       areaServed: { "@type": "AdministrativeArea", name: c.name },

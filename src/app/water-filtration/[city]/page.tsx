@@ -77,6 +77,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       name: "Puragain Water",
       url: `https://puragainwater.com/water-filtration/${c.slug}`,
       image: "https://puragainwater.com/images/brand/logo.png",
+      telephone: "+1-760-254-0089",
       description: `Home water filtration and reverse osmosis installation serving ${c.name}, ${c.county}.`,
       address: {
         "@type": "PostalAddress",

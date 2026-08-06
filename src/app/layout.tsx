@@ -75,6 +75,7 @@ const jsonLd = {
       "@id": "https://puragainwater.com/#organization",
       name: "Puragain Water",
       url: "https://puragainwater.com",
+      telephone: "+1-760-254-0089",
       logo: "https://puragainwater.com/images/brand/logo.png",
       description:
         "Family-owned water filtration company with 30+ years experience. We install home water filtration systems that remove 99% of contaminants.",
@@ -90,6 +91,7 @@ const jsonLd = {
       "@id": "https://puragainwater.com/#localbusiness",
       name: "Puragain Water",
       url: "https://puragainwater.com",
+      telephone: "+1-760-254-0089",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Escondido",
