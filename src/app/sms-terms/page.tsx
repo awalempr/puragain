@@ -126,7 +126,7 @@ export default function SmsTermsPage() {
               <li>
                 <strong>Web:</strong>{" "}
                 <a href="/contact" className="text-[#3a8fd4] hover:underline">
-                  puragain.com/contact
+                  puragainwater.com/contact
                 </a>
               </li>
               <li>

@@ -131,7 +131,7 @@ export default function TermsPage() {
             <p>For questions about these terms, contact us:</p>
             <ul className="list-none space-y-1.5 mt-3">
               <li><strong>Email:</strong> <a href="mailto:support@puragain.com" className="text-[#3a8fd4] hover:underline">support@puragain.com</a></li>
-              <li><strong>Web:</strong> <a href="/contact" className="text-[#3a8fd4] hover:underline">puragain.com/contact</a></li>
+              <li><strong>Web:</strong> <a href="/contact" className="text-[#3a8fd4] hover:underline">puragainwater.com/contact</a></li>
               <li><strong>Company:</strong> Puragain Water, Escondido, CA</li>
             </ul>
           </div>
