@@ -2845,9 +2845,144 @@
   status = 301
   force = true
 
+# Legacy no-hyphen city slugs -> new hyphenated pages (consolidates old authority)
 [[redirects]]
-  from = "/water-filtration/bonsall-2/"
-  to = "/water-filtration/bonsall"
+  from = "/water-filtration/chulavista/"
+  to = "/water-filtration/chula-vista"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/delmar/"
+  to = "/water-filtration/del-mar"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/elcajon/"
+  to = "/water-filtration/el-cajon"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/lemongrove/"
+  to = "/water-filtration/lemon-grove"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/nationalcity/"
+  to = "/water-filtration/national-city"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/ranchosantafe/"
+  to = "/water-filtration/rancho-santa-fe"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/sandiego/"
+  to = "/water-filtration/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/springvalley/"
+  to = "/water-filtration/spring-valley"
+  status = 301
+  force = true
+
+# Legacy slugs for newly built SD city pages
+[[redirects]]
+  from = "/water-filtration/imperialbeach/"
+  to = "/water-filtration/imperial-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/sanysidro/"
+  to = "/water-filtration/san-ysidro"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/sanluisrey/"
+  to = "/water-filtration/san-luis-rey"
+  status = 301
+  force = true
+
+# Legacy backcountry SD slugs (no dedicated page) -> San Diego county hub
+[[redirects]]
+  from = "/water-filtration/borregosprings/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/boulevard/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/descanso/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/dulzura/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/guatay/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/jamul/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/mountlaguna/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/pala/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/paumavalley/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/pinevalley/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/potrero/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/santaysabel/"
+  to = "/water-filtration/county/san-diego"
   status = 301
   force = true
 
