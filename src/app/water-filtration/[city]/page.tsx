@@ -5,6 +5,7 @@ import { FadeIn } from "@/components/motion";
 import { CityLeadForm } from "@/components/city-lead-form";
 import { Shield, Droplets, Award, Clock, ArrowRight, MapPin, Check, ChevronDown } from "lucide-react";
 import { CITIES, CITY_MAP, REGIONS, nearbyCities } from "@/lib/service-areas";
+import { CITY_WATER } from "@/lib/city-water";
 
 export function generateStaticParams() {
   return CITIES.map((c) => ({ city: c.slug }));
@@ -45,6 +46,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   if (!c) notFound();
   const region = REGIONS[c.region];
   const nearby = nearbyCities(c);
+  const localWater = CITY_WATER[c.slug];
 
   const faqs = [
     {
@@ -162,15 +164,27 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-navy mb-5" style={{ letterSpacing: "-0.02em" }}>
               What&rsquo;s in {c.name}&rsquo;s water?
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              {c.name}, in {c.county}, {region.water}
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mt-4">
-              A Puragain Water system removes up to 99% of those contaminants &mdash; chlorine,
-              hardness minerals, lead, PFAS and more &mdash; so the water your family drinks, cooks
-              with, and showers in is genuinely clean. The only way to know what&rsquo;s in yours is
-              to test it, and that test is free.
-            </p>
+            {localWater ? (
+              <>
+                <p className="text-gray-600 text-lg leading-relaxed">{localWater}</p>
+                <p className="text-gray-600 text-lg leading-relaxed mt-4">
+                  The only way to know exactly what&rsquo;s in your {c.name} water is to test it, and
+                  that in-home test is free.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  {c.name}, in {c.county}, {region.water}
+                </p>
+                <p className="text-gray-600 text-lg leading-relaxed mt-4">
+                  A Puragain Water system removes up to 99% of those contaminants &mdash; chlorine,
+                  hardness minerals, lead, PFAS and more &mdash; so the water your family drinks, cooks
+                  with, and showers in is genuinely clean. The only way to know what&rsquo;s in yours is
+                  to test it, and that test is free.
+                </p>
+              </>
+            )}
             <div className="mt-8">
               <Link href="#quote" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-red px-8 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#b00e0e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/50 active:scale-[0.98]">
                 Get my free {c.name} water test <ArrowRight className="w-4 h-4" />
