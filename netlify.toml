@@ -2845,6 +2845,18 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/videos/"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/videos"
+  to = "/reviews"
+  status = 301
+  force = true
+
 # Legacy no-hyphen city slugs -> new hyphenated pages (consolidates old authority)
 [[redirects]]
   from = "/water-filtration/chulavista/"
