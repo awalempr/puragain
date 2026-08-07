@@ -60,9 +60,9 @@ const questions = [
   {
     question: "What's your monthly budget preference?",
     options: [
-      "Most affordable option ($26/mo)",
-      "Best value mid-range ($42/mo)",
-      "Best system available, price is secondary ($74/mo)",
+      "Drinking water only, most affordable ($26/mo)",
+      "Drinking water plus minerals, best value ($42/mo)",
+      "Whole house, every tap and shower ($74/mo)",
       "Not sure, show me all options",
     ],
   },
@@ -159,6 +159,11 @@ export function QuizModal({
         body: JSON.stringify({
           ...contactInfo,
           answers,
+          // Pair each question with its answer so reps get call-ready context
+          // (why they're calling, skin/hair vs taste, priorities, budget).
+          quiz: questions
+            .map((q, i) => ({ q: q.question, a: answers[i] }))
+            .filter((x) => x.a),
           ...getTracking(),
           source: "quiz",
           company_website: honeypotRef.current?.value || "",

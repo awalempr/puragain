@@ -146,7 +146,9 @@ interface LeadPayload {
   city?: string; // service-area city (slug or name), for location tagging/routing
   smsOptIn?: boolean;
   source?: string; // "contact" | "quiz" | "get-quote" | "city" | "refer"
-  answers?: string[]; // quiz answers
+  answers?: string[]; // quiz answers (legacy: bare option text)
+  quiz?: { q: string; a: string }[]; // quiz question/answer pairs (for rep call notes)
+  homeownership?: string; // contact/city forms: "own" | "rent" | "unsure"
   // Referral program ("refer"): the first-class name/email/phone above belong to
   // the REFERRED friend (the new lead reps will call); these describe the
   // existing customer who sent them, so ops can pay the referral reward.
@@ -276,10 +278,57 @@ export async function POST(request: Request) {
   if (data.address) descriptionLines.push(`Install address: ${data.address}`);
   if (typeof data.smsOptIn === "boolean") descriptionLines.push(`SMS opt-in: ${data.smsOptIn ? "Yes" : "No"}`);
   if (data.message) descriptionLines.push(`Message: ${data.message}`);
-  if (data.answers?.length) {
-    descriptionLines.push("Quiz answers:");
-    data.answers.forEach((a, i) => a && descriptionLines.push(`  ${i + 1}. ${a}`));
+  // Quiz answers, paired with their questions so reps have call-ready context.
+  // Prefer the structured {q,a} pairs; fall back to the legacy bare-answer list.
+  const quizPairs = (
+    data.quiz?.length ? data.quiz : (data.answers || []).map((a) => ({ q: "", a }))
+  ).filter((x) => x.a);
+  if (quizPairs.length) {
+    descriptionLines.push("Water quiz answers:");
+    quizPairs.forEach((x) =>
+      descriptionLines.push(x.q ? `  • ${x.q} → ${x.a}` : `  • ${x.a}`)
+    );
   }
+
+  // Which form this lead came from — drives Form_Name and the call-prep note title.
+  const formName = isReferral
+    ? "Referral Program"
+    : data.source === "quiz"
+      ? "Website Quiz"
+      : data.source === "get-quote"
+        ? "Get Quote Landing Page"
+        : data.source === "city"
+          ? "City Landing Page"
+          : "Website Contact Form";
+
+  // Rep-facing call-prep note, built for EVERY form (quiz, contact, get-quote,
+  // city, referral) so whatever the customer told us surfaces in the lead's
+  // Notes timeline — not just the quiz.
+  const noteLines: string[] = [];
+  if (data.system) noteLines.push(`System of interest: ${systemLabels[data.system] || data.system}`);
+  if (data.message) noteLines.push(`In their words: "${data.message}"`);
+  const ownAns = data.homeownership || data.ownHome;
+  if (ownAns) {
+    const owns = /^(own|i own)/i.test(ownAns);
+    const rents = /^(rent|i rent)/i.test(ownAns);
+    noteLines.push(`Homeowner: ${owns ? "Yes" : rents ? "No (renter)" : ownAns}`);
+  }
+  if (cityObj) noteLines.push(`Service area: ${cityObj.name}, ${cityObj.county}`);
+  else if (data.city && data.city !== "other") noteLines.push(`City: ${data.city}`);
+  if (typeof data.smsOptIn === "boolean") noteLines.push(`SMS opt-in: ${data.smsOptIn ? "Yes" : "No"}`);
+  if (quizPairs.length) {
+    noteLines.push("");
+    noteLines.push("Water quiz answers:");
+    quizPairs.forEach((x) => noteLines.push(x.q ? `• ${x.q}\n   ↳ ${x.a}` : `• ${x.a}`));
+  }
+  if (isReferral) {
+    noteLines.push("");
+    noteLines.push(`🎁 Referral from: ${referrerName}${referrerPhone ? ` (${referrerPhone})` : ""}`);
+  }
+  const noteContent = noteLines.length
+    ? `Lead from ${formName} — use this on your call:\n\n${noteLines.join("\n")}`
+    : "";
+
   // Attribution detail without a dedicated CRM field goes to Description too.
   if (data.utm_medium) descriptionLines.push(`UTM medium: ${data.utm_medium}`);
   if (data.utm_term) descriptionLines.push(`UTM term: ${data.utm_term}`);
@@ -308,13 +357,7 @@ export async function POST(request: Request) {
     Company: isReferral ? "Referral" : "Website Lead",
     Owner: LEAD_OWNERS.length ? { id: pickOwner(email || phone || `${Date.now()}`) } : undefined,
     Lead_Source: isReferral ? REFERRAL_LEAD_SOURCE : "Website Lead",
-    Form_Name: isReferral
-      ? "Referral Program"
-      : data.source === "quiz"
-        ? "Website Quiz"
-        : data.source === "get-quote"
-          ? "Get Quote Landing Page"
-          : "Website Contact Form",
+    Form_Name: formName,
     Source: isReferral ? "referral" : sourceTag,
     Campaign: trim(data.utm_campaign),
     gclid_field: trim(data.gclid),
@@ -378,6 +421,31 @@ export async function POST(request: Request) {
   try {
     const result = await createWithFallback(lead);
     if (result.ok && result.record?.status === "success") {
+      // Attach the quiz Q&A as a dedicated Note so it surfaces in the lead's
+      // Notes timeline (where reps prep), not just the Comments field.
+      // Best-effort: a failed note must never fail the lead.
+      const leadId = (result.record?.details as { id?: string } | undefined)?.id;
+      if (leadId && noteContent) {
+        try {
+          await fetch(`${API_HOST}/crm/v6/Leads/${leadId}/Notes`, {
+            method: "POST",
+            headers: {
+              Authorization: `Zoho-oauthtoken ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              data: [
+                {
+                  Note_Title: `📋 ${formName} — Customer Details`,
+                  Note_Content: noteContent.slice(0, 32000),
+                },
+              ],
+            }),
+          });
+        } catch (noteErr) {
+          console.warn("Lead note add failed (non-blocking):", noteErr);
+        }
+      }
       return NextResponse.json({ ok: true });
     }
 
