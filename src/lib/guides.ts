@@ -591,6 +591,83 @@ export const GUIDES: Guide[] = [
       }
     ]
   },
+  {
+    "slug": "alkaline-water-benefits",
+    "metaTitle": "Alkaline Water Benefits: Hype vs. Fact (2026)",
+    "title": "Alkaline water benefits: what's actually supported, and what's marketing?",
+    "description": "Alkaline water's real benefit is taste and added minerals, not most health claims. Here's what science supports, what's hype, and how 6-stage alkaline RO works.",
+    "category": "Alkaline Water",
+    "intro": "The most honest benefit of alkaline water is that it tastes cleaner and adds back beneficial minerals like calcium, magnesium, and potassium. The bigger health claims, that it neutralizes body acid, boosts energy, or slows aging, are largely unproven, because your body tightly regulates its own pH no matter what you drink. Where alkaline water genuinely shines is taste and mineral content, especially when a 6-stage alkaline RO system purifies water first and then remineralizes it.",
+    "sections": [
+      {
+        "h": "What alkaline water actually is",
+        "p": [
+          "Alkaline water simply has a higher pH than neutral water. Pure water sits at a pH of 7; alkaline drinking water is usually in the 8 to 9.5 range. That higher pH comes from dissolved alkaline minerals, mainly calcium, magnesium, potassium, and bicarbonate. The pH number alone tells you very little, though. What matters is what is creating that pH and how much of it is present, which is measured as mineral content, not just the pH reading on a test strip.",
+          "There is an important difference between water that is naturally mineral-rich and water that has been artificially raised in pH by an electric ionizer with no added minerals. Mineral-based alkalinity is stable and adds something to the water. pH boosted by electrolysis alone tends to be thin, and the effect fades quickly once the water sits or mixes with the acidic environment of your stomach."
+        ]
+      },
+      {
+        "h": "What the science actually supports",
+        "p": [
+          "The claim that drinking alkaline water changes your body's pH does not hold up. Your blood is kept in a very narrow range near 7.4 by your kidneys and lungs, and your stomach is strongly acidic by design. Water you drink cannot meaningfully move blood pH, and popular ideas about alkaline water reducing overall body acidity, preventing disease, or slowing aging are not supported by solid clinical evidence. Marketing that promises those outcomes is running ahead of the research.",
+          "There are narrower, more credible findings. Some small studies suggest alkaline water may help with acid reflux symptoms by deactivating the enzyme pepsin, and one study on athletes found modest hydration and blood-acidity differences after intense exercise. These are limited, early results, not proof of broad health benefits. The genuinely well-supported points are simpler: staying well hydrated matters, and getting minerals like calcium, magnesium, and potassium is good for you. Alkaline mineral water can be a pleasant, low-effort way to get a little more of those minerals."
+        ]
+      },
+      {
+        "h": "Taste and mineral content: the real benefit",
+        "p": [
+          "The benefit most people actually notice is taste. Reverse osmosis produces extremely pure water, and because it removes nearly everything, including minerals, very pure water can taste flat or slightly sharp to some palates. Adding a measured blend of calcium, magnesium, and potassium back in rounds out the flavor and gives water a smoother, cleaner, slightly sweet character that most families prefer for drinking, coffee, and tea.",
+          "Mineral content is also a modest nutritional plus. Water is not meant to be your main source of minerals, but calcium and magnesium in remineralized water are easy for the body to absorb and add up over a day of drinking. So the fair way to frame alkaline water is this: better taste and a small mineral bonus are real and worth having, while the dramatic health claims are not something to buy a system for."
+        ]
+      },
+      {
+        "h": "How a 6-stage alkaline RO system adds minerals back",
+        "p": [
+          "A 6-stage alkaline RO system solves the flat-taste problem by design. The first stages do the purifying: sediment and carbon filters catch particles, chlorine, chloramine, and taste and odor compounds, then the reverse-osmosis membrane removes up to 99% of dissolved contaminants such as lead, arsenic, PFAS, and nitrates. At this point the water is exceptionally pure but stripped of minerals, which is exactly why the next stages matter.",
+          "The final stages remineralize and polish. A mineral or alkalizing stage passes the purified water over natural mineral media that releases calcium, magnesium, and potassium back into the water, gently raising the pH and restoring taste. A final carbon or polishing stage smooths everything out before it reaches your glass. The result is water that is both genuinely purified and pleasant to drink, rather than choosing between one or the other. Puragain's 6-stage alkaline system is built around this purify-then-remineralize approach and installs at the kitchen tap for drinking and cooking."
+        ]
+      },
+      {
+        "h": "Is alkaline water right for your home?",
+        "p": [
+          "If you want the cleanest possible drinking water and you also care about taste, an alkaline RO system is a sensible choice, because you get near-total contaminant removal plus the minerals and smoother flavor added back at the end. If your main concern is hardness, scale, and dry skin throughout the house, that is a different problem solved by whole-house conditioning rather than by alkaline drinking water. Many Southern California homes benefit from both: whole-house treatment for how water feels everywhere, and alkaline RO for what you drink.",
+          "The honest bottom line is to choose alkaline water for taste and mineral content, not for cure-all promises. The best way to decide is to know exactly what is in your specific water first. Puragain offers a free in-home water test where a technician measures your water on-site and shows you the results with no obligation, so any system you choose is matched to what your home actually needs."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does alkaline water change your body's pH?",
+        "a": "No, not meaningfully. Your kidneys and lungs keep blood pH in a tight range near 7.4, and your stomach is strongly acidic regardless of what you drink. Claims that alkaline water alkalizes your body are not supported by solid evidence."
+      },
+      {
+        "q": "So is alkaline water actually good for you?",
+        "a": "The honest answer is that its real benefits are better taste and a small amount of added calcium, magnesium, and potassium. Staying hydrated and getting minerals is good for you, but the dramatic disease and anti-aging claims are unproven."
+      },
+      {
+        "q": "What pH is alkaline drinking water?",
+        "a": "Usually between 8 and 9.5. But pH alone matters less than what creates it. Water made alkaline by real dissolved minerals is more stable and better tasting than water whose pH is raised artificially with no minerals added."
+      },
+      {
+        "q": "Why does RO water need minerals added back?",
+        "a": "Reverse osmosis removes almost everything, including minerals, so very pure water can taste flat. A 6-stage alkaline system adds calcium, magnesium, and potassium back after purification to restore taste and gently raise the pH."
+      }
+    ],
+    "related": [
+      {
+        "label": "6-Stage Alkaline System",
+        "href": "/products/alkaline"
+      },
+      {
+        "label": "Reverse Osmosis System",
+        "href": "/products/reverse-osmosis"
+      },
+      {
+        "label": "Cost of a filtration system",
+        "href": "/guides/water-filtration-cost"
+      }
+    ]
+  },
 ];
 
 export const GUIDE_MAP: Record<string, Guide> = Object.fromEntries(GUIDES.map((g) => [g.slug, g]));
