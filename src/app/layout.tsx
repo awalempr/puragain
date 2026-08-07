@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Puragain Water",
   },
   description:
-    "California water filtration systems that remove 99% of contaminants. Serving San Diego, Los Angeles, and the Inland Empire with free water testing, professional installation, and lifetime service. Book a free water test today.",
+    "California water filtration systems that remove 99% of contaminants. Serving homeowners across Southern California, from Santa Barbara and Ventura through Los Angeles, Orange County, and the Inland Empire down to San Diego. Free in-home water test, professional installation, and lifetime service.",
   alternates: {
     canonical: "/",
   },

@@ -2809,8 +2809,45 @@
   force = true
 
 [[redirects]]
+  from = "/contact-us/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/contact-us/slider002-2/"
   to = "/contact"
+  status = 301
+  force = true
+
+# Coverage-report cleanup (2026-08-06): fix recurring soft-404s and stray 404s
+[[redirects]]
+  from = "/cookie-policy/"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cookie-policy"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/whole-home-water-filtration-2/"
+  to = "/products/whole-house"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/water-filtration/bonsall-2/"
+  to = "/water-filtration/bonsall"
   status = 301
   force = true
 
