@@ -2951,6 +2951,12 @@
   force = true
 
 [[redirects]]
+  from = "/water-filtration/julian/"
+  to = "/water-filtration/county/san-diego"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/water-filtration/mountlaguna/"
   to = "/water-filtration/county/san-diego"
   status = 301
