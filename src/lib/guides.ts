@@ -276,6 +276,321 @@ export const GUIDES: Guide[] = [
       { label: "Is San Diego tap water safe?", href: "/guides/is-san-diego-tap-water-safe" },
     ],
   },
+  {
+    "slug": "is-reverse-osmosis-water-healthy",
+    "metaTitle": "Is Reverse Osmosis Water Healthy? (2026)",
+    "title": "Is Reverse Osmosis Water Safe and Healthy to Drink?",
+    "description": "Yes, reverse osmosis water is safe and healthy to drink. Here is the honest truth about mineral removal, remineralization, and who benefits most.",
+    "category": "Reverse Osmosis",
+    "intro": "Yes, reverse osmosis (RO) water is safe and healthy to drink. It is some of the purest drinking water you can produce at home, removing lead, PFAS, nitrates, chlorine byproducts, and other contaminants. The common concern is that RO also strips out beneficial minerals like calcium and magnesium, which is true, but the amount removed is small compared to what you get from food, and remineralization or a 6-stage alkaline system easily adds those minerals back.",
+    "sections": [
+      {
+        "h": "What reverse osmosis actually removes from your water",
+        "p": [
+          "Reverse osmosis pushes water through a semipermeable membrane with pores small enough to block particles that standard carbon filters miss. That includes lead, arsenic, nitrates, fluoride, PFAS forever chemicals, chromium-6, and disinfection byproducts, along with the dissolved salts that make water taste flat or metallic. For families on Southern California municipal water, that means fewer contaminants of concern and noticeably cleaner-tasting water straight from the tap.",
+          "The same membrane that blocks those contaminants also removes a portion of the naturally dissolved minerals in the water, including calcium and magnesium. This is where the healthy minerals concern comes from, and it is a fair question worth answering honestly rather than dismissing."
+        ]
+      },
+      {
+        "h": "The mineral concern, answered honestly",
+        "p": [
+          "It is true that RO water contains fewer dissolved minerals than tap or spring water. The important context is how small a share of your daily minerals actually comes from water in the first place. The vast majority of the calcium, magnesium, and potassium your body uses comes from food such as leafy greens, dairy, nuts, beans, and whole grains, not from what is dissolved in your glass of water. For a person eating a reasonably balanced diet, the minerals lost through RO are a minor contribution that is easily covered elsewhere.",
+          "The World Health Organization has noted that demineralized water is not ideal as a sole long-term source in situations where diet is poor and water is the main mineral source. That is a real consideration, which is exactly why remineralization exists as an option. It is not a reason to avoid RO, and it is not a claim that RO water is dangerous. Represented fairly, the takeaway is simple: RO water is safe to drink, and if you want the minerals back, adding them is straightforward."
+        ]
+      },
+      {
+        "h": "How remineralization and 6-stage alkaline systems add minerals back",
+        "p": [
+          "Many modern RO systems include a remineralization stage that reintroduces calcium and magnesium after filtration. This gives you the contaminant removal of RO along with mineral content and a smoother, less flat taste. A 6-stage alkaline RO system takes this a step further by passing the purified water through a mineral and alkaline cartridge that adds beneficial minerals back and raises the pH, producing water many people find crisper and easier to drink.",
+          "It is worth being clear about the health claims here. The evidence that drinking higher-pH alkaline water improves health beyond ordinary hydration is limited and contested, so we do not promise medical benefits from alkalinity itself. What a remineralized or alkaline stage reliably delivers is better taste and the return of the minerals RO removes, which directly addresses the concern most people actually have."
+        ]
+      },
+      {
+        "h": "Who benefits most from reverse osmosis",
+        "p": [
+          "RO is a strong fit for households that want the broadest contaminant reduction, especially where lead plumbing, PFAS, high nitrates, or hard mineral taste are concerns. Families with young children, anyone preparing infant formula, and people who simply want the cleanest possible drinking and cooking water tend to value the peace of mind most. It is also ideal if you currently buy bottled water, since a home system delivers comparable purity at a fraction of the ongoing cost.",
+          "If your main issue is scale buildup and hard water throughout the house rather than drinking-water quality, a whole-house salt-free conditioner addresses that at every tap, and it pairs well with an RO system at the kitchen sink. A free in-home water test is the fastest way to see exactly what is in your water and whether RO, alkaline RO, or a combined setup makes the most sense for your home."
+        ]
+      },
+      {
+        "h": "Is RO water better than bottled water?",
+        "p": [
+          "In most cases, yes. A quality RO system produces water that meets or exceeds the purity of typical bottled water, and you control the process instead of trusting an unlabeled source. You also avoid the recurring expense and plastic waste of bottled water, since RO delivers on-demand filtered water directly from your tap. For a family that goes through several cases a month, a home system usually pays for itself over time.",
+          "Bottled water is not held to a single universal purity standard, and some is simply filtered municipal water. With a properly maintained RO system you know exactly what stages the water passes through and when the filters were last changed, which is a meaningful advantage for consistency and trust."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does reverse osmosis remove all the healthy minerals from water?",
+        "a": "RO removes a portion of dissolved minerals like calcium and magnesium, but not all, and the amount is small compared to what you get from food. If you want those minerals back, a remineralization stage or a 6-stage alkaline system adds them in after filtration."
+      },
+      {
+        "q": "Is it safe to drink reverse osmosis water every day?",
+        "a": "Yes. Drinking RO water daily is safe for the whole family, including children. Most of your daily minerals come from food, not water, so the minerals RO removes are easily covered by a normal diet, and remineralization is available if you prefer added mineral content."
+      },
+      {
+        "q": "Is alkaline reverse osmosis water actually healthier?",
+        "a": "Alkaline RO water reliably tastes smoother and returns the minerals RO removes. The evidence that a higher pH provides health benefits beyond normal hydration is limited and debated, so we recommend it mainly for taste and remineralization rather than any specific medical claim."
+      },
+      {
+        "q": "How do I know if reverse osmosis is right for my home?",
+        "a": "A free in-home water test shows exactly what is in your tap water. From there we can recommend standard RO, 6-stage alkaline RO, a whole-house conditioner, or a combination based on your actual water and your household's priorities."
+      }
+    ],
+    "related": [
+      {
+        "label": "Reverse Osmosis Systems",
+        "href": "/products/reverse-osmosis"
+      },
+      {
+        "label": "6-Stage Alkaline System",
+        "href": "/products/alkaline"
+      },
+      {
+        "label": "Book a Free In-Home Water Test",
+        "href": "/contact"
+      }
+    ]
+  },
+  {
+    "slug": "water-filtration-financing",
+    "metaTitle": "Water Filtration Financing in CA (2026)",
+    "title": "How Do You Finance a Home Water Filtration System in California?",
+    "description": "Learn how to finance a home water filtration system in California. Monthly plans run about $26 to $74 with zero money down, subject to credit approval.",
+    "category": "Buying Guide",
+    "intro": "You can finance a home water filtration system in California with monthly payments of roughly 26 to 74 dollars and zero money down, subject to credit approval. Financing spreads the cost of the equipment, professional installation, and service over time instead of paying the full amount upfront. At PurAgain Water, every financed system still includes the same lifetime service plan and 7-year warranty as a cash purchase.",
+    "sections": [
+      {
+        "h": "Financing vs. paying upfront: which makes sense for you",
+        "p": [
+          "Paying upfront means one lump sum and no monthly commitment, which appeals to homeowners who prefer to own the system outright from day one and avoid any credit application. It is the simplest path if you have the cash set aside and want to close the purchase in a single step.",
+          "Financing makes sense if you would rather keep your savings intact and match the monthly payment to the value your family gets from cleaner water every day. Instead of one large charge, you pay a predictable amount each month while using the system from the first day it is installed. Neither option changes the equipment, the warranty, or the service you receive. The right choice comes down to your budget and how you prefer to manage a home improvement expense."
+        ]
+      },
+      {
+        "h": "What the 26 to 74 dollar monthly range depends on",
+        "p": [
+          "The monthly payment lands somewhere in the roughly 26 to 74 dollar range based on which system you choose and the terms of your financing. A single-point reverse osmosis or 6-stage alkaline drinking water system sits at the lower end because it treats water at one tap. A whole-house salt-free conditioning system, which treats every faucet, shower, and appliance in the home, sits higher because it is a larger installation.",
+          "The exact figure also depends on your financing term and the rate you qualify for, which is why every quote is confirmed after a free in-home water test. That visit lets us recommend the right system for your actual water and your home layout, so the monthly number you see is real rather than a guess. All financing is subject to credit approval."
+        ]
+      },
+      {
+        "h": "Zero money down and what credit approval means",
+        "p": [
+          "Zero money down means you do not pay anything at the time of installation to start using your system. Approved homeowners begin their monthly plan after the system is installed, which removes the upfront barrier that stops many families from improving their water sooner.",
+          "Subject to credit approval is an honest condition, not fine print we hide. Financing is offered through a lending partner, and approval and your specific rate depend on your credit profile. Some homeowners qualify for the lowest payments while others see terms in the higher part of the range. There is no cost or obligation to find out where you stand, and we will always show you the paying-upfront option alongside financing so you can compare."
+        ]
+      },
+      {
+        "h": "What is included with every system",
+        "p": [
+          "Financing at PurAgain Water covers far more than the equipment. Every system includes professional installation by our own technicians, so there is no separate labor bill and no hunting for a plumber. Your monthly payment reflects a complete, installed, working system.",
+          "You also receive a lifetime service plan and a 7-year warranty on the equipment. The service plan keeps your system performing over the years with filter changes and maintenance handled by our team, and the warranty protects you against defects for nearly a decade. These are the same benefits whether you finance or pay upfront, so choosing a monthly plan never means giving up support or coverage."
+        ]
+      },
+      {
+        "h": "How to get an accurate financing quote",
+        "p": [
+          "The most reliable way to know your real monthly payment is to start with a free in-home water test. A technician measures what is actually in your water, reviews your plumbing, and recommends the system that fits your household. From there you get a precise quote with both the upfront price and the financed monthly option.",
+          "There is no pressure and no charge for the visit. PurAgain Water serves homeowners across Southern California from our base in Escondido, and the test typically takes under an hour. Renters are not eligible for financing on a permanent installed system, so this program is designed for homeowners planning to stay in their home."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Do I need perfect credit to finance a water filtration system?",
+        "a": "No. Financing is subject to credit approval, and a range of credit profiles can qualify. Your credit affects the rate and term, which is why payments span roughly 26 to 74 dollars per month. Checking your options carries no cost or obligation."
+      },
+      {
+        "q": "Is anything really zero money down?",
+        "a": "Yes. Approved homeowners pay nothing at installation and begin their monthly plan afterward. There is no down payment required to start using the system, though all financing remains subject to credit approval."
+      },
+      {
+        "q": "Does financing change the warranty or service I get?",
+        "a": "No. A financed system includes the exact same lifetime service plan and 7-year warranty as paying upfront, plus professional installation. Choosing a monthly plan never reduces your coverage or support."
+      },
+      {
+        "q": "Can renters finance a system?",
+        "a": "No. Financing and installation are for homeowners only, since the system is permanently installed in the home. If you own your home in Southern California, you can schedule a free in-home water test to see your options."
+      }
+    ],
+    "related": [
+      {
+        "label": "How Much Does a Water Filtration System Cost?",
+        "href": "/guides/water-filtration-cost"
+      },
+      {
+        "label": "Reverse Osmosis Drinking Water Systems",
+        "href": "/products/reverse-osmosis"
+      },
+      {
+        "label": "Book a Free In-Home Water Test",
+        "href": "/contact"
+      }
+    ]
+  },
+  {
+    "slug": "how-to-choose-water-filtration-system",
+    "metaTitle": "How to Choose a Water Filtration System (2026)",
+    "title": "How Do You Choose the Right Home Water Filtration System in 2026?",
+    "description": "A 2026 buyer's guide to choosing a home water filtration system: reverse osmosis vs whole-house vs alkaline, sizing, what to ask, and red flags to avoid.",
+    "category": "Buying Guide",
+    "intro": "",
+    "sections": [
+      {
+        "h": "Start With a Water Test, Not a Product",
+        "p": [
+          "The single most common buying mistake is picking a system before you know what is actually in your water. Chlorine taste, hardness scale, nitrates, PFAS, and total dissolved solids are all different problems, and no single filter solves all of them. A test tells you what you are treating so you do not overpay for capacity you do not need or, worse, install something that does nothing for your specific water.",
+          "If you are on a private well, ask for a laboratory analysis. If you are on municipal water, your utility publishes an annual Consumer Confidence Report that lists what it detects, though that report reflects water at the treatment plant and not what picks up from aging pipes on the way to your home. A free in-home test that samples water at your own tap gives you the most honest picture, and any reputable company should offer one before recommending anything."
+        ]
+      },
+      {
+        "h": "Reverse Osmosis vs Whole-House vs Alkaline: What Each One Actually Does",
+        "p": [
+          "Reverse osmosis (RO) forces water through a membrane that removes dissolved solids, and it is the strongest option for drinking water. A quality RO system reduces a broad range of contaminants including many that carbon filters miss, such as nitrates, arsenic, fluoride, and PFAS. It installs under the kitchen sink and treats the water you drink and cook with, not the whole house. A 6-stage alkaline system is RO with added remineralization and pH adjustment stages, so you get the same strong filtration while adding back minerals like calcium and magnesium after the membrane strips them out.",
+          "A whole-house system treats water where it enters your home, so every shower, faucet, and appliance benefits. In Southern California the most common whole-house need is hardness. A salt-free conditioner changes how minerals behave so they are less likely to form scale, which protects water heaters and plumbing without adding sodium or wasting water on regeneration cycles. Whole-house conditioning and point-of-use RO are not competitors. They solve different problems, and many homes use both: a conditioner for scale and skin, plus RO or alkaline at the sink for drinking."
+        ]
+      },
+      {
+        "h": "Sizing: Match the System to Your Household and Water Use",
+        "p": [
+          "Sizing matters most for whole-house equipment. The key number is peak flow rate, measured in gallons per minute, which depends on how many bathrooms and fixtures might run at once. An undersized unit causes pressure drops when two showers run together, while an oversized one is money spent on capacity you never use. A good installer calculates this from your fixture count and family size rather than selling one generic box to every home.",
+          "For drinking-water systems, sizing is about daily volume and storage. Most under-sink RO units produce enough for a family's drinking and cooking, and a properly sized tank keeps up with normal demand. If you have a large household or want RO plumbed to a refrigerator or a second tap, mention that up front so the system and tank are specified correctly. The right size is the one built around your actual home, not a package number pulled off a shelf."
+        ]
+      },
+      {
+        "h": "What to Look For in a Quality System and Company",
+        "p": [
+          "On the equipment side, look for independent certification of performance claims. NSF/ANSI standards (for example, Standard 58 for reverse osmosis and Standard 42 or 53 for carbon filtration) confirm a system was tested to reduce what the label says it reduces. Ask which specific contaminants the system is certified to reduce, since a vague promise to make water cleaner is not the same as a verified reduction claim for the substances in your water.",
+          "On the company side, the fundamentals matter more than the sales pitch. Look for professional installation rather than a drop-ship box, a clear warranty (a 7-year warranty and a lifetime service plan signal a company that expects to stand behind the work), transparent filter-replacement schedules and costs, and licensed technicians who serve your area. Financing can make a quality system affordable, and terms in the range of roughly 26 to 74 dollars per month with zero money down are common, though any financing is subject to credit approval and you should see the total cost, not just the monthly number."
+        ]
+      },
+      {
+        "h": "Red Flags and High-Pressure Sales Tactics to Avoid",
+        "p": [
+          "The clearest warning sign is urgency manufactured out of thin air. Watch for the today-only discount that vanishes if you do not sign tonight, the price that mysteriously drops by thousands the moment you hesitate, or a rep who will not leave until you commit. A fair price is a fair price tomorrow. Reputable companies give you the test results, a written quote, and time to think.",
+          "Be skeptical of scare theatrics like precipitate tests where a probe turns your water an alarming color, since those reactions are basic chemistry and are not a valid measure of water safety. Also avoid anyone who recommends a system before testing your water, cannot name the specific contaminants their unit reduces, hides filter-replacement and total costs, or dismisses your questions. Alkaline and pH claims deserve honest framing too: remineralized water can taste better and is preferred by many households, but broad health cures attributed to alkaline water are not well supported by strong evidence, and an honest company will say so rather than promise miracles."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Do I need both a whole-house system and a reverse osmosis system?",
+        "a": "Often yes, because they solve different problems. A whole-house conditioner addresses hardness and scale that affect every faucet and appliance, while reverse osmosis or alkaline treats the drinking and cooking water at your kitchen sink to a much higher standard. A water test tells you whether you need one, the other, or both."
+      },
+      {
+        "q": "Is alkaline water actually healthier than regular filtered water?",
+        "a": "The honest answer is that evidence for broad health benefits from alkaline water is limited. What a 6-stage alkaline system reliably delivers is strong reverse-osmosis filtration plus remineralization that many people prefer for taste and mouthfeel. Choose it because you like the water and want thorough filtration, not because of dramatic health claims."
+      },
+      {
+        "q": "How much should a home water filtration system cost?",
+        "a": "Cost depends on what you are treating and how much of the home you cover. Rather than a single sticker price, look at the total picture: equipment, professional installation, warranty, and ongoing filter replacements. Financing around 26 to 74 dollars per month with zero money down is common, subject to credit approval, and you should always ask to see the full cost, not just the monthly payment."
+      },
+      {
+        "q": "What is the most important question to ask a water company?",
+        "a": "Ask which specific contaminants their system is certified to reduce and to see the independent certification, such as NSF/ANSI standards. That one question separates companies that test your water and match a verified solution to it from those selling a generic box with vague promises."
+      }
+    ],
+    "related": [
+      {
+        "label": "Reverse Osmosis vs Water Softener: Which Do You Need?",
+        "href": "/guides/reverse-osmosis-vs-water-softener"
+      },
+      {
+        "label": "What Does a Water Filtration System Cost?",
+        "href": "/guides/water-filtration-cost"
+      },
+      {
+        "label": "Get a Free In-Home Water Test",
+        "href": "/contact"
+      }
+    ]
+  },
+  {
+    "slug": "do-i-need-water-filter-city-water",
+    "metaTitle": "Do You Need a Water Filter With City Water? (2026)",
+    "title": "Do You Need a Water Filter If You Already Have Treated City Water?",
+    "description": "City treatment makes water safe to drink, but it does not remove hardness, disinfection byproducts, or lead added by home plumbing. Here is what a filter still does.",
+    "category": "Water Quality",
+    "intro": "Yes, most homes on treated city water still benefit from home filtration. Municipal utilities make water safe to drink and meet federal standards, but their job stops at your property line. That leaves hardness, chlorine and chloramine taste, disinfection byproducts, and contaminants your own pipes add, like lead, along with emerging concerns such as PFAS that older treatment plants were never built to remove.",
+    "sections": [
+      {
+        "h": "What city treatment actually does",
+        "p": [
+          "Municipal water systems are built around one primary mission, which is preventing waterborne disease. They filter out sediment and particles, disinfect with chlorine or chloramine to kill bacteria and viruses, and monitor for regulated contaminants under the federal Safe Drinking Water Act. In Southern California, much of the supply is imported from the Colorado River and Northern California, then blended and treated before it reaches your neighborhood.",
+          "This system works, and the water arriving at your meter is legally safe. But safe and ideal are not the same thing. Federal limits are set for public health across an entire population, and utilities are not responsible for taste, hardness, the byproducts of their own disinfection, or anything that happens after the water enters your home."
+        ]
+      },
+      {
+        "h": "What treatment does not remove: hardness",
+        "p": [
+          "Hardness is dissolved calcium and magnesium picked up as water moves through rock and soil. It is not a health hazard, so utilities do not remove it, and Southern California water is notably hard. You see the results as white scale on faucets and glassware, spots on dishes, soap that will not lather, dry skin and hair, and mineral buildup that shortens the life of water heaters, dishwashers, and coffee makers.",
+          "City treatment leaves hardness completely untouched. Addressing it requires equipment in your home, either a traditional softener that swaps the minerals out or a salt-free conditioner that changes how the minerals crystallize so they no longer stick to surfaces."
+        ]
+      },
+      {
+        "h": "Chlorine, chloramine, and disinfection byproducts",
+        "p": [
+          "The same disinfectants that keep water safe in transit also affect its taste and smell. Chlorine gives that pool-like odor, and many Southern California systems use chloramine, a longer-lasting chlorine and ammonia compound that is harder to remove and can be a concern for people with fish tanks or on dialysis. Neither is dangerous at treated levels, but neither is pleasant to drink or cook with.",
+          "When chlorine reacts with natural organic matter in the water, it forms disinfection byproducts such as trihalomethanes and haloacetic acids. These are regulated and kept below federal limits, but many households prefer to reduce their exposure further. A quality carbon filter or reverse osmosis system removes chlorine and chloramine taste and lowers disinfection byproducts at the point where you actually drink the water."
+        ]
+      },
+      {
+        "h": "What your own plumbing adds: lead and metals",
+        "p": [
+          "This is the gap most people overlook. Water can leave the treatment plant clean and still pick up contaminants on the last leg of its journey through your home. Older homes, and the service lines and solder connecting them, can contain lead, which dissolves into water that sits in the pipes overnight. Lead has no safe level of exposure and is especially concerning for infants and young children.",
+          "No amount of city treatment protects you here, because the contamination happens after the water is your responsibility. The only reliable fix is treatment at the tap. A reverse osmosis system installed under the kitchen sink is highly effective at reducing lead, along with other trace metals, before the water reaches your glass."
+        ]
+      },
+      {
+        "h": "PFAS and emerging contaminants",
+        "p": [
+          "PFAS, sometimes called forever chemicals, are a family of synthetic compounds used in nonstick coatings, firefighting foam, and countless consumer products. They resist breaking down in the environment and have been detected in water supplies across the country. Federal drinking water limits for several PFAS compounds were finalized in 2024, and utilities are working toward compliance, but many older treatment plants were never designed to remove them.",
+          "Conventional municipal filtration does not reliably remove PFAS. Technologies that do include reverse osmosis and specialized carbon, which is why point-of-use RO has become the practical choice for households that want to reduce PFAS exposure now rather than wait on infrastructure upgrades."
+        ]
+      },
+      {
+        "h": "So do you actually need one?",
+        "p": [
+          "If your only goal is water that will not make you sick, city treatment already delivers that. If you want water that also tastes clean, protects your appliances and plumbing from scale, removes the lead your own pipes may contribute, and reduces disinfection byproducts and PFAS, then home filtration fills real gaps that no utility is responsible for closing.",
+          "The honest answer depends on your specific water and home, which is why the most useful first step is a free in-home water test. It measures your actual hardness and what is coming out of your tap, so any recommendation is based on your water rather than averages. From there you can decide whether a whole-house conditioner, a drinking-water RO system, or both make sense for your family."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is Southern California tap water safe to drink?",
+        "a": "Yes. Local utilities treat and monitor the supply to meet federal Safe Drinking Water Act standards, so it is legally safe. Home filtration is about improving taste, reducing hardness, and addressing contaminants like lead and PFAS that treatment does not fully cover, not about fixing unsafe water."
+      },
+      {
+        "q": "If my water is already treated, does a filter really remove anything?",
+        "a": "Yes. City treatment does not remove hardness, and it leaves chlorine or chloramine taste and disinfection byproducts in the water. It also cannot address lead or metals your own plumbing adds after the water leaves the plant. A carbon or reverse osmosis filter targets exactly those things at the point of use."
+      },
+      {
+        "q": "Does boiling water do the same thing as filtering?",
+        "a": "No. Boiling kills bacteria, but it does nothing for hardness, chlorine, disinfection byproducts, lead, or PFAS. In fact, boiling can slightly concentrate dissolved contaminants as water evaporates. Filtration is a different job and is the right tool for these concerns."
+      },
+      {
+        "q": "Do I need whole-house filtration or just a drinking-water system?",
+        "a": "It depends on your goals. A whole-house conditioner addresses hardness and scale throughout the home, protecting appliances, skin, and hair. A point-of-use reverse osmosis system handles drinking and cooking water, removing lead, PFAS, and taste. Many families use both. A free water test helps you decide what your home actually needs."
+      }
+    ],
+    "related": [
+      {
+        "label": "Is San Diego Tap Water Safe?",
+        "href": "/guides/is-san-diego-tap-water-safe"
+      },
+      {
+        "label": "Reverse Osmosis Systems",
+        "href": "/products/reverse-osmosis"
+      },
+      {
+        "label": "What Is PFAS in Drinking Water?",
+        "href": "/guides/what-is-pfas"
+      }
+    ]
+  },
 ];
 
 export const GUIDE_MAP: Record<string, Guide> = Object.fromEntries(GUIDES.map((g) => [g.slug, g]));
