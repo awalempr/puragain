@@ -83,6 +83,11 @@ async function checkRecaptcha(
 // a referral is never lost to a bad picklist value. Overridable via env.
 const REFERRAL_LEAD_SOURCE = process.env.ZOHO_REFERRAL_LEAD_SOURCE || "Referral";
 
+// De-duplication against the CRM (by email + phone, across Leads and Contacts).
+// On a match we log the submission as a Note on the existing record rather than
+// create a duplicate. Set ZOHO_DEDUPE=off to disable (kill switch).
+const DEDUPE_ENABLED = process.env.ZOHO_DEDUPE !== "off";
+
 // Website leads are assigned round-robin to the California team so they never
 // fall into the old (now broken) distribution. IDs can be overridden via env.
 const LEAD_OWNERS = (process.env.ZOHO_LEAD_OWNER_IDS ||
@@ -418,7 +423,68 @@ export async function POST(request: Request) {
     return result;
   }
 
+  // ---- De-dupe: find an existing Lead/Contact by email or phone ----
+  // Search one module; 204 = none, any error = null (fail-open). Never throws.
+  async function searchExisting(moduleName: string, criteria: string): Promise<string | null> {
+    try {
+      const res = await fetch(
+        `${API_HOST}/crm/v6/${moduleName}/search?criteria=${encodeURIComponent(criteria)}&fields=id&per_page=1`,
+        { headers: { Authorization: `Zoho-oauthtoken ${accessToken}` } }
+      );
+      if (res.status === 204 || !res.ok) return null;
+      const json = await res.json().catch(() => null);
+      const id = json?.data?.[0]?.id;
+      return id ? String(id) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  // Match on email (case-insensitive equals) OR phone. Phone uses the last-10
+  // digits with `equals`: Zoho normalizes phone values for equality, so digits
+  // match records stored as "5551234567" or "(555) 123-4567" alike. (`contains`
+  // and parenthesized values are rejected as INVALID_QUERY by this org's search.)
+  // Zoho search allows only two conditions per group, so the OR is folded
+  // pairwise into nested groups. Checks Leads first, then Contacts.
+  async function findDuplicate(): Promise<{ module: string; id: string } | null> {
+    const emailNorm = email.toLowerCase();
+    const digits = phone.replace(/\D/g, "");
+    const last10 = digits.length >= 10 ? digits.slice(-10) : "";
+    const parts: string[] = [];
+    if (emailNorm) parts.push(`(Email:equals:${emailNorm})`);
+    if (last10) parts.push(`(Phone:equals:${last10})`, `(Mobile:equals:${last10})`);
+    if (!parts.length) return null;
+    const criteria = parts.reduce((acc, p) => (acc ? `(${acc}or${p})` : p));
+    for (const moduleName of ["Leads", "Contacts"]) {
+      const id = await searchExisting(moduleName, criteria);
+      if (id) return { module: moduleName, id };
+    }
+    return null;
+  }
+
   try {
+    // If this person already exists, log the submission as a Note on the existing
+    // record instead of creating a duplicate. Fail-open (see helpers) means a
+    // lookup hiccup falls through to normal creation, so a real lead is never lost.
+    if (DEDUPE_ENABLED && (email || phone)) {
+      const dup = await findDuplicate();
+      if (dup) {
+        const kind = dup.module === "Contacts" ? "contact" : "lead";
+        const title = `${isReferral ? "🎁 Referral" : "📋"} re-submission — existing ${kind}`;
+        const details = [descriptionLines.join("\n"), noteContent]
+          .filter(Boolean)
+          .filter((v, i, a) => a.indexOf(v) === i)
+          .join("\n\n");
+        const body = `Duplicate-safe: matched an existing ${dup.module} record by email/phone, so no new ${kind} was created.\n\nNew ${formName} submission:\n\n${details}`.slice(0, 32000);
+        await fetch(`${API_HOST}/crm/v6/${dup.module}/${dup.id}/Notes`, {
+          method: "POST",
+          headers: { Authorization: `Zoho-oauthtoken ${accessToken}`, "Content-Type": "application/json" },
+          body: JSON.stringify({ data: [{ Note_Title: title.slice(0, 120), Note_Content: body }] }),
+        }).catch(() => {});
+        return NextResponse.json({ ok: true, duplicate: true });
+      }
+    }
+
     const result = await createWithFallback(lead);
     if (result.ok && result.record?.status === "success") {
       // Attach the quiz Q&A as a dedicated Note so it surfaces in the lead's

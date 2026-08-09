@@ -53,12 +53,15 @@ export function last10(phone: string): string | null {
 }
 
 // Find a Leads record id by phone (checks Phone then Mobile, matched on last 10 digits).
+// Uses `equals` on the 10-digit form: Zoho normalizes phone values for equality, so
+// this matches records stored as "5551234567" or "(555) 123-4567" alike. NOTE: this
+// org's search API rejects `contains` on phone with INVALID_QUERY, so `equals` is required.
 export async function findLeadIdByPhone(phone: string): Promise<string | null> {
   const p = last10(phone);
   if (!p) return null;
   for (const field of ["Phone", "Mobile"]) {
     const res = await zoho(
-      `/crm/v6/Leads/search?criteria=(${field}:contains:${p})&fields=id&per_page=1`
+      `/crm/v6/Leads/search?criteria=(${field}:equals:${p})&fields=id&per_page=1`
     );
     if (res && res.status === 200) {
       const json = await res.json().catch(() => null);
