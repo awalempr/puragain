@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { validateEmail, validatePhone } from "@/lib/validation";
 import { CITIES, REGIONS, type RegionKey } from "@/lib/service-areas";
 import { CallCta } from "@/components/call-cta";
 import { Mail, Clock, Star, Shield, Zap, Award } from "lucide-react";
@@ -49,6 +50,7 @@ export default function ContactPage() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
+    mode: "onTouched",
     defaultValues: {
       homeownership: "",
       firstName: "",
@@ -146,13 +148,14 @@ export default function ContactPage() {
               <div>
                 <label htmlFor="email" className={labelClass}>Email</label>
                 <input id="email" type="email" className={inputClass} placeholder="john@example.com"
-                  {...register("email", { required: "Email is required", pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Please enter a valid email" } })} />
+                  {...register("email", { required: "Email is required", validate: validateEmail })} />
                 {errors.email && <p className="text-brand-red text-xs mt-1">{errors.email.message}</p>}
               </div>
 
               <div>
                 <label htmlFor="phone" className={labelClass}>Phone</label>
-                <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567" {...register("phone")} />
+                <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567" {...register("phone", { validate: validatePhone })} />
+                {errors.phone && <p className="text-brand-red text-xs mt-1">{errors.phone.message}</p>}
               </div>
 
               <div>

@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { validateEmail, validatePhone } from "@/lib/validation";
 
 interface ReferFormData {
   referrerFirstName: string;
@@ -148,6 +149,7 @@ export default function ReferClient() {
     watch,
     formState: { errors, isSubmitting },
   } = useForm<ReferFormData>({
+    mode: "onTouched",
     defaultValues: {
       referrerFirstName: "",
       referrerLastName: "",
@@ -448,16 +450,13 @@ export default function ReferClient() {
                               <div>
                                 <label htmlFor="referrerEmail" className={labelClass}>Your email</label>
                                 <input id="referrerEmail" type="email" className={inputClass} placeholder="john@example.com"
-                                  {...register("referrerEmail", {
-                                    required: "Required",
-                                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
-                                  })} />
+                                  {...register("referrerEmail", { required: "Required", validate: validateEmail })} />
                                 {errors.referrerEmail && <p className="mt-1 text-xs text-brand-red">{errors.referrerEmail.message}</p>}
                               </div>
                               <div>
                                 <label htmlFor="referrerPhone" className={labelClass}>Your phone</label>
                                 <input id="referrerPhone" type="tel" className={inputClass} placeholder="(555) 123-4567"
-                                  {...register("referrerPhone", { required: "Required" })} />
+                                  {...register("referrerPhone", { required: "Required", validate: validatePhone })} />
                                 {errors.referrerPhone && <p className="mt-1 text-xs text-brand-red">{errors.referrerPhone.message}</p>}
                               </div>
                             </div>
@@ -486,7 +485,7 @@ export default function ReferClient() {
                               <div>
                                 <label htmlFor="friendPhone" className={labelClass}>Friend&apos;s phone</label>
                                 <input id="friendPhone" type="tel" className={inputClass} placeholder="(555) 987-6543"
-                                  {...register("friendPhone", { required: "Required" })} />
+                                  {...register("friendPhone", { required: "Required", validate: validatePhone })} />
                                 {errors.friendPhone && <p className="mt-1 text-xs text-brand-red">{errors.friendPhone.message}</p>}
                               </div>
                               <div>
@@ -494,9 +493,7 @@ export default function ReferClient() {
                                   Email <span className="normal-case text-gray-300">(optional)</span>
                                 </label>
                                 <input id="friendEmail" type="email" className={inputClass} placeholder="jane@example.com"
-                                  {...register("friendEmail", {
-                                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
-                                  })} />
+                                  {...register("friendEmail", { validate: validateEmail })} />
                                 {errors.friendEmail && <p className="mt-1 text-xs text-brand-red">{errors.friendEmail.message}</p>}
                               </div>
                             </div>

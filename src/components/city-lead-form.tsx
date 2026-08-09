@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { validateEmail, validatePhone } from "@/lib/validation";
 import { CallCta } from "@/components/call-cta";
 import { CheckCircle2 } from "lucide-react";
 
@@ -24,7 +25,7 @@ export function CityLeadForm({ city }: { city: string }) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormData>({ defaultValues: { homeownership: "", firstName: "", lastName: "", email: "", phone: "" } });
+  } = useForm<FormData>({ mode: "onTouched", defaultValues: { homeownership: "", firstName: "", lastName: "", email: "", phone: "" } });
 
   const onSubmit = async (data: FormData) => {
     // We only serve homeowners, so renters are filtered before any capture.
@@ -104,11 +105,17 @@ export function CityLeadForm({ city }: { city: string }) {
             {...register("lastName", { required: true })} />
         </div>
         <input className={input} type="email" placeholder="Email" aria-label="Email"
-          {...register("email", { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })} />
+          {...register("email", { required: "Please enter your email.", validate: validateEmail })} />
         <input className={input} type="tel" placeholder="Phone" aria-label="Phone"
-          {...register("phone", { required: true })} />
-        {(errors.firstName || errors.lastName || errors.email || errors.phone) && (
-          <p className="text-brand-red text-xs">Please fill in your name, email, and phone.</p>
+          {...register("phone", { required: "Please enter your phone number.", validate: validatePhone })} />
+        {(errors.firstName || errors.lastName) && (
+          <p className="text-brand-red text-xs">Please enter your first and last name.</p>
+        )}
+        {typeof errors.email?.message === "string" && (
+          <p className="text-brand-red text-xs">{errors.email.message}</p>
+        )}
+        {typeof errors.phone?.message === "string" && (
+          <p className="text-brand-red text-xs">{errors.phone.message}</p>
         )}
         {/* honeypot */}
         <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"

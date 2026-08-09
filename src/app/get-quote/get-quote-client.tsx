@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { validateEmail, validatePhone } from "@/lib/validation";
 import { CITIES } from "@/lib/service-areas";
 import { CallCta } from "@/components/call-cta";
 
@@ -88,6 +89,7 @@ export default function GetQuoteClient() {
     watch,
     formState: { errors, isSubmitting },
   } = useForm<QuoteFormData>({
+    mode: "onTouched",
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -327,16 +329,13 @@ export default function GetQuoteClient() {
                         <div>
                           <label htmlFor="email" className={labelClass}>Email</label>
                           <input id="email" type="email" className={inputClass} placeholder="john@example.com"
-                            {...register("email", {
-                              required: "Required",
-                              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
-                            })} />
+                            {...register("email", { required: "Required", validate: validateEmail })} />
                           {errors.email && <p className="mt-1 text-xs text-brand-red">{errors.email.message}</p>}
                         </div>
                         <div>
                           <label htmlFor="phone" className={labelClass}>Phone</label>
                           <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567"
-                            {...register("phone", { required: "Required" })} />
+                            {...register("phone", { required: "Required", validate: validatePhone })} />
                           {errors.phone && <p className="mt-1 text-xs text-brand-red">{errors.phone.message}</p>}
                         </div>
                       </div>

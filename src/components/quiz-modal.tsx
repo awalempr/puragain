@@ -6,6 +6,7 @@ import { X, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
+import { validateEmail, validatePhone } from "@/lib/validation";
 import { CallCta } from "@/components/call-cta";
 
 // The homeownership gate is question 1. Selecting "rent" ends the quiz - we only
@@ -145,10 +146,17 @@ export function QuizModal({
 
   const honeypotRef = useRef<HTMLInputElement>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [fieldError, setFieldError] = useState<string | null>(null);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (submitting) return; // guard against double-submit
+    // Block on a bad email (e.g. ".con") or an incomplete phone, and say what to fix.
+    const emailErr = validateEmail(contactInfo.email);
+    if (emailErr !== true) { setFieldError(emailErr); return; }
+    const phoneErr = validatePhone(contactInfo.phone);
+    if (phoneErr !== true) { setFieldError(phoneErr); return; }
+    setFieldError(null);
     setSubmitting(true);
     // Fire the lead to the backend; keep the UX flowing even if it fails.
     try {
@@ -371,7 +379,7 @@ export function QuizModal({
                           type="email"
                           required
                           value={contactInfo.email}
-                          onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
+                          onChange={(e) => { setContactInfo({ ...contactInfo, email: e.target.value }); setFieldError(null); }}
                           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#3a8fd4] focus:ring-2 focus:ring-[#3a8fd4]/10 transition-colors"
                           placeholder="john@example.com"
                         />
@@ -383,7 +391,7 @@ export function QuizModal({
                           type="tel"
                           required
                           value={contactInfo.phone}
-                          onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
+                          onChange={(e) => { setContactInfo({ ...contactInfo, phone: e.target.value }); setFieldError(null); }}
                           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#3a8fd4] focus:ring-2 focus:ring-[#3a8fd4]/10 transition-colors"
                           placeholder="(555) 123-4567"
                         />
@@ -401,6 +409,9 @@ export function QuizModal({
                         />
                       </div>
 
+                      {fieldError && (
+                        <p className="text-brand-red text-xs -mt-1">{fieldError}</p>
+                      )}
                       <button
                         type="submit"
                         disabled={submitting}
