@@ -31,7 +31,7 @@ interface ReferFormData {
   friendLastName: string;
   friendPhone: string;
   friendEmail: string;
-  friendOwnsHome: string; // "own" | "rent" | "unsure" — renters can't install, so they don't qualify
+  friendOwnsHome: string; // "own" | "rent" | "unsure"; renters can't install, so they don't qualify
   message: string;
   referrerConsent: boolean;
   company_website?: string; // honeypot
@@ -46,7 +46,7 @@ const reviews = [
   {
     name: "Angelina M.",
     location: "Oceanside, CA",
-    text: "No more hard water on my shower doors. My whole family's on Puragain now — I sent my sister next.",
+    text: "No more hard water on my shower doors. My whole family's on Puragain now. I sent my sister next.",
   },
   {
     name: "Rob C.",
@@ -55,27 +55,27 @@ const reviews = [
   },
 ];
 
-// The three rewards, front and center — this is what drives the action.
+// The three rewards, front and center. This is what drives the action.
 const rewards = [
   {
     icon: HandCoins,
     amount: "$25",
-    who: "To you — booking bonus",
+    who: "To you: booking bonus",
     copy: "Paid the moment your friend books their free in-home water test. You get rewarded before they even buy.",
     accent: "from-brand-blue/12 to-brand-blue/5",
   },
   {
     icon: Gift,
     amount: "$200",
-    who: "To you — per install",
-    copy: "For every friend who gets a Puragain system installed. Refer as many friends as you like — there's no cap.",
+    who: "To you: per install",
+    copy: "For every friend who gets a Puragain system installed. Refer as many friends as you like. There's no cap.",
     accent: "from-brand-red/12 to-brand-red/5",
     featured: true,
   },
   {
     icon: BadgeCheck,
     amount: "$100",
-    who: "To your friend — at install",
+    who: "To your friend: at install",
     copy: "Plus a free in-home water test. Your intro gives them a real head start on cleaner water.",
     accent: "from-brand-blue/12 to-brand-blue/5",
   },
@@ -86,7 +86,7 @@ const steps = [
     n: "01",
     icon: UserPlus,
     title: "Send us their info",
-    copy: "Drop in your friend's name and number below. Takes about 30 seconds — we do the rest.",
+    copy: "Drop in your friend's name and number below. Takes about 30 seconds. We do the rest.",
   },
   {
     n: "02",
@@ -105,7 +105,7 @@ const steps = [
 const faqs = [
   {
     q: "How much can I earn?",
-    a: "$200 for every friend who gets a system installed, plus a $25 bonus the moment they book their free water test. There's no cap — refer as many friends as you'd like.",
+    a: "$200 for every friend who gets a system installed, plus a $25 bonus the moment they book their free water test. There's no cap. Refer as many friends as you'd like.",
   },
   {
     q: "When do I get paid?",
@@ -113,7 +113,7 @@ const faqs = [
   },
   {
     q: "Who counts as a referral?",
-    a: "Your friend must own their home and be a new customer — not an existing Puragain customer — in our Southern California service area. Renters aren't eligible since the system is installed in the home. One reward is paid per referred household.",
+    a: "Your friend must own their home and be a new customer (not an existing Puragain customer) in our Southern California service area. Renters aren't eligible since the system is installed in the home. One reward is paid per referred household.",
   },
   {
     q: "What does my friend get?",
@@ -121,7 +121,7 @@ const faqs = [
   },
   {
     q: "Do I need my friend's permission?",
-    a: "Yes — please only share a friend's details if they're happy to hear from us. We'll reach out on your behalf to schedule their free water test.",
+    a: "Yes, please only share a friend's details if they're happy to hear from us. We'll reach out on your behalf to schedule their free water test.",
   },
 ];
 
@@ -223,10 +223,10 @@ export default function ReferClient() {
     step === 0 ? "Refer a friend" : step === 1 ? (firstName ? `Thanks, ${firstName}!` : "Your friend") : "One last step";
   const stepSub =
     step === 0
-      ? "Start with your details — it takes about 30 seconds."
+      ? "Start with your details. It takes about 30 seconds."
       : step === 1
         ? "Now, who are you referring?"
-        : "Confirm and send — we'll handle the intro from here.";
+        : "Confirm and send. We'll handle the intro from here.";
 
   const goNext = async () => {
     const ok = await trigger(STEP_FIELDS[step]);
@@ -256,7 +256,7 @@ export default function ReferClient() {
 
         <div className="relative mx-auto max-w-[1180px] px-6 pt-24 pb-16 md:pt-28 md:pb-24">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-            {/* Left — the pitch */}
+            {/* Left: the pitch */}
             <div>
               <motion.span
                 custom={0}
@@ -290,12 +290,12 @@ export default function ReferClient() {
                 className="mt-6 max-w-md text-[15px] leading-[1.7] text-gray-600 md:text-lg"
               >
                 Earn <span className="font-semibold text-navy">$200</span> for every friend who gets a
-                system installed — plus <span className="font-semibold text-navy">$25</span> the moment
+                system installed, plus <span className="font-semibold text-navy">$25</span> the moment
                 they book a free water test. Your friend gets{" "}
                 <span className="font-semibold text-navy">$100</span> off and a free test, too.
               </motion.p>
 
-              {/* reward chips — the offer at a glance */}
+              {/* reward chips: the offer at a glance */}
               <motion.div
                 custom={3}
                 variants={fade}
@@ -341,7 +341,7 @@ export default function ReferClient() {
               </motion.div>
             </div>
 
-            {/* Right — the referral card */}
+            {/* Right: the referral card */}
             <motion.div
               initial={reduce ? { opacity: 0 } : { opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
@@ -367,7 +367,7 @@ export default function ReferClient() {
                     <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-gray-500">
                       We&apos;ll reach out to your friend to schedule their free water test. The moment
                       they book, your <span className="font-semibold text-navy">$25</span> is on the
-                      way — and <span className="font-semibold text-navy">$200</span> more when they
+                      way, and <span className="font-semibold text-navy">$200</span> more when they
                       install.
                     </p>
                     <button
@@ -427,7 +427,7 @@ export default function ReferClient() {
                         transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                         className="space-y-4"
                       >
-                        {/* STEP 1 — you */}
+                        {/* STEP 1: you */}
                         {step === 0 && (
                           <>
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -464,7 +464,7 @@ export default function ReferClient() {
                           </>
                         )}
 
-                        {/* STEP 2 — your friend */}
+                        {/* STEP 2: your friend */}
                         {step === 1 && (
                           <>
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -512,9 +512,9 @@ export default function ReferClient() {
                                 })}
                               >
                                 <option value="" disabled>Select one…</option>
-                                <option value="own">Yes — they own their home</option>
+                                <option value="own">Yes, they own their home</option>
                                 <option value="unsure">Not sure</option>
-                                <option value="rent">No — they rent</option>
+                                <option value="rent">No, they rent</option>
                               </select>
                               {errors.friendOwnsHome && <p className="mt-1 text-xs text-brand-red">{errors.friendOwnsHome.message}</p>}
                               {renterBlocked && (
@@ -527,7 +527,7 @@ export default function ReferClient() {
                           </>
                         )}
 
-                        {/* STEP 3 — finish */}
+                        {/* STEP 3: finish */}
                         {step === 2 && (
                           <>
                             <div>
@@ -551,7 +551,7 @@ export default function ReferClient() {
                         )}
                       </motion.div>
 
-                      {/* honeypot — always rendered */}
+                      {/* honeypot: always rendered */}
                       <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
                         className="absolute left-[-9999px] h-px w-px opacity-0" {...register("company_website")} />
 
@@ -618,7 +618,7 @@ export default function ReferClient() {
               Cash both ways. No catch.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-gray-500 md:text-lg">
-              Real rewards for you and your friend — starting the moment they book.
+              Real rewards for you and your friend, starting the moment they book.
             </p>
           </div>
 
@@ -722,7 +722,7 @@ export default function ReferClient() {
                 Your neighbors already trust you. This just pays you for it.
               </h2>
               <p className="mt-4 max-w-md text-[15px] leading-relaxed text-gray-500">
-                The best water customers come from a friend&apos;s recommendation — not an ad. Share
+                The best water customers come from a friend&apos;s recommendation, not an ad. Share
                 what&apos;s working for your family, and get rewarded every step of the way.
               </p>
 
@@ -825,7 +825,7 @@ export default function ReferClient() {
           href="#refer-form"
           className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-red py-3.5 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-[#b00e0e] active:scale-[0.98]"
         >
-          Refer a Friend — Get $200
+          Refer a Friend, Get $200
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

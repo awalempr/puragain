@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import ReferClient from "./refer-client";
 
 export const metadata: Metadata = {
-  title: "Refer a Friend — Get $200 | PurAgain Rewards",
+  title: "Refer a Friend, Get $200 | PurAgain Rewards",
   description:
-    "Refer a friend to Puragain Water and earn $200 for every friend who gets a system installed — plus $25 the moment they book a free water test. Your friend gets $100 at install and a free in-home water test.",
+    "Refer a friend to Puragain Water and earn $200 for every friend who gets a system installed, plus $25 the moment they book a free water test. Your friend gets $100 at install and a free in-home water test.",
   alternates: { canonical: "/refer" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "PurAgain Rewards — Get $200 for Every Friend You Refer",
+    title: "PurAgain Rewards: Get $200 for Every Friend You Refer",
     description:
       "Give your friends better water, get paid for it. $200 per install, a $25 booking bonus, and a free in-home water test for them. Southern California's family-owned water experts.",
     url: "/refer",
@@ -26,7 +26,7 @@ const jsonLd = {
       name: "How much do I earn for referring a friend?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You earn $200 for every friend who gets a Puragain system installed, plus a $25 bonus the moment your friend books their free in-home water test — even before they buy. Your friend gets $100 at install and a free water test.",
+        text: "You earn $200 for every friend who gets a Puragain system installed, plus a $25 bonus the moment your friend books their free in-home water test, even before they buy. Your friend gets $100 at install and a free water test.",
       },
     },
     {
