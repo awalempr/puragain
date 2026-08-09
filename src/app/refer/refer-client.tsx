@@ -14,6 +14,7 @@ import {
   Lock,
   PhoneCall,
   ArrowRight,
+  ArrowLeft,
   HandCoins,
   BadgeCheck,
   UserPlus,
@@ -128,6 +129,7 @@ export default function ReferClient() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [renterBlocked, setRenterBlocked] = useState(false);
+  const [step, setStep] = useState(0); // 0 = you, 1 = your friend, 2 = finish
   const reduce = useReducedMotion();
 
   const fade = {
@@ -142,6 +144,8 @@ export default function ReferClient() {
   const {
     register,
     handleSubmit,
+    trigger,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<ReferFormData>({
     defaultValues: {
@@ -206,6 +210,36 @@ export default function ReferClient() {
     "border border-gray-200 rounded-xl px-4 py-3 w-full text-sm text-navy placeholder:text-gray-400 focus:border-brand-blue focus-visible:ring-2 focus-visible:ring-brand-blue/15 outline-none transition-colors duration-200";
   const labelClass =
     "text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block";
+
+  // Fields validated before each step can advance (optionals excluded).
+  const STEP_FIELDS: (keyof ReferFormData)[][] = [
+    ["referrerFirstName", "referrerLastName", "referrerEmail", "referrerPhone"],
+    ["friendFirstName", "friendPhone", "friendEmail", "friendOwnsHome"],
+    ["referrerConsent"],
+  ];
+  const firstName = (watch("referrerFirstName") || "").trim();
+  const stepLabels = ["Your details", "Your friend", "Finish"];
+  const stepHeading =
+    step === 0 ? "Refer a friend" : step === 1 ? (firstName ? `Thanks, ${firstName}!` : "Your friend") : "One last step";
+  const stepSub =
+    step === 0
+      ? "Start with your details — it takes about 30 seconds."
+      : step === 1
+        ? "Now, who are you referring?"
+        : "Confirm and send — we'll handle the intro from here.";
+
+  const goNext = async () => {
+    const ok = await trigger(STEP_FIELDS[step]);
+    if (!ok) return;
+    // Gate renters before they can advance past the friend step.
+    if (step === 1 && watch("friendOwnsHome") === "rent") {
+      setRenterBlocked(true);
+      return;
+    }
+    setRenterBlocked(false);
+    setStep((s) => Math.min(s + 1, STEP_FIELDS.length - 1));
+  };
+  const goBack = () => setStep((s) => Math.max(s - 1, 0));
 
   return (
     <div className="bg-white">
@@ -327,7 +361,9 @@ export default function ReferClient() {
                     <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
                       <CheckCircle2 className="h-9 w-9 text-green-600" />
                     </div>
-                    <h2 className="font-heading text-2xl font-bold text-navy">Referral sent!</h2>
+                    <h2 className="font-heading text-2xl font-bold text-navy">
+                      Referral sent{firstName ? `, ${firstName}` : ""}!
+                    </h2>
                     <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-gray-500">
                       We&apos;ll reach out to your friend to schedule their free water test. The moment
                       they book, your <span className="font-semibold text-navy">$25</span> is on the
@@ -335,7 +371,7 @@ export default function ReferClient() {
                       install.
                     </p>
                     <button
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => { setSubmitted(false); setStep(0); }}
                       className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#155a99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40 focus-visible:ring-offset-2 active:scale-[0.98]"
                     >
                       Refer another friend
@@ -351,154 +387,208 @@ export default function ReferClient() {
                   </div>
                 ) : (
                   <>
-                    <div className="mb-6">
-                      <h2 className="font-heading text-[1.7rem] font-bold leading-tight text-navy">
-                        Refer a friend
-                      </h2>
-                      <p className="mt-1.5 text-sm text-gray-500">
-                        Takes about 30 seconds. We&apos;ll handle the intro.
-                      </p>
+                    {/* progress */}
+                    <div className="mb-5">
+                      <div className="flex items-center justify-between">
+                        <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-blue">
+                          Step {step + 1} of 3
+                        </p>
+                        <p className="text-[11px] text-gray-400">{stepLabels[step]}</p>
+                      </div>
+                      <div className="mt-2 flex gap-1.5">
+                        {[0, 1, 2].map((i) => (
+                          <span
+                            key={i}
+                            className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${i <= step ? "bg-brand-blue" : "bg-gray-200"}`}
+                          />
+                        ))}
+                      </div>
                     </div>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-                      {/* Your info */}
-                      <fieldset className="space-y-4">
-                        <legend className="mb-1 flex items-center gap-1.5 text-[13px] font-semibold text-navy">
-                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-blue/10 text-[11px] font-bold text-brand-blue">1</span>
-                          Your details
-                        </legend>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <div>
-                            <label htmlFor="referrerFirstName" className={labelClass}>Your first name</label>
-                            <input id="referrerFirstName" type="text" className={inputClass} placeholder="John"
-                              {...register("referrerFirstName", { required: "Required" })} />
-                            {errors.referrerFirstName && <p className="mt-1 text-xs text-brand-red">{errors.referrerFirstName.message}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="referrerLastName" className={labelClass}>Your last name</label>
-                            <input id="referrerLastName" type="text" className={inputClass} placeholder="Doe"
-                              {...register("referrerLastName", { required: "Required" })} />
-                            {errors.referrerLastName && <p className="mt-1 text-xs text-brand-red">{errors.referrerLastName.message}</p>}
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <div>
-                            <label htmlFor="referrerEmail" className={labelClass}>Your email</label>
-                            <input id="referrerEmail" type="email" className={inputClass} placeholder="john@example.com"
-                              {...register("referrerEmail", {
-                                required: "Required",
-                                pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
-                              })} />
-                            {errors.referrerEmail && <p className="mt-1 text-xs text-brand-red">{errors.referrerEmail.message}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="referrerPhone" className={labelClass}>Your phone</label>
-                            <input id="referrerPhone" type="tel" className={inputClass} placeholder="(555) 123-4567"
-                              {...register("referrerPhone", { required: "Required" })} />
-                            {errors.referrerPhone && <p className="mt-1 text-xs text-brand-red">{errors.referrerPhone.message}</p>}
-                          </div>
-                        </div>
-                      </fieldset>
+                    <div className="mb-5">
+                      <h2 className="font-heading text-[1.55rem] font-bold leading-tight text-navy">
+                        {stepHeading}
+                      </h2>
+                      <p className="mt-1.5 text-sm text-gray-500">{stepSub}</p>
+                    </div>
 
-                      <div className="h-px bg-gray-100" />
+                    <form
+                      onSubmit={(e) => {
+                        // Enter advances mid-wizard; only the final step submits.
+                        if (step < 2) { e.preventDefault(); goNext(); } else { handleSubmit(onSubmit)(e); }
+                      }}
+                      className="space-y-5"
+                      noValidate
+                    >
+                      <motion.div
+                        key={step}
+                        initial={reduce ? { opacity: 0 } : { opacity: 0, x: 12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                        className="space-y-4"
+                      >
+                        {/* STEP 1 — you */}
+                        {step === 0 && (
+                          <>
+                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                              <div>
+                                <label htmlFor="referrerFirstName" className={labelClass}>Your first name</label>
+                                <input id="referrerFirstName" type="text" className={inputClass} placeholder="John"
+                                  {...register("referrerFirstName", { required: "Required" })} />
+                                {errors.referrerFirstName && <p className="mt-1 text-xs text-brand-red">{errors.referrerFirstName.message}</p>}
+                              </div>
+                              <div>
+                                <label htmlFor="referrerLastName" className={labelClass}>Your last name</label>
+                                <input id="referrerLastName" type="text" className={inputClass} placeholder="Doe"
+                                  {...register("referrerLastName", { required: "Required" })} />
+                                {errors.referrerLastName && <p className="mt-1 text-xs text-brand-red">{errors.referrerLastName.message}</p>}
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                              <div>
+                                <label htmlFor="referrerEmail" className={labelClass}>Your email</label>
+                                <input id="referrerEmail" type="email" className={inputClass} placeholder="john@example.com"
+                                  {...register("referrerEmail", {
+                                    required: "Required",
+                                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
+                                  })} />
+                                {errors.referrerEmail && <p className="mt-1 text-xs text-brand-red">{errors.referrerEmail.message}</p>}
+                              </div>
+                              <div>
+                                <label htmlFor="referrerPhone" className={labelClass}>Your phone</label>
+                                <input id="referrerPhone" type="tel" className={inputClass} placeholder="(555) 123-4567"
+                                  {...register("referrerPhone", { required: "Required" })} />
+                                {errors.referrerPhone && <p className="mt-1 text-xs text-brand-red">{errors.referrerPhone.message}</p>}
+                              </div>
+                            </div>
+                          </>
+                        )}
 
-                      {/* Friend's info */}
-                      <fieldset className="space-y-4">
-                        <legend className="mb-1 flex items-center gap-1.5 text-[13px] font-semibold text-navy">
-                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-blue/10 text-[11px] font-bold text-brand-blue">2</span>
-                          Your friend&apos;s details
-                        </legend>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <div>
-                            <label htmlFor="friendFirstName" className={labelClass}>Friend&apos;s first name</label>
-                            <input id="friendFirstName" type="text" className={inputClass} placeholder="Jane"
-                              {...register("friendFirstName", { required: "Required" })} />
-                            {errors.friendFirstName && <p className="mt-1 text-xs text-brand-red">{errors.friendFirstName.message}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="friendLastName" className={labelClass}>
-                              Friend&apos;s last name <span className="normal-case text-gray-300">(optional)</span>
-                            </label>
-                            <input id="friendLastName" type="text" className={inputClass} placeholder="Smith"
-                              {...register("friendLastName")} />
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <div>
-                            <label htmlFor="friendPhone" className={labelClass}>Friend&apos;s phone</label>
-                            <input id="friendPhone" type="tel" className={inputClass} placeholder="(555) 987-6543"
-                              {...register("friendPhone", { required: "Required" })} />
-                            {errors.friendPhone && <p className="mt-1 text-xs text-brand-red">{errors.friendPhone.message}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="friendEmail" className={labelClass}>
-                              Friend&apos;s email <span className="normal-case text-gray-300">(optional)</span>
-                            </label>
-                            <input id="friendEmail" type="email" className={inputClass} placeholder="jane@example.com"
-                              {...register("friendEmail", {
-                                pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
-                              })} />
-                            {errors.friendEmail && <p className="mt-1 text-xs text-brand-red">{errors.friendEmail.message}</p>}
-                          </div>
-                        </div>
-                        <div>
-                          <label htmlFor="friendOwnsHome" className={labelClass}>Does your friend own their home?</label>
-                          <select
-                            id="friendOwnsHome"
-                            className={inputClass}
-                            defaultValue=""
-                            {...register("friendOwnsHome", {
-                              required: "Please let us know",
-                              onChange: () => renterBlocked && setRenterBlocked(false),
-                            })}
-                          >
-                            <option value="" disabled>Select one…</option>
-                            <option value="own">Yes — they own their home</option>
-                            <option value="unsure">Not sure</option>
-                            <option value="rent">No — they rent</option>
-                          </select>
-                          {errors.friendOwnsHome && <p className="mt-1 text-xs text-brand-red">{errors.friendOwnsHome.message}</p>}
-                          {renterBlocked && (
-                            <p className="mt-2 rounded-lg bg-brand-red/5 px-3 py-2 text-[13px] leading-relaxed text-brand-red">
-                              Our systems are installed for homeowners, so renters aren&apos;t eligible for the
-                              reward. Know a friend who owns their home? We&apos;d love the intro.
-                            </p>
-                          )}
-                        </div>
-                        <div>
-                          <label htmlFor="message" className={labelClass}>
-                            Anything we should know? <span className="normal-case text-gray-300">(optional)</span>
-                          </label>
-                          <textarea id="message" rows={2} className={inputClass}
-                            placeholder="Best time to reach them, their water concerns…"
-                            {...register("message")} />
-                        </div>
-                      </fieldset>
+                        {/* STEP 2 — your friend */}
+                        {step === 1 && (
+                          <>
+                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                              <div>
+                                <label htmlFor="friendFirstName" className={labelClass}>Friend&apos;s first name</label>
+                                <input id="friendFirstName" type="text" className={inputClass} placeholder="Jane"
+                                  {...register("friendFirstName", { required: "Required" })} />
+                                {errors.friendFirstName && <p className="mt-1 text-xs text-brand-red">{errors.friendFirstName.message}</p>}
+                              </div>
+                              <div>
+                                <label htmlFor="friendLastName" className={labelClass}>
+                                  Last name <span className="normal-case text-gray-300">(optional)</span>
+                                </label>
+                                <input id="friendLastName" type="text" className={inputClass} placeholder="Smith"
+                                  {...register("friendLastName")} />
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                              <div>
+                                <label htmlFor="friendPhone" className={labelClass}>Friend&apos;s phone</label>
+                                <input id="friendPhone" type="tel" className={inputClass} placeholder="(555) 987-6543"
+                                  {...register("friendPhone", { required: "Required" })} />
+                                {errors.friendPhone && <p className="mt-1 text-xs text-brand-red">{errors.friendPhone.message}</p>}
+                              </div>
+                              <div>
+                                <label htmlFor="friendEmail" className={labelClass}>
+                                  Email <span className="normal-case text-gray-300">(optional)</span>
+                                </label>
+                                <input id="friendEmail" type="email" className={inputClass} placeholder="jane@example.com"
+                                  {...register("friendEmail", {
+                                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
+                                  })} />
+                                {errors.friendEmail && <p className="mt-1 text-xs text-brand-red">{errors.friendEmail.message}</p>}
+                              </div>
+                            </div>
+                            <div>
+                              <label htmlFor="friendOwnsHome" className={labelClass}>Does your friend own their home?</label>
+                              <select
+                                id="friendOwnsHome"
+                                className={inputClass}
+                                defaultValue=""
+                                {...register("friendOwnsHome", {
+                                  required: "Please let us know",
+                                  onChange: () => renterBlocked && setRenterBlocked(false),
+                                })}
+                              >
+                                <option value="" disabled>Select one…</option>
+                                <option value="own">Yes — they own their home</option>
+                                <option value="unsure">Not sure</option>
+                                <option value="rent">No — they rent</option>
+                              </select>
+                              {errors.friendOwnsHome && <p className="mt-1 text-xs text-brand-red">{errors.friendOwnsHome.message}</p>}
+                              {renterBlocked && (
+                                <p className="mt-2 rounded-lg bg-brand-red/5 px-3 py-2 text-[13px] leading-relaxed text-brand-red">
+                                  Our systems are installed for homeowners, so renters aren&apos;t eligible for the
+                                  reward. Know a friend who owns their home? We&apos;d love the intro.
+                                </p>
+                              )}
+                            </div>
+                          </>
+                        )}
 
-                      <div className="flex items-start gap-3">
-                        <input id="referrerConsent" type="checkbox"
-                          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue/30"
-                          {...register("referrerConsent", { required: "Please confirm your friend is happy to hear from us" })} />
-                        <label htmlFor="referrerConsent" className="text-[13px] leading-relaxed text-gray-500">
-                          My friend is happy to hear from Puragain about a free water test.
-                        </label>
-                      </div>
-                      {errors.referrerConsent && <p className="-mt-2 text-xs text-brand-red">{errors.referrerConsent.message}</p>}
+                        {/* STEP 3 — finish */}
+                        {step === 2 && (
+                          <>
+                            <div>
+                              <label htmlFor="message" className={labelClass}>
+                                Anything we should know? <span className="normal-case text-gray-300">(optional)</span>
+                              </label>
+                              <textarea id="message" rows={2} className={inputClass}
+                                placeholder="Best time to reach them, their water concerns…"
+                                {...register("message")} />
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <input id="referrerConsent" type="checkbox"
+                                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue/30"
+                                {...register("referrerConsent", { required: "Please confirm your friend is happy to hear from us" })} />
+                              <label htmlFor="referrerConsent" className="text-[13px] leading-relaxed text-gray-500">
+                                My friend is happy to hear from Puragain about a free water test.
+                              </label>
+                            </div>
+                            {errors.referrerConsent && <p className="-mt-1 text-xs text-brand-red">{errors.referrerConsent.message}</p>}
+                          </>
+                        )}
+                      </motion.div>
 
-                      {/* honeypot */}
+                      {/* honeypot — always rendered */}
                       <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
                         className="absolute left-[-9999px] h-px w-px opacity-0" {...register("company_website")} />
 
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-red py-4 text-[15px] font-semibold text-white shadow-lg shadow-red-500/20 transition-colors duration-200 hover:bg-[#b00e0e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40 focus-visible:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
-                      >
-                        {isSubmitting ? "Sending…" : "Send My Referral"}
-                        {!isSubmitting && (
-                          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                      {/* nav */}
+                      <div className="flex items-center gap-3">
+                        {step > 0 && (
+                          <button
+                            type="button"
+                            onClick={goBack}
+                            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gray-200 px-5 py-4 text-sm font-semibold text-gray-600 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/30 active:scale-[0.98]"
+                          >
+                            <ArrowLeft className="h-4 w-4" />
+                            Back
+                          </button>
                         )}
-                      </button>
+                        {step < 2 ? (
+                          <button
+                            type="button"
+                            onClick={goNext}
+                            className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand-blue py-4 text-[15px] font-semibold text-white shadow-lg shadow-brand-blue/20 transition-colors duration-200 hover:bg-[#155a99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40 focus-visible:ring-offset-2 active:scale-[0.98]"
+                          >
+                            Continue
+                            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                          </button>
+                        ) : (
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand-red py-4 text-[15px] font-semibold text-white shadow-lg shadow-red-500/20 transition-colors duration-200 hover:bg-[#b00e0e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40 focus-visible:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                          >
+                            {isSubmitting ? "Sending…" : "Send My Referral"}
+                            {!isSubmitting && (
+                              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                            )}
+                          </button>
+                        )}
+                      </div>
 
                       {submitError && (
                         <p className="text-center text-sm text-brand-red">
