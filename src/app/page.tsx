@@ -14,6 +14,7 @@ import {
   ChevronDown,
   Clock,
   Award,
+  Gift,
 } from "lucide-react";
 
 const homeFaqs = [
@@ -502,6 +503,57 @@ export default function HomePage() {
               <ReviewCarousel />
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+
+      {/* ═══ PURAGAIN REWARDS (referral) ═══ */}
+      <section className="px-6 pb-24 lg:pb-32 bg-gray-50">
+        <div className="max-w-[1100px] mx-auto">
+          <FadeIn>
+            <div className="relative grid lg:grid-cols-[1.05fr_0.95fr] overflow-hidden rounded-[32px] ring-1 ring-black/5 shadow-[0_40px_90px_-50px_rgba(26,107,181,0.5)]">
+              {/* Left — the pitch */}
+              <div className="bg-white px-8 py-12 lg:px-14 lg:py-16">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#3a8fd4]/20 bg-[#eaf3fb] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1a6bb5]">
+                  <Gift className="w-3.5 h-3.5" /> PurAgain Rewards
+                </span>
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-6" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+                  Love your water?<br /><span className="text-[#3a8fd4]">Get paid to share it.</span>
+                </h2>
+                <p className="text-gray-500 text-[16px] leading-relaxed mt-5 max-w-md">
+                  Refer a friend and earn <span className="font-semibold text-gray-900">$200</span> when they get a system installed, plus <span className="font-semibold text-gray-900">$25</span> the moment they book a free water test. Your friend gets <span className="font-semibold text-gray-900">$100</span> off and a free test too.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <Link href="/refer" className="group inline-flex items-center gap-2 bg-brand-red text-white rounded-full px-8 py-4 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors shadow-lg shadow-red-500/15">
+                    Refer a Friend <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                  <span className="text-gray-400 text-sm">Takes about 30 seconds. No cap.</span>
+                </div>
+              </div>
+
+              {/* Right — the reward visual */}
+              <div
+                className="relative flex flex-col items-center justify-center px-8 py-14 lg:py-16 overflow-hidden"
+                style={{ background: "linear-gradient(150deg, #2f5e8f 0%, #1a6bb5 55%, #124e83 100%)" }}
+              >
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(420px 300px at 70% 15%, rgba(126,195,240,0.28), transparent 60%)" }} />
+                <Gift aria-hidden="true" className="absolute -right-6 -bottom-6 w-40 h-40 text-white/5" />
+                <div className="relative flex flex-col items-center text-center">
+                  <span className="text-white/60 text-[11px] font-semibold uppercase tracking-[0.2em]">You earn</span>
+                  <span className="font-heading text-white font-bold leading-none text-[86px] lg:text-[104px]" style={{ letterSpacing: "-0.04em" }}>$200</span>
+                  <span className="text-white/70 text-sm mt-1">for every friend installed</span>
+                </div>
+                <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3">
+                  <span className="rounded-full bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 text-sm text-white">
+                    <span className="font-heading font-bold">$25</span> <span className="text-white/70">when they book</span>
+                  </span>
+                  <span className="rounded-full bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 text-sm text-white">
+                    <span className="font-heading font-bold">$100</span> <span className="text-white/70">for your friend</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
