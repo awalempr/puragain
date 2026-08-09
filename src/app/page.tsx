@@ -23,7 +23,7 @@ const homeFaqs = [
   { q: "How long does installation take?", a: "Most installations are completed in 1-2 hours by our certified technicians. No plumber needed. We handle everything." },
   { q: "Do I need to own my home?", a: "While homeowners are our most common customers, renters can also qualify with landlord approval. Our under-sink systems are compact and non-invasive." },
   { q: "Will it affect my water pressure?", a: "No. Our reverse osmosis systems use a dedicated faucet for drinking water, so your existing water pressure is completely unaffected. Whole house systems maintain full flow." },
-  { q: "How often do filters need replacing?", a: "Filters are typically replaced once a year and it's included in your lifetime servicing plan. Our technician handles it during your annual maintenance visit." },
+  { q: "How often do filters need replacing?", a: "Depending on your system and water, filters are typically replaced every one to two years. Your lifetime service covers the labor at no charge, and you only pay for the replacement filters themselves." },
   { q: "Is the water testing really free?", a: "Yes. A certified technician visits your home, tests your water on-site, and shows you the results. No cost, no obligation, no pressure." },
 ];
 
@@ -329,7 +329,7 @@ export default function HomePage() {
                   We install and service it forever.
                 </h3>
                 <p className="text-gray-500 text-[16px] leading-relaxed mb-6">
-                  Professional installation by our certified team. Then every filter change, tune-up, water test, and service call is covered for life.
+                  Professional installation by our certified team. Then every tune-up, water test, and service call is covered for life, and you only pay for replacement filters when they are due.
                 </p>
                 <div className="flex items-center gap-6 text-sm text-gray-400">
                   <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#3a8fd4]" />Free installation</span>

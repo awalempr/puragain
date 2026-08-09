@@ -68,7 +68,7 @@ export default function TermsPage() {
             <p className="mb-3">All systems include a lifetime service plan at no additional cost, which covers:</p>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>Annual water quality testing</li>
-              <li>Annual filter and component replacements</li>
+              <li>Annual filter-change and component service (replacement filters and parts purchased separately)</li>
               <li>Annual system maintenance and tune-up</li>
               <li>Unlimited service calls at no charge</li>
               <li>24/7 live customer support</li>

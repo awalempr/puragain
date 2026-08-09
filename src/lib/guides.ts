@@ -199,7 +199,7 @@ export const GUIDES: Guide[] = [
         "Reverse osmosis starts around $26/month, the 6-stage alkaline system around $42/month, and whole-house treatment around $74/month — all with zero money down, subject to credit approval. Systems can also be purchased outright.",
       ]},
       { h: "What's included in the price", p: [
-        "Every system includes free professional installation, a 7-year warranty, and a lifetime service plan: annual filter changes, annual water testing, annual maintenance, and unlimited service calls. That ongoing service is a real part of the value, not an add-on.",
+        "Every system includes free professional installation, a 7-year warranty, and free lifetime service: annual water testing, maintenance visits, and unlimited service calls with no labor or service-call fees. The one ongoing cost is replacement filters, typically every one to three years, which you buy as needed.",
       ]},
       { h: "Filtration vs. bottled water", p: [
         "Households that buy bottled water often spend more over a few years than a filtration system costs — with the added hassle of hauling and storing cases, and the plastic waste. Filtration gives you unlimited clean water from your own tap.",
@@ -386,7 +386,7 @@ export const GUIDES: Guide[] = [
         "h": "What is included with every system",
         "p": [
           "Financing at PurAgain Water covers far more than the equipment. Every system includes professional installation by our own technicians, so there is no separate labor bill and no hunting for a plumber. Your monthly payment reflects a complete, installed, working system.",
-          "You also receive a lifetime service plan and a 7-year warranty on the equipment. The service plan keeps your system performing over the years with filter changes and maintenance handled by our team, and the warranty protects you against defects for nearly a decade. These are the same benefits whether you finance or pay upfront, so choosing a monthly plan never means giving up support or coverage."
+          "You also receive free lifetime service and a 7-year warranty on the equipment. The service covers the labor for maintenance and filter changes, handled by our team at no service-call charge, and you buy the replacement filters themselves. The warranty protects you against defects for nearly a decade. These are the same benefits whether you finance or pay upfront, so choosing a monthly plan never means giving up support or coverage."
         ]
       },
       {

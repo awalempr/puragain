@@ -81,7 +81,7 @@ const stats = [
 const pricingIncludes = [
   "5-Stage RO system & dedicated faucet",
   "Professional installation",
-  "Annual filter replacements",
+  "Free filter-change service (filters purchased separately)",
   "Annual water quality testing",
   "Unlimited service calls",
   "7-year warranty on all parts",
@@ -106,12 +106,12 @@ const faqs = [
   {
     question: "How often do filters need replacing?",
     answer:
-      "Filters are replaced annually as part of your included lifetime service plan. Our technician comes to your home, swaps all filters, sanitizes the system, and tests the output water, all at no additional cost.",
+      "Depending on your water, filters are typically replaced every one to two years. Your lifetime service covers the labor at no charge: our technician comes to your home, swaps the filters, sanitizes the system, and tests your water. You purchase the replacement filters, and we review the options with you after testing.",
   },
   {
     question: "Is everything covered under lifetime service?",
     answer:
-      "Yes. Your monthly plan includes all filter replacements, annual maintenance visits, annual water testing, and unlimited service calls. The only thing not covered is damage caused by misuse or unauthorized modifications.",
+      "Your lifetime service covers annual maintenance visits, water testing, and unlimited service calls with no labor or service-call fees. The only ongoing cost is the replacement filters themselves. Damage caused by misuse or unauthorized modifications is not covered.",
   },
 ];
 

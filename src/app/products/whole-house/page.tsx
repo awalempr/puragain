@@ -72,7 +72,7 @@ const pricingIncludes = [
   "Whole house filtration system",
   "Salt-free conditioner",
   "Professional installation at main line",
-  "Annual pre-filter replacements",
+  "Free filter-change service (filters purchased separately)",
   "Annual water quality testing",
   "Unlimited service calls",
   "7-year warranty on all parts",
@@ -102,7 +102,7 @@ const faqs = [
   {
     question: "Is everything covered under lifetime service?",
     answer:
-      "Yes. Your monthly plan includes all pre-filter replacements, annual maintenance visits, annual water testing, and unlimited service calls. The TAC media lasts the lifetime of the system and never needs replacing. The only thing not covered is damage caused by misuse or unauthorized modifications.",
+      "Your lifetime service covers annual maintenance visits, water testing, and unlimited service calls with no labor or service-call fees. The only ongoing cost is replacement filters, and eventually the conditioning media, when they are due. Damage caused by misuse or unauthorized modifications is not covered.",
   },
 ];
 
@@ -451,7 +451,7 @@ export default function WholeHousePage() {
                 icon: Clock,
                 title: "Annual Maintenance",
                 description:
-                  "Full system inspection, media check, pre-filter replacement, and performance verification included every year.",
+                  "Full system inspection, media check, filter-change service, and performance verification every year. The service is free, and you purchase the replacement filters.",
               },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>

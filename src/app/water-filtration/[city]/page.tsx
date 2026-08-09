@@ -36,7 +36,7 @@ const systems = [
 const trust = [
   { icon: Droplets, title: "Free in-home water test", desc: "A certified technician tests your water on-site and shows you exactly what's in it." },
   { icon: Shield, title: "Removes 99% of contaminants", desc: "Lead, arsenic, PFAS, chlorine, hardness minerals, and more." },
-  { icon: Clock, title: "Lifetime service plan", desc: "Annual filter changes, testing, and unlimited service calls, included." },
+  { icon: Clock, title: "Lifetime service plan", desc: "Annual testing, maintenance, and unlimited service calls at no charge. You only pay for replacement filters." },
   { icon: Award, title: "7-year warranty", desc: "Professional installation and full parts warranty on every system." },
 ];
 

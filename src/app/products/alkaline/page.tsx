@@ -87,7 +87,7 @@ const stats = [
 const pricingIncludes = [
   "6-Stage Alkaline RO system & dedicated faucet",
   "Professional installation",
-  "Annual filter & mineral cartridge replacements",
+  "Free filter & cartridge change service (parts purchased separately)",
   "Annual water quality & pH testing",
   "Unlimited service calls",
   "7-year warranty on all parts",
@@ -112,12 +112,12 @@ const faqs = [
   {
     question: "How often does the mineral cartridge need replacing?",
     answer:
-      "The alkaline mineral cartridge is replaced annually along with all other filters as part of your included lifetime service plan. Our technician handles everything during your annual maintenance visit at no additional cost.",
+      "The alkaline mineral cartridge and filters are typically replaced on a one to two year cycle. Your lifetime service covers the labor at no charge, and our technician handles the swap during a maintenance visit. You purchase the replacement cartridge and filters, and we go over the options with you after testing.",
   },
   {
     question: "Is everything covered under lifetime service?",
     answer:
-      "Yes. Your monthly plan includes all filter and mineral cartridge replacements, annual maintenance visits, annual water testing, pH verification, and unlimited service calls. The only thing not covered is damage caused by misuse or unauthorized modifications.",
+      "Your lifetime service covers annual maintenance visits, water testing, pH verification, and unlimited service calls with no labor or service-call fees. The only ongoing cost is the replacement filters and mineral cartridge. Damage caused by misuse or unauthorized modifications is not covered.",
   },
 ];
 
