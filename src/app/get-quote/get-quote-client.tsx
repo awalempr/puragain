@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -16,6 +16,7 @@ import {
   MapPin,
   PhoneCall,
   ArrowRight,
+  Gift,
 } from "lucide-react";
 import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
@@ -69,7 +70,15 @@ const steps = [
 export default function GetQuoteClient() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [refName, setRefName] = useState("");
   const reduce = useReducedMotion();
+
+  // If they arrived from a "you've been referred" email (…/get-quote?ref=Name),
+  // greet them by the referrer's name. Read on the client to keep the page static.
+  useEffect(() => {
+    const r = new URLSearchParams(window.location.search).get("ref");
+    if (r) setRefName(r.replace(/[^a-zA-Z '.-]/g, "").trim().slice(0, 40));
+  }, []);
 
   // reveal variant, motion-safe: collapses to a plain fade when the user
   // prefers reduced motion so nothing translates on screen.
@@ -298,6 +307,14 @@ export default function GetQuoteClient() {
                   </div>
                 ) : (
                   <>
+                    {refName && (
+                      <div className="mb-5 flex items-center gap-2.5 rounded-xl border border-brand-blue/20 bg-[#eaf3fb] px-4 py-3 text-sm text-[#1a4e82]">
+                        <Gift className="h-4 w-4 shrink-0 text-brand-blue" />
+                        <span>
+                          <span className="font-semibold">{refName} referred you.</span> Enjoy $100 off at install, plus a free in-home water test.
+                        </span>
+                      </div>
+                    )}
                     <div className="mb-6">
                       <h2 className="font-heading text-[1.7rem] font-bold leading-tight text-navy">
                         Get my free quote

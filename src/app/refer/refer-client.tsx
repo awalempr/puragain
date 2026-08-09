@@ -188,6 +188,8 @@ export default function ReferClient() {
           ownHome: data.friendOwnsHome,
           message: data.message,
           // The customer doing the referring, for reward payout.
+          referrerFirstName: data.referrerFirstName,
+          referrerLastName: data.referrerLastName,
           referrerName: `${data.referrerFirstName} ${data.referrerLastName}`.trim(),
           referrerEmail: data.referrerEmail,
           referrerPhone: data.referrerPhone,
@@ -490,11 +492,12 @@ export default function ReferClient() {
                               </div>
                               <div>
                                 <label htmlFor="friendEmail" className={labelClass}>
-                                  Email <span className="normal-case text-gray-300">(optional)</span>
+                                  Their email <span className="normal-case text-gray-300">(recommended)</span>
                                 </label>
                                 <input id="friendEmail" type="email" className={inputClass} placeholder="jane@example.com"
                                   {...register("friendEmail", { validate: validateEmail })} />
                                 {errors.friendEmail && <p className="mt-1 text-xs text-brand-red">{errors.friendEmail.message}</p>}
+                                <p className="mt-1 text-[11px] text-gray-400">We&apos;ll send them a friendly heads-up that you referred them.</p>
                               </div>
                             </div>
                             <div>

@@ -158,6 +158,8 @@ interface LeadPayload {
   // the REFERRED friend (the new lead reps will call); these describe the
   // existing customer who sent them, so ops can pay the referral reward.
   referrerName?: string;
+  referrerFirstName?: string;
+  referrerLastName?: string;
   referrerEmail?: string;
   referrerPhone?: string;
   referrerConsent?: boolean; // referrer attests they have the friend's permission
@@ -378,6 +380,14 @@ export async function POST(request: Request) {
     // homeowner answer is preserved in Comments regardless.
     Do_you_own_your_home:
       data.ownHome === "own" ? "Yes" : data.ownHome === "rent" ? "No" : undefined,
+    // Referral: populate the real referrer fields (they exist on the Leads
+    // module) so a Zoho workflow can personalize the "you've been referred"
+    // email and credit the referrer. Self-healing create drops any that error.
+    Referrer_First_Name: isReferral ? (data.referrerFirstName?.trim() || referrerName.split(" ")[0] || undefined) : undefined,
+    Referrer_Last_Name: isReferral ? (data.referrerLastName?.trim() || referrerName.split(" ").slice(1).join(" ") || undefined) : undefined,
+    Referrer_Phone: isReferral ? (referrerPhone || undefined) : undefined,
+    Referrer_Email: isReferral ? (referrerEmail || undefined) : undefined,
+    Referred_By_Customer: isReferral ? true : undefined,
   };
 
   // POST the record. Returns the parsed per-record result (or null on transport
