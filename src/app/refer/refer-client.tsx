@@ -61,8 +61,8 @@ const rewards = [
   {
     icon: HandCoins,
     amount: "$25",
-    who: "To you: booking bonus",
-    copy: "Paid the moment your friend books their free in-home water test. You get rewarded before they even buy.",
+    who: "To you: service credit",
+    copy: "A $25 credit toward your next service, added once your friend completes their free in-home water test. You get rewarded before they even buy.",
     accent: "from-brand-blue/12 to-brand-blue/5",
   },
   {
@@ -92,8 +92,8 @@ const steps = [
   {
     n: "02",
     icon: ClipboardCheck,
-    title: "They book a free test",
-    copy: "A local specialist tests their water at no cost. The moment they book, $25 is yours.",
+    title: "They complete a free test",
+    copy: "A local specialist tests their water at no cost. Once the test is done, a $25 service credit is yours.",
   },
   {
     n: "03",
@@ -106,11 +106,11 @@ const steps = [
 const faqs = [
   {
     q: "How much can I earn?",
-    a: "$200 for every friend who gets a system installed, plus a $25 bonus the moment they book their free water test. There's no cap. Refer as many friends as you'd like.",
+    a: "$200 for every friend who gets a system installed, plus a $25 credit toward your next service once they complete their free water test. There's no cap. Refer as many friends as you'd like.",
   },
   {
     q: "When do I get paid?",
-    a: "The $25 booking bonus is paid once your friend books their free in-home water test. The $200 install reward is paid after their system is installed and verified.",
+    a: "The $25 service credit is added to your account after your friend completes their free in-home water test. The $200 install reward is paid after their system is installed and verified.",
   },
   {
     q: "Who counts as a referral?",
@@ -294,8 +294,8 @@ export default function ReferClient() {
                 className="mt-6 max-w-md text-[15px] leading-[1.7] text-gray-600 md:text-lg"
               >
                 Earn <span className="font-semibold text-navy">$200</span> for every friend who gets a
-                system installed, plus <span className="font-semibold text-navy">$25</span> the moment
-                they book a free water test. Your friend gets{" "}
+                system installed, plus a <span className="font-semibold text-navy">$25</span> service
+                credit once they complete a free water test. Your friend gets{" "}
                 <span className="font-semibold text-navy">$100</span> off and a free test, too.
               </motion.p>
 
@@ -308,7 +308,7 @@ export default function ReferClient() {
                 className="mt-8 flex flex-wrap gap-3"
               >
                 {[
-                  { amt: "$25", label: "when they book" },
+                  { amt: "$25", label: "credit when tested" },
                   { amt: "$200", label: "when they install" },
                   { amt: "$100", label: "for your friend" },
                 ].map((c) => (
@@ -369,10 +369,10 @@ export default function ReferClient() {
                       Referral sent{firstName ? `, ${firstName}` : ""}!
                     </h2>
                     <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-gray-500">
-                      We&apos;ll reach out to your friend to schedule their free water test. The moment
-                      they book, your <span className="font-semibold text-navy">$25</span> is on the
-                      way, and <span className="font-semibold text-navy">$200</span> more when they
-                      install.
+                      We&apos;ll reach out to your friend to schedule their free water test. Once they
+                      complete it, a <span className="font-semibold text-navy">$25</span> service
+                      credit is yours, and <span className="font-semibold text-navy">$200</span> more
+                      when they install.
                     </p>
                     <button
                       onClick={() => { setSubmitted(false); setStep(0); }}
@@ -615,10 +615,10 @@ export default function ReferClient() {
         <div className="mx-auto max-w-[1180px]">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="font-heading text-3xl font-bold text-navy md:text-[2.6rem]" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-              Cash both ways. No catch.
+              Rewards both ways. No catch.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-gray-500 md:text-lg">
-              Real rewards for you and your friend, starting the moment they book.
+              Real rewards for you and your friend, starting the moment they complete a free test.
             </p>
           </div>
 
