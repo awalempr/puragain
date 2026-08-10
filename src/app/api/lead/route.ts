@@ -273,7 +273,7 @@ export async function POST(request: Request) {
       data.ownHome === "own" ? "Yes — homeowner" : data.ownHome === "rent" ? "No — renter" : "Not confirmed";
     descriptionLines.push(`Friend owns home: ${ownLabel}`);
     descriptionLines.push(
-      "Reward: $25 service credit to referrer AFTER this friend COMPLETES the free water test (not on booking) · $200 to referrer + $100 to this friend on verified install (new customer at a new address, one reward per household, ops-approved)."
+      "Reward: $25 filter credit to referrer AFTER this friend COMPLETES the free water test (not on booking) · $200 to referrer + $100 to this friend on verified install (new customer at a new address, one reward per household, ops-approved)."
     );
     descriptionLines.push("——");
   }

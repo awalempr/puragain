@@ -61,8 +61,8 @@ const rewards = [
   {
     icon: HandCoins,
     amount: "$25",
-    who: "To you: service credit",
-    copy: "A $25 credit toward your next service, added once your friend completes their free in-home water test. You get rewarded before they even buy.",
+    who: "To you: filter credit",
+    copy: "A $25 credit toward your next filter change, added once your friend completes their free in-home water test. You get rewarded before they even buy.",
     accent: "from-brand-blue/12 to-brand-blue/5",
   },
   {
@@ -93,7 +93,7 @@ const steps = [
     n: "02",
     icon: ClipboardCheck,
     title: "They complete a free test",
-    copy: "A local specialist tests their water at no cost. Once the test is done, a $25 service credit is yours.",
+    copy: "A local specialist tests their water at no cost. Once the test is done, a $25 filter credit is yours.",
   },
   {
     n: "03",
@@ -106,11 +106,11 @@ const steps = [
 const faqs = [
   {
     q: "How much can I earn?",
-    a: "$200 for every friend who gets a system installed, plus a $25 credit toward your next service once they complete their free water test. There's no cap. Refer as many friends as you'd like.",
+    a: "$200 for every friend who gets a system installed, plus a $25 credit toward your next filter change once they complete their free water test. There's no cap. Refer as many friends as you'd like.",
   },
   {
     q: "When do I get paid?",
-    a: "The $25 service credit is added to your account after your friend completes their free in-home water test. The $200 install reward is paid after their system is installed and verified.",
+    a: "The $25 filter credit is added to your account after your friend completes their free in-home water test. The $200 install reward is paid after their system is installed and verified.",
   },
   {
     q: "Who counts as a referral?",
@@ -294,7 +294,7 @@ export default function ReferClient() {
                 className="mt-6 max-w-md text-[15px] leading-[1.7] text-gray-600 md:text-lg"
               >
                 Earn <span className="font-semibold text-navy">$200</span> for every friend who gets a
-                system installed, plus a <span className="font-semibold text-navy">$25</span> service
+                system installed, plus a <span className="font-semibold text-navy">$25</span> filter
                 credit once they complete a free water test. Your friend gets{" "}
                 <span className="font-semibold text-navy">$100</span> off and a free test, too.
               </motion.p>
@@ -370,7 +370,7 @@ export default function ReferClient() {
                     </h2>
                     <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-gray-500">
                       We&apos;ll reach out to your friend to schedule their free water test. Once they
-                      complete it, a <span className="font-semibold text-navy">$25</span> service
+                      complete it, a <span className="font-semibold text-navy">$25</span> filter
                       credit is yours, and <span className="font-semibold text-navy">$200</span> more
                       when they install.
                     </p>

@@ -521,7 +521,7 @@ export default function HomePage() {
                   Love your water?<br /><span className="text-[#3a8fd4]">Get paid to share it.</span>
                 </h2>
                 <p className="text-gray-500 text-[16px] leading-relaxed mt-5 max-w-md">
-                  Refer a friend and earn <span className="font-semibold text-gray-900">$200</span> when they get a system installed, plus a <span className="font-semibold text-gray-900">$25</span> service credit once they complete a free water test. Your friend gets <span className="font-semibold text-gray-900">$100</span> off and a free test too.
+                  Refer a friend and earn <span className="font-semibold text-gray-900">$200</span> when they get a system installed, plus a <span className="font-semibold text-gray-900">$25</span> filter credit once they complete a free water test. Your friend gets <span className="font-semibold text-gray-900">$100</span> off and a free test too.
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <Link href="/refer" className="group inline-flex items-center gap-2 bg-brand-red text-white rounded-full px-8 py-4 text-[15px] font-semibold hover:bg-[#b00e0e] transition-colors shadow-lg shadow-red-500/15">
