@@ -6,7 +6,6 @@ import { getTracking } from "@/lib/tracking";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 import { validateEmail, validatePhone } from "@/lib/validation";
 import { CITIES, REGIONS, type RegionKey } from "@/lib/service-areas";
-import { CallCta } from "@/components/call-cta";
 import { Mail, Clock, Star, Shield, Zap, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -104,7 +103,6 @@ export default function ContactPage() {
           <p className="text-gray-500 text-[15px] mb-4 leading-relaxed">
             Whether you have questions or you&apos;re ready to get started, we&apos;re here.
           </p>
-          <div className="mb-7"><CallCta /></div>
 
           {submitted ? (
             <div className="bg-gray-50 rounded-2xl p-12 text-center border border-gray-100">
@@ -115,7 +113,7 @@ export default function ContactPage() {
               </div>
               <h3 className="font-heading text-2xl font-bold text-gray-900 mb-3">Message sent!</h3>
               <p className="text-gray-500 leading-relaxed">
-                We&apos;ll get back to you within 24 hours. In the meantime, email us at{" "}
+                You should get a call within the next few minutes &mdash; or we&apos;ll respond within 24 hours. In the meantime, email us at{" "}
                 <a href="mailto:support@puragain.com" className="text-[#3a8fd4] font-semibold hover:underline">support@puragain.com</a>.
               </p>
             </div>
