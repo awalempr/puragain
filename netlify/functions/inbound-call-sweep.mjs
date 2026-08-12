@@ -24,11 +24,13 @@ async function getToken() {
 }
 
 function callerPhone(call) {
-  const m = (call.Subject || "").match(/from\s+(\+?[\d][\d\s\-().]{6,})/i);
-  const raw = (m && m[1]) || call.Caller_ID || "";
-  const d = raw.replace(/\D/g, "");
-  const ten = d.length === 11 && d.startsWith("1") ? d.slice(1) : d;
-  return ten.length === 10 ? ten : null;
+  // The phone is always the trailing number in the Subject, whatever the format:
+  //   "from +17137057585", "from George Saubon (+16193060004)", "from + 17082003684".
+  // Take the last 10 digits of the subject (the number sits at the end).
+  const d = (call.Subject || "").replace(/\D/g, "");
+  if (d.length >= 10) return d.slice(-10);
+  const cid = (call.Caller_ID || "").replace(/\D/g, "");
+  return cid.length >= 10 ? cid.slice(-10) : null;
 }
 
 export default async () => {
@@ -50,7 +52,7 @@ export default async () => {
     return null;
   }
 
-  const url = `${API}/crm/v6/Calls?fields=id,Subject,Call_Type,Call_Start_Time,Call_Duration,Voice_Recording__s,Owner,Who_Id,Caller_ID,Tag&sort_by=Created_Time&sort_order=desc&per_page=100`;
+  const url = `${API}/crm/v6/Calls?fields=id,Subject,Call_Type,Call_Start_Time,Call_Duration,Voice_Recording__s,Owner,Who_Id,Caller_ID,Tag&sort_by=Created_Time&sort_order=desc&per_page=200`;
   const calls = (await (await fetch(url, { headers: H })).json()).data || [];
   const isDone = (c) => (c.Tag || []).some((x) => x.name === "Lead-Created");
   const candidates = calls.filter(
