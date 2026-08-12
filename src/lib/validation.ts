@@ -57,6 +57,23 @@ export function digitsOnly(value?: string): string {
   return (value || "").replace(/\D/g, "");
 }
 
+// Strips a leading US country code so a stored number never carries a leading
+// 1 / +1. Kixie's back-end workflow prepends +1, so we must hand it the national
+// number only — otherwise values become +11XXXXXXXXXX. Returns a clean
+// "(XXX) XXX-XXXX" for a standard 10-digit US number; for anything non-standard
+// it just removes a leading +1/1 and keeps the rest as typed.
+export function normalizePhone(value?: string): string {
+  const v = (value || "").trim();
+  if (!v) return "";
+  const d = v.replace(/\D/g, "");
+  const national = d.length === 11 && d[0] === "1" ? d.slice(1) : d;
+  if (national.length === 10) {
+    return `(${national.slice(0, 3)}) ${national.slice(3, 6)}-${national.slice(6)}`;
+  }
+  // Non-standard length: drop a leading +1/1 country code, keep the remainder.
+  return v.replace(/^\s*\+?\s*1[\s.\-()]*/, "").trim();
+}
+
 // US phone: 10 digits, or 11 with a leading 1. Empty passes (see above).
 export function validatePhone(value?: string): true | string {
   const v = (value || "").trim();

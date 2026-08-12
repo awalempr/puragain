@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { CITY_MAP, CITIES, REGIONS } from "@/lib/service-areas";
+import { normalizePhone } from "@/lib/validation";
 
 // Resolve a submitted city (accepts our slug OR the display name) to the
 // structured service-area record, so leads carry clean City/State/County for
@@ -207,7 +208,9 @@ export async function POST(request: Request) {
   const firstName = (data.firstName || "").trim();
   const lastName = (data.lastName || "").trim();
   const email = (data.email || "").trim();
-  const phone = (data.phone || "").trim();
+  // Normalize the phone so it never carries a leading 1/+1 — Kixie's back-end
+  // workflow prepends +1, so a leading country code here would create +11…
+  const phone = normalizePhone(data.phone);
   if (!firstName && !lastName) {
     return NextResponse.json({ error: "Name is required" }, { status: 400 });
   }
@@ -220,7 +223,7 @@ export async function POST(request: Request) {
   const isReferral = data.source === "refer";
   const referrerName = (data.referrerName || "").trim();
   const referrerEmail = (data.referrerEmail || "").trim();
-  const referrerPhone = (data.referrerPhone || "").trim();
+  const referrerPhone = normalizePhone(data.referrerPhone);
   if (isReferral) {
     if (!referrerName) {
       return NextResponse.json({ error: "Your name is required" }, { status: 400 });
@@ -262,7 +265,7 @@ export async function POST(request: Request) {
   // known-good Comments field so nothing depends on a custom "Referred By" field
   // existing yet (map to that field later once its API name is confirmed).
   if (isReferral) {
-    descriptionLines.push("🎁 REFERRAL — PurAgain Rewards");
+    descriptionLines.push("REFERRAL — PurAgain Rewards");
     descriptionLines.push(`Referred by: ${referrerName}`);
     if (referrerPhone) descriptionLines.push(`Referrer phone: ${referrerPhone}`);
     if (referrerEmail) descriptionLines.push(`Referrer email: ${referrerEmail}`);
@@ -279,7 +282,7 @@ export async function POST(request: Request) {
   }
   if (recaptcha.note) descriptionLines.push(recaptcha.note);
   if (cityObj) descriptionLines.push(`Service area: ${cityObj.name}, ${cityObj.county} (${REGIONS[cityObj.region].label})`);
-  else if (data.city === "other") descriptionLines.push("⚠️ City not in service-area list (out of area?)");
+  else if (data.city === "other") descriptionLines.push("NOTE: City not in service-area list (out of area?)");
   else if (data.city) descriptionLines.push(`City (unmatched): ${data.city}`);
   if (data.system) descriptionLines.push(`System of interest: ${systemLabels[data.system] || data.system}`);
   if (data.address) descriptionLines.push(`Install address: ${data.address}`);
@@ -330,7 +333,7 @@ export async function POST(request: Request) {
   }
   if (isReferral) {
     noteLines.push("");
-    noteLines.push(`🎁 Referral from: ${referrerName}${referrerPhone ? ` (${referrerPhone})` : ""}`);
+    noteLines.push(`Referral from: ${referrerName}${referrerPhone ? ` (${referrerPhone})` : ""}`);
   }
   const noteContent = noteLines.length
     ? `Lead from ${formName} — use this on your call:\n\n${noteLines.join("\n")}`
@@ -512,7 +515,7 @@ export async function POST(request: Request) {
             body: JSON.stringify({
               data: [
                 {
-                  Note_Title: `📋 ${formName} — Customer Details`,
+                  Note_Title: `${formName} — Customer Details`,
                   Note_Content: noteContent.slice(0, 32000),
                 },
               ],
