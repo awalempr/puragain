@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ExitIntent } from "@/components/exit-intent";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@/components/analytics";
+import { MetaPixel } from "@/components/meta-pixel";
 import { TrackingInit } from "@/components/tracking-init";
 
 const inter = Inter({
@@ -153,6 +154,7 @@ export default function RootLayout({
         <ExitIntent />
         <CookieConsent />
         <Analytics />
+        <MetaPixel />
         <TrackingInit />
       </body>
     </html>
