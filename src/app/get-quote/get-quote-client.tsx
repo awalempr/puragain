@@ -71,6 +71,7 @@ export default function GetQuoteClient() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [refName, setRefName] = useState("");
+  const [step, setStep] = useState<1 | 2>(1);
   const reduce = useReducedMotion();
 
   // If they arrived from a "you've been referred" email (…/get-quote?ref=Name),
@@ -96,6 +97,8 @@ export default function GetQuoteClient() {
     handleSubmit,
     setValue,
     watch,
+    trigger,
+    setFocus,
     formState: { errors, isSubmitting },
   } = useForm<QuoteFormData>({
     mode: "onTouched",
@@ -114,7 +117,7 @@ export default function GetQuoteClient() {
   // City combobox: typable + filterable, but free text still submits fine
   // (the /api/lead resolver accepts a typed city name and captures off-list
   // entries as-is).
-  const cityReg = register("city");
+  const cityReg = register("city", { required: "Enter your city" });
   const cityValue = watch("city") || "";
   const [cityOpen, setCityOpen] = useState(false);
   const [cityActive, setCityActive] = useState(-1);
@@ -145,6 +148,18 @@ export default function GetQuoteClient() {
     setCityOpen(false);
     setCityActive(-1);
   };
+
+  // Step 1 → Step 2 gate: the city (service area) drives everything downstream,
+  // so it's the one field that must be filled before collecting contact details.
+  const goToDetails = async () => {
+    const ok = await trigger(["city"]);
+    if (ok) setStep(2);
+  };
+
+  // Move focus to the first contact field the moment step 2 renders.
+  useEffect(() => {
+    if (step === 2) setFocus("firstName");
+  }, [step, setFocus]);
 
   const onCityKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowDown") {
@@ -315,168 +330,203 @@ export default function GetQuoteClient() {
                         </span>
                       </div>
                     )}
+                    {/* progress header — the page H1 already says "Get your free
+                        water quote", so we drop the redundant card heading and show
+                        the wizard's position instead. */}
                     <div className="mb-6">
-                      <h2 className="font-heading text-[1.7rem] font-bold leading-tight text-navy">
-                        Get my free quote
-                      </h2>
-                      <p className="mt-1.5 text-sm text-gray-500">
-                        Takes about a minute. We&apos;ll do the rest.
-                      </p>
+                      <div className="mb-2.5 flex items-center justify-between">
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-blue">
+                          Step {step} of 2
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          {step === 1 ? "About your home" : "Your details"}
+                        </span>
+                      </div>
+                      <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
+                        <div
+                          className="h-full rounded-full bg-brand-blue transition-[width] duration-300 ease-out"
+                          style={{ width: step === 1 ? "50%" : "100%" }}
+                        />
+                      </div>
                     </div>
 
                     <div className="mb-5"><CallCta /></div>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div>
-                          <label htmlFor="firstName" className={labelClass}>First name</label>
-                          <input id="firstName" type="text" className={inputClass} placeholder="John"
-                            {...register("firstName", { required: "Required" })} />
-                          {errors.firstName && <p className="mt-1 text-xs text-brand-red">{errors.firstName.message}</p>}
-                        </div>
-                        <div>
-                          <label htmlFor="lastName" className={labelClass}>Last name</label>
-                          <input id="lastName" type="text" className={inputClass} placeholder="Doe"
-                            {...register("lastName", { required: "Required" })} />
-                          {errors.lastName && <p className="mt-1 text-xs text-brand-red">{errors.lastName.message}</p>}
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div>
-                          <label htmlFor="email" className={labelClass}>Email</label>
-                          <input id="email" type="email" className={inputClass} placeholder="john@example.com"
-                            {...register("email", { required: "Required", validate: validateEmail })} />
-                          {errors.email && <p className="mt-1 text-xs text-brand-red">{errors.email.message}</p>}
-                        </div>
-                        <div>
-                          <label htmlFor="phone" className={labelClass}>Phone</label>
-                          <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567"
-                            {...register("phone", { required: "Required", validate: validatePhone })} />
-                          {errors.phone && <p className="mt-1 text-xs text-brand-red">{errors.phone.message}</p>}
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div className="relative">
-                          <label htmlFor="city" className={labelClass}>City</label>
+                      {step === 1 ? (
+                        <>
                           <div className="relative">
-                            <MapPin className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                            <input
-                              id="city"
-                              type="text"
-                              autoComplete="off"
-                              role="combobox"
-                              aria-expanded={cityOpen}
-                              aria-controls="city-listbox"
-                              aria-autocomplete="list"
-                              aria-activedescendant={cityActive >= 0 ? `city-opt-${cityActive}` : undefined}
-                              placeholder="Start typing your city…"
-                              className={`${inputClass} pl-10`}
-                              {...cityReg}
-                              onChange={(e) => {
-                                cityReg.onChange(e);
-                                setCityOpen(true);
-                                setCityActive(-1);
-                              }}
-                              onFocus={() => setCityOpen(true)}
-                              onBlur={(e) => {
-                                cityReg.onBlur(e);
-                                // delay so a click on an option registers first
-                                window.setTimeout(() => setCityOpen(false), 120);
-                              }}
-                              onKeyDown={onCityKeyDown}
-                            />
-                          </div>
-                          {cityOpen && (
-                            <ul
-                              id="city-listbox"
-                              role="listbox"
-                              className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 bg-white py-1 shadow-[0_16px_40px_-16px_rgba(6,9,15,0.35)]"
-                            >
-                              {cityMatches.length > 0 ? (
-                                cityMatches.map((c, i) => (
-                                  <li
-                                    key={c.slug}
-                                    id={`city-opt-${i}`}
-                                    role="option"
-                                    aria-selected={i === cityActive}
-                                    onMouseDown={(e) => {
-                                      e.preventDefault(); // keep focus; selection handles close
-                                      selectCity(c.name);
-                                    }}
-                                    onMouseEnter={() => setCityActive(i)}
-                                    className={`flex cursor-pointer items-center justify-between px-4 py-2.5 text-sm transition-colors ${
-                                      i === cityActive ? "bg-brand-blue/10 text-navy" : "text-gray-700"
-                                    }`}
-                                  >
-                                    <span className="font-medium">{c.name}</span>
-                                    <span className="text-xs text-gray-400">{c.county}</span>
+                            <label htmlFor="city" className={labelClass}>City</label>
+                            <div className="relative">
+                              <MapPin className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                              <input
+                                id="city"
+                                type="text"
+                                autoComplete="off"
+                                role="combobox"
+                                aria-expanded={cityOpen}
+                                aria-controls="city-listbox"
+                                aria-autocomplete="list"
+                                aria-activedescendant={cityActive >= 0 ? `city-opt-${cityActive}` : undefined}
+                                placeholder="Start typing your city…"
+                                className={`${inputClass} pl-10`}
+                                {...cityReg}
+                                onChange={(e) => {
+                                  cityReg.onChange(e);
+                                  setCityOpen(true);
+                                  setCityActive(-1);
+                                }}
+                                onFocus={() => setCityOpen(true)}
+                                onBlur={(e) => {
+                                  cityReg.onBlur(e);
+                                  // delay so a click on an option registers first
+                                  window.setTimeout(() => setCityOpen(false), 120);
+                                }}
+                                onKeyDown={onCityKeyDown}
+                              />
+                            </div>
+                            {cityOpen && (
+                              <ul
+                                id="city-listbox"
+                                role="listbox"
+                                className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 bg-white py-1 shadow-[0_16px_40px_-16px_rgba(6,9,15,0.35)]"
+                              >
+                                {cityMatches.length > 0 ? (
+                                  cityMatches.map((c, i) => (
+                                    <li
+                                      key={c.slug}
+                                      id={`city-opt-${i}`}
+                                      role="option"
+                                      aria-selected={i === cityActive}
+                                      onMouseDown={(e) => {
+                                        e.preventDefault(); // keep focus; selection handles close
+                                        selectCity(c.name);
+                                      }}
+                                      onMouseEnter={() => setCityActive(i)}
+                                      className={`flex cursor-pointer items-center justify-between px-4 py-2.5 text-sm transition-colors ${
+                                        i === cityActive ? "bg-brand-blue/10 text-navy" : "text-gray-700"
+                                      }`}
+                                    >
+                                      <span className="font-medium">{c.name}</span>
+                                      <span className="text-xs text-gray-400">{c.county}</span>
+                                    </li>
+                                  ))
+                                ) : (
+                                  <li className="px-4 py-2.5 text-sm text-gray-400">
+                                    Not on our list. We&apos;ll still use &ldquo;{cityValue.trim()}&rdquo;.
                                   </li>
-                                ))
-                              ) : (
-                                <li className="px-4 py-2.5 text-sm text-gray-400">
-                                  Not on our list. We&apos;ll still use &ldquo;{cityValue.trim()}&rdquo;.
-                                </li>
-                              )}
-                            </ul>
+                                )}
+                              </ul>
+                            )}
+                            {errors.city && <p className="mt-1 text-xs text-brand-red">{errors.city.message}</p>}
+                          </div>
+
+                          <div>
+                            <label htmlFor="system" className={labelClass}>System</label>
+                            <select id="system" className={inputClass} defaultValue="" {...register("system")}>
+                              <option value="">Not sure yet</option>
+                              <option value="reverse-osmosis">5-Stage Reverse Osmosis</option>
+                              <option value="alkaline">6-Stage Alkaline</option>
+                              <option value="whole-house">Whole House System</option>
+                            </select>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={goToDetails}
+                            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-red py-4 text-[15px] font-semibold text-white shadow-lg shadow-red-500/20 transition-colors duration-200 hover:bg-[#b00e0e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40 focus-visible:ring-offset-2 active:scale-[0.98]"
+                          >
+                            Continue
+                            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                              <label htmlFor="firstName" className={labelClass}>First name</label>
+                              <input id="firstName" type="text" className={inputClass} placeholder="John"
+                                {...register("firstName", { required: "Required" })} />
+                              {errors.firstName && <p className="mt-1 text-xs text-brand-red">{errors.firstName.message}</p>}
+                            </div>
+                            <div>
+                              <label htmlFor="lastName" className={labelClass}>Last name</label>
+                              <input id="lastName" type="text" className={inputClass} placeholder="Doe"
+                                {...register("lastName", { required: "Required" })} />
+                              {errors.lastName && <p className="mt-1 text-xs text-brand-red">{errors.lastName.message}</p>}
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                              <label htmlFor="email" className={labelClass}>Email</label>
+                              <input id="email" type="email" className={inputClass} placeholder="john@example.com"
+                                {...register("email", { required: "Required", validate: validateEmail })} />
+                              {errors.email && <p className="mt-1 text-xs text-brand-red">{errors.email.message}</p>}
+                            </div>
+                            <div>
+                              <label htmlFor="phone" className={labelClass}>Phone</label>
+                              <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567"
+                                {...register("phone", { required: "Required", validate: validatePhone })} />
+                              {errors.phone && <p className="mt-1 text-xs text-brand-red">{errors.phone.message}</p>}
+                            </div>
+                          </div>
+
+                          <div>
+                            <label htmlFor="message" className={labelClass}>
+                              Anything we should know? <span className="normal-case text-gray-300">(optional)</span>
+                            </label>
+                            <textarea id="message" rows={2} className={inputClass}
+                              placeholder="Hard water, bad taste, a recent test result…"
+                              {...register("message")} />
+                          </div>
+
+                          <div className="flex items-start gap-3">
+                            <input id="smsOptIn" type="checkbox"
+                              className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue/30"
+                              {...register("smsOptIn")} />
+                            <label htmlFor="smsOptIn" className="text-[13px] leading-relaxed text-gray-400">
+                              Text me updates about my quote. Msg &amp; data rates may apply.
+                            </label>
+                          </div>
+
+                          {/* honeypot — hidden from users, catches bots */}
+                          <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                            className="absolute left-[-9999px] h-px w-px opacity-0" {...register("company_website")} />
+
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-red py-4 text-[15px] font-semibold text-white shadow-lg shadow-red-500/20 transition-colors duration-200 hover:bg-[#b00e0e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40 focus-visible:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                          >
+                            {isSubmitting ? "Sending…" : "Get My Free Quote"}
+                            {!isSubmitting && (
+                              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                            )}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => setStep(1)}
+                            className="mx-auto flex items-center gap-1.5 text-[13px] font-medium text-gray-400 transition-colors duration-200 hover:text-brand-blue focus-visible:outline-none focus-visible:text-brand-blue"
+                          >
+                            <ArrowRight className="h-3.5 w-3.5 rotate-180" />
+                            Back
+                          </button>
+
+                          {submitError && (
+                            <p className="text-center text-sm text-brand-red">
+                              Something went wrong. Please try again or email{" "}
+                              <a href="mailto:support@puragain.com" className="font-semibold underline">support@puragain.com</a>.
+                            </p>
                           )}
-                        </div>
-                        <div>
-                          <label htmlFor="system" className={labelClass}>System</label>
-                          <select id="system" className={inputClass} defaultValue="" {...register("system")}>
-                            <option value="">Not sure yet</option>
-                            <option value="reverse-osmosis">5-Stage Reverse Osmosis</option>
-                            <option value="alkaline">6-Stage Alkaline</option>
-                            <option value="whole-house">Whole House System</option>
-                          </select>
-                        </div>
-                      </div>
 
-                      <div>
-                        <label htmlFor="message" className={labelClass}>
-                          Anything we should know? <span className="normal-case text-gray-300">(optional)</span>
-                        </label>
-                        <textarea id="message" rows={2} className={inputClass}
-                          placeholder="Hard water, bad taste, a recent test result…"
-                          {...register("message")} />
-                      </div>
-
-                      <div className="flex items-start gap-3">
-                        <input id="smsOptIn" type="checkbox"
-                          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue/30"
-                          {...register("smsOptIn")} />
-                        <label htmlFor="smsOptIn" className="text-[13px] leading-relaxed text-gray-400">
-                          Text me updates about my quote. Msg &amp; data rates may apply.
-                        </label>
-                      </div>
-
-                      {/* honeypot — hidden from users, catches bots */}
-                      <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
-                        className="absolute left-[-9999px] h-px w-px opacity-0" {...register("company_website")} />
-
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-red py-4 text-[15px] font-semibold text-white shadow-lg shadow-red-500/20 transition-colors duration-200 hover:bg-[#b00e0e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40 focus-visible:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
-                      >
-                        {isSubmitting ? "Sending…" : "Get My Free Quote"}
-                        {!isSubmitting && (
-                          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                        )}
-                      </button>
-
-                      {submitError && (
-                        <p className="text-center text-sm text-brand-red">
-                          Something went wrong. Please try again or email{" "}
-                          <a href="mailto:support@puragain.com" className="font-semibold underline">support@puragain.com</a>.
-                        </p>
+                          <p className="flex items-center justify-center gap-1.5 pt-1 text-center text-[12px] text-gray-400">
+                            <Lock className="h-3.5 w-3.5" />
+                            Your info is private. We never sell it.
+                          </p>
+                        </>
                       )}
-
-                      <p className="flex items-center justify-center gap-1.5 pt-1 text-center text-[12px] text-gray-400">
-                        <Lock className="h-3.5 w-3.5" />
-                        Your info is private. We never sell it.
-                      </p>
                     </form>
                   </>
                 )}

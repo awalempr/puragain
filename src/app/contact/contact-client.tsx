@@ -153,7 +153,7 @@ export default function ContactPage() {
 
               <div>
                 <label htmlFor="phone" className={labelClass}>Phone</label>
-                <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567" {...register("phone", { validate: validatePhone })} />
+                <input id="phone" type="tel" className={inputClass} placeholder="(555) 123-4567" {...register("phone", { required: "Phone is required", validate: validatePhone })} />
                 {errors.phone && <p className="text-brand-red text-xs mt-1">{errors.phone.message}</p>}
               </div>
 
@@ -216,7 +216,7 @@ export default function ContactPage() {
               />
 
               <button type="submit" disabled={isSubmitting} className="bg-brand-red text-white w-full py-3.5 rounded-full font-semibold hover:bg-[#b00e0e] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "Sending..." : "Send My Message"}
               </button>
               {submitError && (
                 <p className="text-brand-red text-sm text-center">

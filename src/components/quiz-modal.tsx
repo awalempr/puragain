@@ -109,7 +109,7 @@ export function QuizModal({
     lastName: "",
     email: "",
     phone: "",
-    address: "",
+    city: "",
   });
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [disqualified, setDisqualified] = useState(false);
@@ -189,7 +189,7 @@ export function QuizModal({
     setTimeout(() => {
       setStep(0);
       setAnswers([]);
-      setContactInfo({ firstName: "", lastName: "", email: "", phone: "", address: "" });
+      setContactInfo({ firstName: "", lastName: "", email: "", phone: "", city: "" });
       setContactSubmitted(false);
       setDisqualified(false);
     }, 300);
@@ -398,14 +398,14 @@ export function QuizModal({
                       </div>
 
                       <div>
-                        <label className="text-xs font-medium text-gray-500 mb-1.5 block">Installation Address</label>
+                        <label className="text-xs font-medium text-gray-500 mb-1.5 block">City</label>
                         <input
                           type="text"
                           required
-                          value={contactInfo.address}
-                          onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
+                          value={contactInfo.city}
+                          onChange={(e) => setContactInfo({ ...contactInfo, city: e.target.value })}
                           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#3a8fd4] focus:ring-2 focus:ring-[#3a8fd4]/10 transition-colors"
-                          placeholder="123 Main St, City, State, ZIP"
+                          placeholder="San Diego"
                         />
                       </div>
 
