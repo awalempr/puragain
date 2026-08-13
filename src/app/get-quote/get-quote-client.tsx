@@ -421,16 +421,6 @@ export default function GetQuoteClient() {
                             {errors.city && <p className="mt-1 text-xs text-brand-red">{errors.city.message}</p>}
                           </div>
 
-                          <div>
-                            <label htmlFor="system" className={labelClass}>System</label>
-                            <select id="system" className={inputClass} defaultValue="" {...register("system")}>
-                              <option value="">Not sure yet</option>
-                              <option value="reverse-osmosis">5-Stage Reverse Osmosis</option>
-                              <option value="alkaline">6-Stage Alkaline</option>
-                              <option value="whole-house">Whole House System</option>
-                            </select>
-                          </div>
-
                           <button
                             type="button"
                             onClick={goToDetails}
@@ -470,6 +460,18 @@ export default function GetQuoteClient() {
                                 {...register("phone", { required: "Required", validate: validatePhone })} />
                               {errors.phone && <p className="mt-1 text-xs text-brand-red">{errors.phone.message}</p>}
                             </div>
+                          </div>
+
+                          <div>
+                            <label htmlFor="system" className={labelClass}>
+                              System of interest <span className="normal-case text-gray-300">(optional)</span>
+                            </label>
+                            <select id="system" className={inputClass} defaultValue="" {...register("system")}>
+                              <option value="">Not sure yet, help me choose</option>
+                              <option value="reverse-osmosis">5-Stage Reverse Osmosis</option>
+                              <option value="alkaline">6-Stage Alkaline</option>
+                              <option value="whole-house">Whole House System</option>
+                            </select>
                           </div>
 
                           <div>
