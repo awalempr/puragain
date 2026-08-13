@@ -39,6 +39,25 @@ export default async () => {
   const H = { Authorization: `Zoho-oauthtoken ${token}`, "Content-Type": "application/json" };
   const last10 = (p) => (p || "").replace(/\D/g, "").slice(-10);
 
+  // Map of userId -> status ("active" | "disabled"), so we never attribute a call
+  // to a former/inactive rep as if they still work here.
+  async function loadUserStatus() {
+    const map = {};
+    for (const type of ["ActiveUsers", "DeactiveUsers"]) {
+      let page = 1, more = true;
+      while (more) {
+        const r = await fetch(`${API}/crm/v6/users?type=${type}&page=${page}&per_page=200`, { headers: H });
+        if (r.status !== 200) break;
+        const j = await r.json().catch(() => null);
+        for (const u of (j?.users || [])) map[u.id] = u.status;
+        more = j?.info?.more_records === true;
+        page++;
+      }
+    }
+    return map;
+  }
+  const userStatus = await loadUserStatus();
+
   async function findLeadIdByPhone(phone) {
     const p = last10(phone);
     for (const field of ["Phone", "Mobile"]) {
@@ -64,14 +83,26 @@ export default async () => {
     const phone = callerPhone(c);
     if (!phone) { skipped++; continue; }
     const area = phone.slice(0, 3);
-    const noteBody = [
+    // A call only counts as "answered" if it wasn't a Missed type and has real talk time.
+    const durDigits = (c.Call_Duration || "").replace(/\D/g, "");
+    const wasAnswered = c.Call_Type !== "Missed" && durDigits !== "" && Number(durDigits) > 0;
+    const agentName = c.Owner?.name;
+    const agentInactive = c.Owner?.id ? userStatus[c.Owner.id] !== "active" : false;
+    const lines = [
       `📞 Inbound ${c.Call_Type} call`,
       `From: +1 ${phone.slice(0, 3)}-${phone.slice(3, 6)}-${phone.slice(6)}  (area code ${area})`,
       `When: ${(c.Call_Start_Time || "").slice(0, 16).replace("T", " ")}`,
       `Duration: ${c.Call_Duration || "—"}`,
-      `Answered by: ${c.Owner?.name || "—"}`,
-      c.Voice_Recording__s ? `Recording: ${c.Voice_Recording__s}` : "Recording: (none)",
-    ].join("\n");
+    ];
+    // Only show "Answered by" on genuinely answered calls, and never present a
+    // former/inactive user as a current answerer. Missed calls say so plainly.
+    if (wasAnswered && agentName) {
+      lines.push(`Answered by: ${agentName}${agentInactive ? " (inactive user — historical record)" : ""}`);
+    } else {
+      lines.push("Status: Missed — no agent answered");
+    }
+    lines.push(c.Voice_Recording__s ? `Recording: ${c.Voice_Recording__s}` : "Recording: (none)");
+    const noteBody = lines.join("\n");
 
     const existing = await findLeadIdByPhone(phone);
     if (existing) {
