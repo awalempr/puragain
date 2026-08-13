@@ -113,8 +113,9 @@ export default function ContactPage() {
               </div>
               <h3 className="font-heading text-2xl font-bold text-gray-900 mb-3">Message sent!</h3>
               <p className="text-gray-500 leading-relaxed">
-                You should get a call within the next few minutes &mdash; or we&apos;ll respond within 24 hours. In the meantime, email us at{" "}
-                <a href="mailto:support@puragain.com" className="text-[#3a8fd4] font-semibold hover:underline">support@puragain.com</a>.
+                You should get a call within the next few minutes, or we&apos;ll respond within 24 hours. In the meantime, email us at{" "}
+                <a href="mailto:support@puragain.com" className="text-[#3a8fd4] font-semibold hover:underline">support@puragain.com</a>, or read about{" "}
+                <a href="/service-areas" className="text-[#3a8fd4] font-semibold hover:underline">the water in your area</a>.
               </p>
             </div>
           ) : renterBlocked ? (

@@ -265,7 +265,7 @@ export async function POST(request: Request) {
   // known-good Comments field so nothing depends on a custom "Referred By" field
   // existing yet (map to that field later once its API name is confirmed).
   if (isReferral) {
-    descriptionLines.push("REFERRAL — PurAgain Rewards");
+    descriptionLines.push("REFERRAL · PurAgain Rewards");
     descriptionLines.push(`Referred by: ${referrerName}`);
     if (referrerPhone) descriptionLines.push(`Referrer phone: ${referrerPhone}`);
     if (referrerEmail) descriptionLines.push(`Referrer email: ${referrerEmail}`);
@@ -273,12 +273,12 @@ export async function POST(request: Request) {
       `Referrer consent to share friend's info: ${data.referrerConsent ? "Yes" : "Not confirmed"}`
     );
     const ownLabel =
-      data.ownHome === "own" ? "Yes — homeowner" : data.ownHome === "rent" ? "No — renter" : "Not confirmed";
+      data.ownHome === "own" ? "Yes, homeowner" : data.ownHome === "rent" ? "No, renter" : "Not confirmed";
     descriptionLines.push(`Friend owns home: ${ownLabel}`);
     descriptionLines.push(
       "Reward: $25 filter credit to referrer AFTER this friend COMPLETES the free water test (not on booking) · $200 to referrer + $100 to this friend on verified install (new customer at a new address, one reward per household, ops-approved)."
     );
-    descriptionLines.push("——");
+    descriptionLines.push("· · ·");
   }
   if (recaptcha.note) descriptionLines.push(recaptcha.note);
   if (cityObj) descriptionLines.push(`Service area: ${cityObj.name}, ${cityObj.county} (${REGIONS[cityObj.region].label})`);
@@ -336,7 +336,7 @@ export async function POST(request: Request) {
     noteLines.push(`Referral from: ${referrerName}${referrerPhone ? ` (${referrerPhone})` : ""}`);
   }
   const noteContent = noteLines.length
-    ? `Lead from ${formName} — use this on your call:\n\n${noteLines.join("\n")}`
+    ? `Lead from ${formName}. Use this on your call:\n\n${noteLines.join("\n")}`
     : "";
 
   // Attribution detail without a dedicated CRM field goes to Description too.
@@ -483,7 +483,7 @@ export async function POST(request: Request) {
       const dup = await findDuplicate();
       if (dup) {
         const kind = dup.module === "Contacts" ? "contact" : "lead";
-        const title = `${isReferral ? "🎁 Referral" : "📋"} re-submission — existing ${kind}`;
+        const title = `${isReferral ? "Referral" : "Website"} re-submission · existing ${kind}`;
         const details = [descriptionLines.join("\n"), noteContent]
           .filter(Boolean)
           .filter((v, i, a) => a.indexOf(v) === i)
@@ -515,7 +515,7 @@ export async function POST(request: Request) {
             body: JSON.stringify({
               data: [
                 {
-                  Note_Title: `${formName} — Customer Details`,
+                  Note_Title: `${formName} · Customer Details`,
                   Note_Content: noteContent.slice(0, 32000),
                 },
               ],
