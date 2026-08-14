@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { CITY_MAP, CITIES, REGIONS } from "@/lib/service-areas";
 import { normalizePhone } from "@/lib/validation";
+import { sendMetaLead } from "@/lib/meta-capi";
 
 // Resolve a submitted city (accepts our slug OR the display name) to the
 // structured service-area record, so leads carry clean City/State/County for
@@ -475,6 +476,21 @@ export async function POST(request: Request) {
     return null;
   }
 
+  // Conversions API payload (fired on any successful conversion below). Dormant
+  // until META_CAPI_TOKEN is set; hashes PII server-side before sending.
+  const capiInput = {
+    email,
+    phone,
+    firstName,
+    lastName,
+    city: cityObj?.name || (data.city && data.city !== "other" ? data.city : undefined),
+    state: cityObj ? "CA" : undefined,
+    fbclid: trim(data.fbclid),
+    clientIp: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined,
+    userAgent: request.headers.get("user-agent") || undefined,
+    eventSourceUrl: trim(data.referrer) || "https://puragainwater.com",
+  };
+
   try {
     // If this person already exists, log the submission as a Note on the existing
     // record instead of creating a duplicate. Fail-open (see helpers) means a
@@ -494,6 +510,7 @@ export async function POST(request: Request) {
           headers: { Authorization: `Zoho-oauthtoken ${accessToken}`, "Content-Type": "application/json" },
           body: JSON.stringify({ data: [{ Note_Title: title.slice(0, 120), Note_Content: body }] }),
         }).catch(() => {});
+        await sendMetaLead(capiInput);
         return NextResponse.json({ ok: true, duplicate: true });
       }
     }
@@ -525,6 +542,7 @@ export async function POST(request: Request) {
           console.warn("Lead note add failed (non-blocking):", noteErr);
         }
       }
+      await sendMetaLead(capiInput);
       return NextResponse.json({ ok: true });
     }
 
