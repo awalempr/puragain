@@ -79,7 +79,7 @@ export default function ContactPage() {
         body: JSON.stringify({ ...data, ...getTracking(), source: "contact", recaptchaToken }),
       });
       if (!res.ok) throw new Error("failed");
-      trackGoogleAdsLead();
+      trackGoogleAdsLead({ email: data.email, phone: data.phone, firstName: data.firstName, lastName: data.lastName });
       setSubmitted(true);
     } catch {
       setSubmitError(true);

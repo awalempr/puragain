@@ -51,7 +51,7 @@ export function CityLeadForm({ city }: { city: string }) {
         }),
       });
       if (!res.ok) throw new Error("failed");
-      trackGoogleAdsLead();
+      trackGoogleAdsLead({ email: data.email, phone: data.phone, firstName: data.firstName, lastName: data.lastName });
       setSubmitted(true);
     } catch {
       setError(true);

@@ -194,7 +194,7 @@ export default function GetQuoteClient() {
         }),
       });
       if (!res.ok) throw new Error("failed");
-      trackGoogleAdsLead();
+      trackGoogleAdsLead({ email: data.email, phone: data.phone, firstName: data.firstName, lastName: data.lastName });
       setSubmitted(true);
       // surface the confirmation without making the user hunt for it
       if (typeof document !== "undefined") {
