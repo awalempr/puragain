@@ -7,6 +7,7 @@ import { ExitIntent } from "@/components/exit-intent";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@/components/analytics";
 import { MetaPixel } from "@/components/meta-pixel";
+import { GoogleAds } from "@/components/google-ads";
 import { TrackingInit } from "@/components/tracking-init";
 
 const inter = Inter({
@@ -155,6 +156,7 @@ export default function RootLayout({
         <CookieConsent />
         <Analytics />
         <MetaPixel />
+        <GoogleAds />
         <TrackingInit />
       </body>
     </html>

@@ -1,0 +1,24 @@
+import Script from "next/script";
+
+// Google Ads global site tag (gtag.js). Dormant until NEXT_PUBLIC_GOOGLE_ADS_ID
+// is set, same pattern as the Meta pixel. Loads the account tag (enables
+// remarketing + is the prerequisite for conversion tracking). The specific
+// "Lead" conversion event fires on form success via trackGoogleAdsLead().
+export function GoogleAds() {
+  const id = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+  if (!id) return null;
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-init" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${id}');`}
+      </Script>
+    </>
+  );
+}
