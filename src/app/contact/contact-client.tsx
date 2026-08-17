@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
+import { trackGoogleAdsLead } from "@/lib/conversions";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 import { validateEmail, validatePhone } from "@/lib/validation";
 import { CITIES, REGIONS, type RegionKey } from "@/lib/service-areas";
@@ -78,6 +79,7 @@ export default function ContactPage() {
         body: JSON.stringify({ ...data, ...getTracking(), source: "contact", recaptchaToken }),
       });
       if (!res.ok) throw new Error("failed");
+      trackGoogleAdsLead();
       setSubmitted(true);
     } catch {
       setSubmitError(true);

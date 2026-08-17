@@ -19,6 +19,7 @@ import {
   Gift,
 } from "lucide-react";
 import { getTracking } from "@/lib/tracking";
+import { trackGoogleAdsLead } from "@/lib/conversions";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 import { validateEmail, validatePhone } from "@/lib/validation";
 import { CITIES } from "@/lib/service-areas";
@@ -193,6 +194,7 @@ export default function GetQuoteClient() {
         }),
       });
       if (!res.ok) throw new Error("failed");
+      trackGoogleAdsLead();
       setSubmitted(true);
       // surface the confirmation without making the user hunt for it
       if (typeof document !== "undefined") {

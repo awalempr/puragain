@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { getTracking } from "@/lib/tracking";
+import { trackGoogleAdsLead } from "@/lib/conversions";
 import { getRecaptchaToken } from "@/lib/recaptcha";
 import { validateEmail, validatePhone } from "@/lib/validation";
 import { CallCta } from "@/components/call-cta";
@@ -50,6 +51,7 @@ export function CityLeadForm({ city }: { city: string }) {
         }),
       });
       if (!res.ok) throw new Error("failed");
+      trackGoogleAdsLead();
       setSubmitted(true);
     } catch {
       setError(true);
