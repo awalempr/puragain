@@ -384,6 +384,11 @@ export async function POST(request: Request) {
     // homeowner answer is preserved in Comments regardless.
     Do_you_own_your_home:
       data.ownHome === "own" ? "Yes" : data.ownHome === "rent" ? "No" : undefined,
+    // Canonical rent/own field shared with Meta lead ads (LeadChain writes here
+    // too), so the "New Lead Assigned" notification email and reporting read one
+    // field across every source. Text values match Meta's Own/Rent answers.
+    Do_you_rent_or_own:
+      data.ownHome === "own" ? "Own" : data.ownHome === "rent" ? "Rent" : data.ownHome === "unsure" ? "Unsure" : undefined,
     // Referral: populate the real referrer fields (they exist on the Leads
     // module) so a Zoho workflow can personalize the "you've been referred"
     // email and credit the referrer. Self-healing create drops any that error.
